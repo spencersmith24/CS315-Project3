@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dr7osdm33gheg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5kofe"]
+sky_top_color = Color(0.434518, 0.633664, 0.881314, 1)
+sky_horizon_color = Color(0.750583, 0.783834, 0.826641, 1)
+ground_bottom_color = Color(0.567814, 0.501672, 0.42525, 1)
+ground_horizon_color = Color(0.750583, 0.783834, 0.826641, 1)
+
+[sub_resource type="Sky" id="Sky_tfhj4"]
+sky_material = SubResource("ProceduralSkyMaterial_5kofe")
+
+[sub_resource type="Environment" id="Environment_2ld00"]
+background_mode = 2
+sky = SubResource("Sky_tfhj4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_14bmb"]
+size = Vector2(30, 40)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_wql8c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8fxw4"]
+size = Vector3(2, 1.5, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8qe2"]
+albedo_color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6dp2h"]
+size = Vector3(2, 1.5, 20)
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2ld00")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_14bmb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_wql8c")
+
+[node name="Bar" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.69315, 0.5, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_8fxw4")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8qe2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bar"]
+shape = SubResource("BoxShape3D_6dp2h")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.29033e-08, 0.945712, -0.325007, 8.36599e-09, 0.325007, 0.945712, 1, 3.78552e-08, -2.18557e-08, -3.27354, 9.86151, 0)
+projection = 1
+size = 20.91
