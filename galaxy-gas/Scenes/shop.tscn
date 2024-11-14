@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8yg5cypdx77b"]
+
+[ext_resource type="Script" path="res://Scripts/shop.gd" id="1_l6i5o"]
+[ext_resource type="Texture2D" uid="uid://cha5cf2q0gytj" path="res://l7b5id20.bmp" id="2_a4p4l"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6i5o")
+
+[node name="L7b5Id20" type="Sprite2D" parent="."]
+position = Vector2(879, 533)
+texture = ExtResource("2_a4p4l")
+
+[node name="ExitShopBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1741.0
+offset_top = 49.0
+offset_right = 1759.0
+offset_bottom = 80.0
+scale = Vector2(3.75962, 3.75962)
+text = "X"
+
+[connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]

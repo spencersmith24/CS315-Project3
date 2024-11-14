@@ -1,4 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr7osdm33gheg"]
+[gd_scene load_steps=10 format=3 uid="uid://dr7osdm33gheg"]
+
+[ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_k53sk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5kofe"]
 sky_top_color = Color(0.434518, 0.633664, 0.881314, 1)
@@ -30,6 +32,30 @@ albedo_color = Color(0.485703, 0.485704, 0.485703, 1)
 size = Vector3(2, 1.5, 20)
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_k53sk")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ShopBtn" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 740.0
+offset_top = 856.0
+offset_right = 792.0
+offset_bottom = 887.0
+scale = Vector2(6.87971, 6.87971)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "SHOP"
+
+[node name="Money" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1867.0
+offset_top = 17.0
+offset_right = 1907.0
+offset_bottom = 40.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -62,3 +88,5 @@ shape = SubResource("BoxShape3D_6dp2h")
 transform = Transform3D(-4.29033e-08, 0.945712, -0.325007, 8.36599e-09, 0.325007, 0.945712, 1, 3.78552e-08, -2.18557e-08, -3.27354, 9.86151, 0)
 projection = 1
 size = 20.91
+
+[connection signal="pressed" from="UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
