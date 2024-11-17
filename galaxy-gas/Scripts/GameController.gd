@@ -1,5 +1,6 @@
 extends Node3D
 
+#TODO: Use timer to randomly spawn customers
 const customer = preload("res://Scenes/customer_reg.tscn")
 
 @onready var money_label := $UI/Money

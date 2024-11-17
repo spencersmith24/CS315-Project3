@@ -93,4 +93,6 @@ size = 20.91
 
 [node name="Customers" type="Node3D" parent="."]
 
+[node name="CustSpawnTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
