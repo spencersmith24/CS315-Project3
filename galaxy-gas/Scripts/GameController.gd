@@ -1,22 +1,20 @@
 extends Node3D
 
-@onready var moneyLabel := $UI/Money
+const customer = preload("res://Scenes/customer_reg.tscn")
 
-var moneyAmt = 0
+@onready var money_label := $UI/Money
+
+var money_amt = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	for i in range(5):
+		add_child(customer.instantiate())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	# this is a test to 
-	if moneyAmt != 500:
-		moneyAmt += 1
-		
-	moneyLabel.text = str(moneyAmt)
+	money_label.text = str(money_amt)
 
 
 func _on_shop_btn_pressed() -> void:

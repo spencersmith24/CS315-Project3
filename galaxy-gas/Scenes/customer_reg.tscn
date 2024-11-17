@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bajnprarjvaq2"]
+
+[ext_resource type="Script" path="res://Scripts/customer_reg.gd" id="1_1d5sn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3dqya"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8yrdr"]
+size = Vector3(1, 1.9505, 1)
+
+[node name="customer_reg" type="RigidBody3D" groups=["Customers"]]
+script = ExtResource("1_1d5sn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3dqya")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0107727, 0)
+shape = SubResource("BoxShape3D_8yrdr")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
