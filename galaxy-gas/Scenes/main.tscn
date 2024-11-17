@@ -33,6 +33,7 @@ size = Vector3(2, 1.5, 20)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_k53sk")
+num_customers = 5
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -58,6 +59,8 @@ offset_right = 1907.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "money"
+
+[node name="CustomerSpawnTimer" type="Timer" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -93,6 +96,5 @@ size = 20.91
 
 [node name="Customers" type="Node3D" parent="."]
 
-[node name="CustSpawnTimer" type="Timer" parent="."]
-
 [connection signal="pressed" from="UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

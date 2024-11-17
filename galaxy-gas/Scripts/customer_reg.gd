@@ -18,7 +18,7 @@ func _on_timer_timeout() -> void:
 
 # gets time spent in store, uses this time to calculate money spent
 func getTimeInStore() -> int:
-	return rng.randf_range(5.0, 10.0)
+	return rng.randf_range(10.0, 25.0)
 
 func calc_money() -> int:
 	return int(time_in_store * money_multiplier + 0.5)
