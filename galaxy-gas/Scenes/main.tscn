@@ -33,7 +33,6 @@ size = Vector3(2, 1.5, 20)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_k53sk")
-num_customers = 5
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

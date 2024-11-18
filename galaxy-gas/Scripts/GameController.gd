@@ -1,13 +1,15 @@
 extends Node3D
 
-#TODO: Use timer to randomly spawn customers
+# Global globals
+var money_amt
+
+# Local globals
 var rng = RandomNumberGenerator.new()
 const customer = preload("res://Scenes/customer_reg.tscn")
 
-@export var num_customers : int
+@export var num_customers : int = 5
 @onready var money_label := $UI/Money
 
-var money_amt = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +20,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	money_amt = Globals.money_amt
 	money_label.text = str(money_amt)
 
 
@@ -28,4 +31,7 @@ func _on_shop_btn_pressed() -> void:
 
 
 func _on_customer_spawn_timer_timeout() -> void:
-	add_child(customer.instantiate())
+	var new_customer = customer.instantiate()
+	add_child(new_customer)
+	Globals.customers_in_store.append(new_customer)
+	#print(Globals.customers_in_store)
