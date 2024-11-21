@@ -14,6 +14,21 @@ sky_material = SubResource("PanoramaSkyMaterial_ux0jw")
 background_mode = 2
 sky = SubResource("Sky_c6car")
 
+[sub_resource type="Animation" id="Animation_4i3ps"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:environment:sky_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_gukdc"]
 resource_name = "move_stars"
 length = 500.0
@@ -29,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_4i3ps"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:environment:sky_rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6gj27"]
@@ -96,12 +96,14 @@ text = "SHOP"
 
 [node name="Money" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 1867.0
-offset_top = 17.0
-offset_right = 1907.0
-offset_bottom = 40.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "money"
+offset_left = 1523.0
+offset_top = -32.0
+offset_right = 1911.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 136
+text = "00000"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="CustomerSpawnTimer" type="Timer" parent="."]
 
@@ -134,7 +136,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_y8qe2")
 shape = SubResource("BoxShape3D_6dp2h")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.0523359, 0.422039, -0.905066, 0, 0.906308, 0.422618, 0.99863, 0.0221181, -0.0474325, -223.83, 119.631, 6.164)
+transform = Transform3D(-0.0523359, 0.422039, -0.905066, 0, 0.906308, 0.422618, 0.99863, 0.0221181, -0.0474324, -223.83, 119.631, 6.164)
 fov = 44.4
 size = 200.0
 near = 0.001
@@ -142,38 +144,50 @@ near = 0.001
 [node name="cafe_stage1" parent="." instance=ExtResource("2_m26jd")]
 transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0.167877, 0.37384, 220.41)
 
+[node name="Plane_015_Material_0_001" parent="cafe_stage1" index="86"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 800.266)
+
+[node name="Plane_017_Material_0_001" parent="cafe_stage1" index="87"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 800.266)
+
+[node name="Plane_019_Material_0_001" parent="cafe_stage1" index="88"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 800.266)
+
+[node name="Plane_021_Material_0_001" parent="cafe_stage1" index="89"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 800.266)
+
 [node name="OmniLight3D" type="OmniLight3D" parent="cafe_stage1"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 259.585, 170, 1477.99)
+transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, 259.585, 170, 1477.99)
 light_color = Color(1, 0.909804, 0.827451, 1)
 omni_range = 122.648
 omni_attenuation = 0.2
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="cafe_stage1"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -466.44, 170, 1473.49)
+transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, -466.44, 170, 1473.49)
 light_color = Color(1, 0.909804, 0.827451, 1)
 omni_range = 122.648
 omni_attenuation = 0.2
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="cafe_stage1"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -442.592, 176.651, 769.866)
+transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, -442.592, 176.651, 769.866)
 light_color = Color(1, 0.909804, 0.827451, 1)
 omni_range = 122.648
 omni_attenuation = 0.2
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="cafe_stage1"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 247.335, 176.651, 769.866)
+transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, 247.335, 176.651, 769.866)
 light_color = Color(1, 0.909804, 0.827451, 1)
 omni_range = 122.648
 omni_attenuation = 0.2
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="cafe_stage1"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -104.613, 271.651, 1052.73)
+transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, -104.613, 271.651, 1052.73)
 light_color = Color(1, 0.909804, 0.827451, 1)
 omni_range = 122.648
 omni_attenuation = 0.2
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="cafe_stage1"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -105.111, 176.651, 585.146)
+transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, -105.111, 176.651, 585.146)
 light_color = Color(1, 0.909804, 0.827451, 1)
 omni_range = 70.443
 omni_attenuation = 0.2

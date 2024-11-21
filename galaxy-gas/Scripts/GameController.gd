@@ -14,7 +14,7 @@ const customer = preload("res://Scenes/customer_reg.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for i in range(num_customers):
-		$CustomerSpawnTimer.wait_time = rng.randf_range(7.5, 15.0)
+		$CustomerSpawnTimer.wait_time = rng.randf_range(1,2)
 		$CustomerSpawnTimer.start()
 
 
