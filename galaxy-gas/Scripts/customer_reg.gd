@@ -25,8 +25,7 @@ func _on_timer_timeout() -> void:
 	
 	Globals.customers_in_store.erase(self)
 	queue_free()
-	print("Time in store: " + str(time_in_store) + "\nmoney_amt: " + str(money_amt) + "\nGlobal Money_amt: " + str(Globals.money_amt) + "\n")
 
-# calcs money (calc is short for calculates)
+# calcs money (calc is short for calculates, it's slang)
 func calc_money() -> int:
 	return int(time_in_store * money_multiplier + 0.5)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dr7osdm33gheg"]
+[gd_scene load_steps=16 format=3 uid="uid://dr7osdm33gheg"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_k53sk"]
 [ext_resource type="Texture2D" uid="uid://br2a7ytq67m4b" path="res://Assets/HDR_blue_nebulae-1.hdr" id="2_hiryu"]
 [ext_resource type="PackedScene" uid="uid://bsbiokva6tvhk" path="res://Assets/Map/cafe_stage1.glb" id="2_m26jd"]
+[ext_resource type="PackedScene" uid="uid://c8yg5cypdx77b" path="res://Scenes/shop.tscn" id="3_wo63n"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ux0jw"]
 panorama = ExtResource("2_hiryu")
@@ -104,6 +105,8 @@ theme_override_font_sizes/font_size = 136
 text = "00000"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Shop" parent="." instance=ExtResource("3_wo63n")]
 
 [node name="CustomerSpawnTimer" type="Timer" parent="."]
 

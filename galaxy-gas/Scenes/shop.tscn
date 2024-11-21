@@ -18,10 +18,10 @@ texture = ExtResource("2_a4p4l")
 
 [node name="ExitShopBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1741.0
-offset_top = 49.0
-offset_right = 1759.0
-offset_bottom = 80.0
+offset_left = 1524.0
+offset_top = 62.0
+offset_right = 1542.0
+offset_bottom = 93.0
 scale = Vector2(3.75962, 3.75962)
 text = "X"
 
