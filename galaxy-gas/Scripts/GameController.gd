@@ -1,15 +1,15 @@
-extends Node3D
+extends Node2D
 
 # Global globals
 var money_amt
 
 # Local globals
 var rng = RandomNumberGenerator.new()
-const customer = preload("res://Scenes/customer_reg.tscn")
+const customer = preload("res://Scenes/2D Scenes/customer_reg_2d.tscn")
 
 @export var num_customers : int = 5
 
-@onready var MONEY_LABEL := $UI/Money
+@onready var MONEY_LABEL := $Camera2D/UI/Money
 @onready var GAME_SHOP := $Shop
 
 # Called when the node enters the scene tree for the first time.

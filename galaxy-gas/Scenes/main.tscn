@@ -1,12 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dr7osdm33gheg"]
+[gd_scene load_steps=14 format=3 uid="uid://dr7osdm33gheg"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_k53sk"]
-[ext_resource type="Texture2D" uid="uid://br2a7ytq67m4b" path="res://Assets/HDR_blue_nebulae-1.hdr" id="2_hiryu"]
-[ext_resource type="PackedScene" uid="uid://bsbiokva6tvhk" path="res://Assets/Map/cafe_stage1.glb" id="2_m26jd"]
 [ext_resource type="PackedScene" uid="uid://c8yg5cypdx77b" path="res://Scenes/shop.tscn" id="3_wo63n"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ux0jw"]
-panorama = ExtResource("2_hiryu")
 
 [sub_resource type="Sky" id="Sky_c6car"]
 sky_material = SubResource("PanoramaSkyMaterial_ux0jw")
@@ -144,20 +141,18 @@ fov = 44.4
 size = 200.0
 near = 0.001
 
-[node name="cafe_stage1" parent="." instance=ExtResource("2_m26jd")]
+[node name="cafe_stage1" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0.167877, 0.37384, 220.41)
-
-[node name="Plane_015_Material_0_001" parent="cafe_stage1" index="86"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 800.266)
-
-[node name="Plane_017_Material_0_001" parent="cafe_stage1" index="87"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 800.266)
-
-[node name="Plane_019_Material_0_001" parent="cafe_stage1" index="88"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 800.266)
-
-[node name="Plane_021_Material_0_001" parent="cafe_stage1" index="89"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 800.266)
+script = null
 
 [node name="OmniLight3D" type="OmniLight3D" parent="cafe_stage1"]
 transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, 259.585, 170, 1477.99)
@@ -199,5 +194,3 @@ omni_attenuation = 0.2
 
 [connection signal="pressed" from="UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
-
-[editable path="cafe_stage1"]

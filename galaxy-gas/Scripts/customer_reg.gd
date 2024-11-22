@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends RigidBody2D
 
 var rng = RandomNumberGenerator.new()
 
