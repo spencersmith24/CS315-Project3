@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dr7osdm33gheg"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_k53sk"]
-[ext_resource type="PackedScene" uid="uid://c8yg5cypdx77b" path="res://Scenes/shop.tscn" id="3_wo63n"]
+[ext_resource type="PackedScene" uid="uid://c8yg5cypdx77b" path="res://Scenes/2D Scenes/shop.tscn" id="3_wo63n"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ux0jw"]
 
