@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b420q6uk8jgcf"]
+
+[ext_resource type="Texture2D" uid="uid://byt7wkoq0nvq7" path="res://Assets/2DMap/sierrassets furniture pack/furniture/furniture pack coloured outline.png" id="1_siv6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vthw7"]
+size = Vector2(60, 15)
+
+[node name="Kitchen" type="StaticBody2D"]
+scale = Vector2(7, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_siv6p")
+region_enabled = true
+region_rect = Rect2(442, 136, 61, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_vthw7")

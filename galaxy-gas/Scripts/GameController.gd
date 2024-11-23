@@ -5,7 +5,7 @@ var money_amt
 
 # Local globals
 var rng = RandomNumberGenerator.new()
-const customer = preload("res://Scenes/2D Scenes/customer_reg_2d.tscn")
+const customer = preload("res://Scenes/Scenes/customer_reg_2d.tscn")
 
 @export var num_customers : int = 5
 

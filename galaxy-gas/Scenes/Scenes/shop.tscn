@@ -25,5 +25,5 @@ offset_bottom = 93.0
 scale = Vector2(3.75962, 3.75962)
 text = "X"
 
-[connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]

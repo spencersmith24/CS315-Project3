@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0m1fwo7vm66"]
-
-[ext_resource type="PackedScene" uid="uid://bsbiokva6tvhk" path="res://Assets/Map/cafe_stage1.glb" id="1_74euc"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="cafe_stage1" parent="." instance=ExtResource("1_74euc")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://tuocateslak6"]
+
+[ext_resource type="Texture2D" uid="uid://byt7wkoq0nvq7" path="res://Assets/2DMap/sierrassets furniture pack/furniture/furniture pack coloured outline.png" id="1_afn46"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5gvv"]
+size = Vector2(10, 16)
+
+[node name="Chair_Front" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_afn46")
+region_enabled = true
+region_rect = Rect2(20, 51, 10, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c5gvv")
