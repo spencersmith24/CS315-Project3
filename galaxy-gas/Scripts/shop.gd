@@ -27,3 +27,24 @@ func toggle_shop():
 		process_mode = PROCESS_MODE_DISABLED
 	else:
 		process_mode = PROCESS_MODE_INHERIT
+
+
+# upgrade tables
+func _on_table_1_button_pressed() -> void:
+	$"../Table1".upgrade_table()
+	$Control/Table1Button.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func _on_table_2_button_pressed() -> void:
+	$"../Table2".upgrade_table()
+	$Control/Table2Button.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func _on_table_3_button_pressed() -> void:
+	$"../Table3".upgrade_table()
+	$Control/Table3Button.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func _on_table_4_button_pressed() -> void:
+	$"../Table4".upgrade_table()
+	$Control/Table4Button.process_mode = Node.PROCESS_MODE_DISABLED

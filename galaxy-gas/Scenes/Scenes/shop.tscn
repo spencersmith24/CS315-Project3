@@ -37,5 +37,47 @@ scale = Vector2(0.0624073, 0.0624073)
 text = "X"
 icon = ExtResource("2_a4p4l")
 
-[connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Table1Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 617.0
+offset_top = 152.0
+offset_right = 677.0
+offset_bottom = 183.0
+scale = Vector2(1.86892, 1.80385)
+text = "Table1"
+
+[node name="Table2Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 643.0
+offset_top = 331.0
+offset_right = 703.0
+offset_bottom = 362.0
+text = "Table2"
+
+[node name="Table3Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 500.0
+offset_right = 704.0
+offset_bottom = 531.0
+text = "Table3"
+
+[node name="Table4Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 669.0
+offset_right = 711.0
+offset_bottom = 700.0
+text = "Table4"
+
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
+[connection signal="pressed" from="Control/Table1Button" to="." method="_on_table_1_button_pressed"]
+[connection signal="pressed" from="Control/Table2Button" to="." method="_on_table_2_button_pressed"]
+[connection signal="pressed" from="Control/Table3Button" to="." method="_on_table_3_button_pressed"]
+[connection signal="pressed" from="Control/Table4Button" to="." method="_on_table_4_button_pressed"]

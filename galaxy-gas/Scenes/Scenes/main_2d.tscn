@@ -930,10 +930,10 @@ position = Vector2(4.76837e-07, -360)
 position = Vector2(-360, -96)
 
 [node name="Table2" parent="." instance=ExtResource("5_ythxb")]
-position = Vector2(-360, 96)
+position = Vector2(-360, 144)
 
 [node name="Table3" parent="." instance=ExtResource("5_ythxb")]
-position = Vector2(360, 96)
+position = Vector2(360, 144)
 
 [node name="Table4" parent="." instance=ExtResource("5_ythxb")]
 position = Vector2(360, -96)
