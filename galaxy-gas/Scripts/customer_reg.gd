@@ -15,14 +15,13 @@ func _process(delta: float) -> void:
 	customers_in_store = Globals.customers_in_store
 
 func _ready() -> void:
-	$Timer.wait_time = time_in_store
-	$Timer.start()
-
-# get money from customer
+	$InStoreTimer.wait_time = time_in_store
+	$InStoreTimer.start()
+	
+# get money from customer, erase from customer list, queue free
 func _on_timer_timeout() -> void:
 	# set global money amount
 	Globals.money_amt += calc_money()
-	
 	Globals.customers_in_store.erase(self)
 	queue_free()
 

@@ -11,11 +11,13 @@ gravity_scale = 0.0
 script = ExtResource("1_8ldgu")
 
 [node name="HappyGuy" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_7cha2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.2, 0.2)
 shape = SubResource("CircleShape2D_1n7xc")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="InStoreTimer" type="Timer" parent="."]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="InStoreTimer" to="." method="_on_timer_timeout"]
