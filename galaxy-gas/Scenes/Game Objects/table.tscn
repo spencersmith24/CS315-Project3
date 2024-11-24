@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwqy2881wdu67"]
+
+[ext_resource type="PackedScene" uid="uid://bjad33xffiw5" path="res://Scenes/Game Objects/chair_horizontal.tscn" id="1_y1ooq"]
+[ext_resource type="PackedScene" uid="uid://dyha33vng4s7r" path="res://Scenes/Game Objects/table_small.tscn" id="2_qckvy"]
+[ext_resource type="PackedScene" uid="uid://tuocateslak6" path="res://Scenes/Game Objects/chair_front.tscn" id="3_skw1d"]
+[ext_resource type="PackedScene" uid="uid://cq2ntvr1gv0np" path="res://Scenes/Game Objects/table_large.tscn" id="4_sida5"]
+[ext_resource type="PackedScene" uid="uid://ciaycxb78hmog" path="res://Scenes/Game Objects/chair_back.tscn" id="5_aun3i"]
+
+[node name="Table" type="Node2D"]
+
+[node name="Small" type="Node2D" parent="."]
+
+[node name="Chair_Horizontal" parent="Small" instance=ExtResource("1_y1ooq")]
+position = Vector2(-80, -8)
+
+[node name="Chair_Horizontal2" parent="Small" instance=ExtResource("1_y1ooq")]
+position = Vector2(80, -8)
+rotation = -3.14159
+scale = Vector2(6, -6)
+
+[node name="Table_Small" parent="Small" instance=ExtResource("2_qckvy")]
+
+[node name="Large" type="Node2D" parent="."]
+visible = false
+
+[node name="topChairs" type="Node2D" parent="Large"]
+
+[node name="Chair_Front" parent="Large/topChairs" instance=ExtResource("3_skw1d")]
+position = Vector2(-56, -80)
+
+[node name="Chair_Front2" parent="Large/topChairs" instance=ExtResource("3_skw1d")]
+position = Vector2(56, -80)
+
+[node name="Table_Large" parent="Large" instance=ExtResource("4_sida5")]
+position = Vector2(-7.62939e-06, 1.52588e-05)
+
+[node name="botChairs" type="Node2D" parent="Large"]
+
+[node name="Chair_Back" parent="Large/botChairs" instance=ExtResource("5_aun3i")]
+position = Vector2(-56, 32)
+
+[node name="Chair_Back2" parent="Large/botChairs" instance=ExtResource("5_aun3i")]
+position = Vector2(56, 32)

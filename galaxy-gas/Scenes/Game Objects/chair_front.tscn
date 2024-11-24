@@ -6,6 +6,7 @@
 size = Vector2(10, 16)
 
 [node name="Chair_Front" type="Area2D"]
+scale = Vector2(6, 6)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_afn46")
