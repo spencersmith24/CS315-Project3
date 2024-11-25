@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=4 uid="uid://c8yg5cypdx77b"]
+[gd_scene load_steps=8 format=4 uid="uid://c8yg5cypdx77b"]
 
 [ext_resource type="Script" path="res://Scripts/shop.gd" id="1_l6i5o"]
 [ext_resource type="Texture2D" uid="uid://cha5cf2q0gytj" path="res://Assets/l7b5id20.bmp" id="2_a4p4l"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_oatsr"]
+[ext_resource type="FontFile" uid="uid://25duhsetl5g2" path="res://Assets/Fonts/munro.ttf" id="4_3ntsc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tadtk"]
+bg_color = Color(0.647059, 1, 0.631373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwcwu"]
+bg_color = Color(0.381976, 0.62267, 0.369292, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7scy1"]
+bg_color = Color(0.513726, 0.788235, 0.498039, 1)
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -37,47 +47,99 @@ scale = Vector2(0.0624073, 0.0624073)
 text = "X"
 icon = ExtResource("2_a4p4l")
 
-[node name="Control" type="Control" parent="."]
+[node name="Upgrades" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Table1Button" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 617.0
-offset_top = 152.0
-offset_right = 677.0
-offset_bottom = 183.0
-scale = Vector2(1.86892, 1.80385)
-text = "Table1"
+[node name="Tables button" type="Control" parent="Upgrades"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Table2Button" type="Button" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Upgrades/Tables button"]
 layout_mode = 0
-offset_left = 643.0
-offset_top = 331.0
-offset_right = 703.0
-offset_bottom = 362.0
-text = "Table2"
+offset_left = 630.0
+offset_top = 154.0
+offset_right = 721.0
+offset_bottom = 211.0
+color = Color(0.513726, 0.788235, 0.498039, 1)
 
-[node name="Table3Button" type="Button" parent="Control"]
+[node name="Tables" type="Button" parent="Upgrades/Tables button"]
 layout_mode = 0
-offset_left = 644.0
-offset_top = 500.0
-offset_right = 704.0
-offset_bottom = 531.0
-text = "Table3"
+offset_left = 630.0
+offset_top = 154.0
+offset_right = 1859.0
+offset_bottom = 721.0
+scale = Vector2(0.074, 0.071)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 425
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwcwu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
+text = "Tables"
 
-[node name="Table4Button" type="Button" parent="Control"]
+[node name="Label" type="Label" parent="Upgrades/Tables button/Tables"]
 layout_mode = 0
-offset_left = 651.0
-offset_top = 669.0
-offset_right = 711.0
-offset_bottom = 700.0
-text = "Table4"
+offset_left = 300.0
+offset_top = 520.0
+offset_right = 1530.0
+offset_bottom = 1079.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 500
+text = "$100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]
+[node name="Inn capacity" type="Control" parent="Upgrades"]
+anchors_preset = 0
+offset_top = 170.0
+offset_right = 40.0
+offset_bottom = 210.0
+
+[node name="ColorRect" type="ColorRect" parent="Upgrades/Inn capacity"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 154.0
+offset_right = 721.0
+offset_bottom = 211.0
+color = Color(0.513726, 0.788235, 0.498039, 1)
+
+[node name="inn_capacity" type="Button" parent="Upgrades/Inn capacity"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 154.0
+offset_right = 1859.0
+offset_bottom = 721.0
+scale = Vector2(0.074, 0.071)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 225
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwcwu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
+text = "+Inn Capacity"
+
+[node name="Label" type="Label" parent="Upgrades/Inn capacity/inn_capacity"]
+layout_mode = 0
+offset_left = 364.865
+offset_top = 436.619
+offset_right = 1243.86
+offset_bottom = 995.619
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 500
+text = "$500"
+
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
-[connection signal="pressed" from="Control/Table1Button" to="." method="_on_table_1_button_pressed"]
-[connection signal="pressed" from="Control/Table2Button" to="." method="_on_table_2_button_pressed"]
-[connection signal="pressed" from="Control/Table3Button" to="." method="_on_table_3_button_pressed"]
-[connection signal="pressed" from="Control/Table4Button" to="." method="_on_table_4_button_pressed"]
+[connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Upgrades/Tables button/Tables" to="." method="_on_table_button_pressed"]
+[connection signal="pressed" from="Upgrades/Inn capacity/inn_capacity" to="." method="_on_inn_capacity_pressed"]

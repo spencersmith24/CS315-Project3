@@ -1,5 +1,14 @@
 extends Control
 
+@onready var tables = $"../Tables".get_children()
+
+@export var table_upgrade_cost = 100
+@export var table_upgrade_cost_multiplier = 1.8
+
+@export var inn_capacity_upgrade_cost = 500
+@export var inn_capacity_upgrade_cost_multiplier = 2.0
+
+var tables_upgraded = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,23 +37,29 @@ func toggle_shop():
 	else:
 		process_mode = PROCESS_MODE_INHERIT
 
+func _on_table_button_pressed() -> void:
+	if Globals.money_amt >= table_upgrade_cost:
+		Globals.money_amt -= table_upgrade_cost
+		table_upgrade_cost *= table_upgrade_cost_multiplier
+		table_upgrade_cost = int(table_upgrade_cost + .5)
+		$"Upgrades/Tables button/Tables/Label".text = "$" + str(table_upgrade_cost)
+		for table in tables:
+			if not table.is_upgraded:
+				table.upgrade_table()
+				tables_upgraded += 1
+				break
+	if tables_upgraded >= tables.size():
+		$"Upgrades/Tables button/Tables".disabled = true
+	pass
 
-# upgrade tables
-func _on_table_1_button_pressed() -> void:
-	$"../Table1".upgrade_table()
-	$Control/Table1Button.process_mode = Node.PROCESS_MODE_DISABLED
 
-
-func _on_table_2_button_pressed() -> void:
-	$"../Table2".upgrade_table()
-	$Control/Table2Button.process_mode = Node.PROCESS_MODE_DISABLED
-
-
-func _on_table_3_button_pressed() -> void:
-	$"../Table3".upgrade_table()
-	$Control/Table3Button.process_mode = Node.PROCESS_MODE_DISABLED
-
-
-func _on_table_4_button_pressed() -> void:
-	$"../Table4".upgrade_table()
-	$Control/Table4Button.process_mode = Node.PROCESS_MODE_DISABLED
+func _on_inn_capacity_pressed() -> void:
+	if Globals.money_amt >= inn_capacity_upgrade_cost:
+		Globals.money_amt -= inn_capacity_upgrade_cost
+		inn_capacity_upgrade_cost *= inn_capacity_upgrade_cost_multiplier
+		inn_capacity_upgrade_cost = int(inn_capacity_upgrade_cost + .5)
+		$"Upgrades/Inn capacity/inn_capacity/Label".text = "$" + str(inn_capacity_upgrade_cost)
+		$"..".inn_capacity += 1
+		
+		# TODO CREATE A NEW ROOM
+	pass # Replace with function body.
