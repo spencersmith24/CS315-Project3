@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://sca2b0pp36yq"]
+
+[node name="Room" type="Node2D"]
+
+[node name="Unupgraded" type="Node2D" parent="."]
+
+[node name="Upgraded" type="Node2D" parent="."]
