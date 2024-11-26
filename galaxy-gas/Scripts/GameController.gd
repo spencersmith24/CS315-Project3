@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	money_amt = Globals.money_amt
 	MONEY_LABEL.text = str(money_amt)
 	
-	if Globals.customers_in_store.size() < max_customers:
+	if not are_tables_full():
 		if $CustomerSpawnTimer.is_stopped():
 			$CustomerSpawnTimer.start()
 		
@@ -54,3 +54,9 @@ func _on_change_floors_pressed() -> void:
 		$AnimationPlayer.play("move_downstairs")
 	else:
 		$AnimationPlayer.play("move_upstairs")
+		
+func are_tables_full():
+	for table in $Tables.get_children():
+		if not table.is_full():
+			return false
+	return true
