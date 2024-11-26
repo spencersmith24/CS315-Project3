@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=17 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
@@ -929,6 +929,11 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_sfe32"]
 sources/0 = SubResource("TileSetAtlasSource_kl3u6")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qtrs4"]
+vertices = PackedVector2Array(559.977, 372.977, -559.977, 371.008, -559.008, -317.031, 559.008, -320.961)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-569, -327, -570, 381, 570, 383, 569, -331)])
+
 [node name="Main2D" type="Node2D"]
 script = ExtResource("1_3loeq")
 stay_chance = 70.0
@@ -950,9 +955,6 @@ tile_set = SubResource("TileSet_sfe32")
 
 [node name="CustomerSpawnTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Kitchen" parent="." instance=ExtResource("6_rjqyp")]
 position = Vector2(4.76837e-07, -360)
@@ -1044,7 +1046,11 @@ offset_top = -5.0
 offset_right = 25.0
 offset_bottom = -5.0
 
+[node name="Pathfinding" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Pathfinding"]
+navigation_polygon = SubResource("NavigationPolygon_qtrs4")
+
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Camera2D/UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="pressed" from="Camera2D/UI/ChangeFloors" to="." method="_on_change_floors_pressed"]
