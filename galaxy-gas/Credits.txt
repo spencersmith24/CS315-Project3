@@ -3,3 +3,6 @@ Assets from Sierrassets:
 
 Font:
 	- https://www.fontsquirrel.com/fonts/Munro
+
+Character sprites:
+	- https://the-pixel-nook.itch.io/retro-rpg-character-pack
