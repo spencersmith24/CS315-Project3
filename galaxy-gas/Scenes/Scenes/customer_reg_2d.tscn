@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgpggwmjnwh7d"]
+[gd_scene load_steps=3 format=3 uid="uid://dgpggwmjnwh7d"]
 
-[ext_resource type="Script" path="res://Scripts/customer_reg.gd" id="1_8ldgu"]
 [ext_resource type="Texture2D" uid="uid://sooomxmii8hs" path="res://Assets/Characters/Characters_V3_Colour.png" id="2_cj6x7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yuiay"]
@@ -8,7 +7,6 @@ radius = 33.0
 height = 84.0
 
 [node name="customer_reg" type="CharacterBody2D"]
-script = ExtResource("1_8ldgu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
