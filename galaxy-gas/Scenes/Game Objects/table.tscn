@@ -12,10 +12,12 @@ script = ExtResource("1_hndgh")
 
 [node name="Small" type="Node2D" parent="."]
 
-[node name="Chair_Horizontal" parent="Small" instance=ExtResource("1_y1ooq")]
+[node name="Chairs" type="Node2D" parent="Small"]
+
+[node name="Chair_Horizontal" parent="Small/Chairs" instance=ExtResource("1_y1ooq")]
 position = Vector2(-80, -8)
 
-[node name="Chair_Horizontal2" parent="Small" instance=ExtResource("1_y1ooq")]
+[node name="Chair_Horizontal2" parent="Small/Chairs" instance=ExtResource("1_y1ooq")]
 position = Vector2(80, -8)
 rotation = -3.14159
 scale = Vector2(6, -6)
