@@ -1,7 +1,11 @@
-[gd_scene format=3 uid="uid://sca2b0pp36yq"]
+[gd_scene load_steps=3 format=3 uid="uid://sca2b0pp36yq"]
+
+[ext_resource type="PackedScene" uid="uid://dtmibyyfj4hhb" path="res://Scenes/Game Objects/rooms/room_top_unupgraded.tscn" id="1_8b7lc"]
+[ext_resource type="PackedScene" uid="uid://c41s46guswm67" path="res://Scenes/Game Objects/rooms/room_top_upgraded.tscn" id="2_8yt7p"]
 
 [node name="Room" type="Node2D"]
 
-[node name="Unupgraded" type="Node2D" parent="."]
+[node name="Room_Top_Unupgraded" parent="." instance=ExtResource("1_8b7lc")]
 
-[node name="Upgraded" type="Node2D" parent="."]
+[node name="Room_Top_Unupgraded2" parent="." instance=ExtResource("2_8yt7p")]
+visible = false

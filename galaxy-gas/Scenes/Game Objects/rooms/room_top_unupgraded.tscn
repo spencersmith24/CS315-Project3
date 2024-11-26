@@ -54,22 +54,23 @@ position = Vector2(8.41667, -17.3333)
 shape = SubResource("RectangleShape2D_ua7gp")
 
 [node name="chair" type="Sprite2D" parent="."]
-position = Vector2(8.44048, -13.1818)
+position = Vector2(8.5, -8.66667)
 scale = Vector2(0.383117, 0.383117)
 texture = ExtResource("2_8e61a")
 region_enabled = true
 region_rect = Rect2(274, 223, 11, 14)
 
-[node name="monitor" type="Sprite2D" parent="."]
+[node name="tv" type="Sprite2D" parent="."]
 position = Vector2(8.40476, -20.1667)
 scale = Vector2(0.357142, 0.357142)
 texture = ExtResource("2_8e61a")
 region_enabled = true
-region_rect = Rect2(158, 121, 22, 14)
+region_rect = Rect2(221, 153, 33, 16)
 
-[node name="wallpaper" type="Sprite2D" parent="monitor"]
-position = Vector2(0.033, -1.965)
-scale = Vector2(0.0284375, 0.0168519)
+[node name="screen" type="Sprite2D" parent="tv"]
+show_behind_parent = true
+position = Vector2(0.0333385, -1.39991)
+scale = Vector2(0.0401043, 0.0155556)
 texture = ExtResource("3_rlcr3")
 
 [node name="bed" type="StaticBody2D" parent="."]
