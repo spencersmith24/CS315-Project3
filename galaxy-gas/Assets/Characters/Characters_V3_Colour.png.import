@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8sdnsybkjm0r"
-path="res://.godot/imported/happy_guy.webp-b57fc96d27e8f1a38c4cb5b634776e83.ctex"
+uid="uid://sooomxmii8hs"
+path="res://.godot/imported/Characters_V3_Colour.png-e6c18e20c81ba5437a0741b47c1699f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/happy_guy.webp"
-dest_files=["res://.godot/imported/happy_guy.webp-b57fc96d27e8f1a38c4cb5b634776e83.ctex"]
+source_file="res://Assets/Characters/Characters_V3_Colour.png"
+dest_files=["res://.godot/imported/Characters_V3_Colour.png-e6c18e20c81ba5437a0741b47c1699f6.ctex"]
 
 [params]
 
