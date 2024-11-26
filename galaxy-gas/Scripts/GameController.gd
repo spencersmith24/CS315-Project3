@@ -13,7 +13,7 @@ const customer = preload("res://Scenes/Scenes/customer_reg_2d.tscn")
 @export var staying_time_multiplier: float = 2
 
 @onready var MONEY_LABEL := $Camera2D/UI/Money
-@onready var GAME_SHOP := $Shop
+@onready var GAME_SHOP := $Camera2D/UI/Shop
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,3 +47,10 @@ func spawn_new_customer():
 	else:
 		Globals.customers_in_store.append(new_customer)
 	$Customers.add_child(new_customer)
+
+
+func _on_change_floors_pressed() -> void:
+	if $Camera2D.position.y == -1250:
+		$AnimationPlayer.play("move_downstairs")
+	else:
+		$AnimationPlayer.play("move_upstairs")

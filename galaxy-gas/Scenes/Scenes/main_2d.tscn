@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=16 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
@@ -8,6 +8,61 @@
 [ext_resource type="PackedScene" uid="uid://bwqy2881wdu67" path="res://Scenes/Game Objects/table.tscn" id="5_ythxb"]
 [ext_resource type="PackedScene" uid="uid://b420q6uk8jgcf" path="res://Scenes/Game Objects/kitchen.tscn" id="6_rjqyp"]
 [ext_resource type="PackedScene" uid="uid://gbflfnla4obk" path="res://Scenes/Scenes/sounds_player.tscn" id="8_s24q1"]
+[ext_resource type="PackedScene" uid="uid://sca2b0pp36yq" path="res://Scenes/Scenes/room.tscn" id="9_pf681"]
+
+[sub_resource type="Animation" id="Animation_7jwm4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vsaxi"]
+resource_name = "move_downstairs"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1250), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xgvyc"]
+resource_name = "move_upstairs"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1250)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rvgu"]
+_data = {
+"RESET": SubResource("Animation_7jwm4"),
+"move_downstairs": SubResource("Animation_vsaxi"),
+"move_upstairs": SubResource("Animation_xgvyc")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kl3u6"]
 texture = ExtResource("4_4gbev")
@@ -878,6 +933,11 @@ sources/0 = SubResource("TileSetAtlasSource_kl3u6")
 script = ExtResource("1_3loeq")
 stay_chance = 70.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4rvgu")
+}
+
 [node name="Map" type="Node2D" parent="."]
 scale = Vector2(6, 6)
 
@@ -887,6 +947,51 @@ tile_set = ExtResource("2_tm5te")
 
 [node name="MapDetails" type="TileMapLayer" parent="Map"]
 tile_set = SubResource("TileSet_sfe32")
+
+[node name="CustomerSpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Kitchen" parent="." instance=ExtResource("6_rjqyp")]
+position = Vector2(4.76837e-07, -360)
+
+[node name="Customers" type="Node2D" parent="."]
+
+[node name="Tables" type="Node2D" parent="."]
+
+[node name="Table1" parent="Tables" instance=ExtResource("5_ythxb")]
+position = Vector2(-360, -96)
+
+[node name="Table2" parent="Tables" instance=ExtResource("5_ythxb")]
+position = Vector2(-360, 144)
+
+[node name="Table3" parent="Tables" instance=ExtResource("5_ythxb")]
+position = Vector2(360, 144)
+
+[node name="Table4" parent="Tables" instance=ExtResource("5_ythxb")]
+position = Vector2(360, -96)
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Room1" parent="Rooms" instance=ExtResource("9_pf681")]
+position = Vector2(-432, -912)
+scale = Vector2(6, 6)
+
+[node name="Room2" parent="Rooms" instance=ExtResource("9_pf681")]
+position = Vector2(-144, -912)
+scale = Vector2(6, 6)
+
+[node name="Room3" parent="Rooms" instance=ExtResource("9_pf681")]
+position = Vector2(144, -912)
+scale = Vector2(6, 6)
+
+[node name="Room4" parent="Rooms" instance=ExtResource("9_pf681")]
+position = Vector2(432, -912)
+scale = Vector2(6, 6)
+
+[node name="SoundsPlayer" parent="." instance=ExtResource("8_s24q1")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -922,40 +1027,23 @@ text = "00000"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CustomerSpawnTimer" type="Timer" parent="."]
-one_shot = true
+[node name="ChangeFloors" type="Button" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 1702.0
+offset_top = 857.0
+offset_right = 1815.0
+offset_bottom = 888.0
+text = "change floors"
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="Kitchen" parent="." instance=ExtResource("6_rjqyp")]
-position = Vector2(4.76837e-07, -360)
-
-[node name="Customers" type="Node2D" parent="."]
-
-[node name="Tables" type="Node2D" parent="."]
-
-[node name="Table1" parent="Tables" instance=ExtResource("5_ythxb")]
-position = Vector2(-360, -96)
-
-[node name="Table2" parent="Tables" instance=ExtResource("5_ythxb")]
-position = Vector2(-360, 144)
-
-[node name="Table3" parent="Tables" instance=ExtResource("5_ythxb")]
-position = Vector2(360, 144)
-
-[node name="Table4" parent="Tables" instance=ExtResource("5_ythxb")]
-position = Vector2(360, -96)
-
-[node name="Shop" parent="." instance=ExtResource("5_nsurp")]
+[node name="Shop" parent="Camera2D/UI" instance=ExtResource("5_nsurp")]
 visible = false
-offset_left = -935.0
-offset_top = -545.0
-offset_right = -935.0
-offset_bottom = -545.0
+layout_mode = 1
+offset_left = 25.0
+offset_top = -5.0
+offset_right = 25.0
+offset_bottom = -5.0
 
-[node name="SoundsPlayer" parent="." instance=ExtResource("8_s24q1")]
-
-[connection signal="pressed" from="Camera2D/UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Camera2D/UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="pressed" from="Camera2D/UI/ChangeFloors" to="." method="_on_change_floors_pressed"]

@@ -1,6 +1,7 @@
 extends Control
 
-@onready var tables = $"../Tables".get_children()
+@onready var tables = $"../../../Tables".get_children()
+@onready var rooms = $"../../../Rooms".get_children()
 
 @export var table_upgrade_cost = 100
 @export var table_upgrade_cost_multiplier = 1.8
@@ -9,6 +10,7 @@ extends Control
 @export var inn_capacity_upgrade_cost_multiplier = 2.0
 
 var tables_upgraded = 0
+var rooms_upgraded = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,14 +44,14 @@ func _on_table_button_pressed() -> void:
 		Globals.money_amt -= table_upgrade_cost
 		table_upgrade_cost *= table_upgrade_cost_multiplier
 		table_upgrade_cost = int(table_upgrade_cost + .5)
-		$"Upgrades/Tables button/Tables/Label".text = "$" + str(table_upgrade_cost)
+		$"Upgrades/TablesButton/Tables/Label".text = "$" + str(table_upgrade_cost)
 		for table in tables:
 			if not table.is_upgraded:
 				table.upgrade_table()
 				tables_upgraded += 1
 				break
 	if tables_upgraded >= tables.size():
-		$"Upgrades/Tables button/Tables".disabled = true
+		$"Upgrades/TablesButton/Tables".disabled = true
 	pass
 
 
@@ -58,8 +60,14 @@ func _on_inn_capacity_pressed() -> void:
 		Globals.money_amt -= inn_capacity_upgrade_cost
 		inn_capacity_upgrade_cost *= inn_capacity_upgrade_cost_multiplier
 		inn_capacity_upgrade_cost = int(inn_capacity_upgrade_cost + .5)
-		$"Upgrades/Inn capacity/inn_capacity/Label".text = "$" + str(inn_capacity_upgrade_cost)
-		$"..".inn_capacity += 1
+		$"Upgrades/InnCapacity/inn_capacity/Label".text = "$" + str(inn_capacity_upgrade_cost)
+		for room in rooms:
+			if not room.is_upgraded:
+				room.upgrade_room()
+				rooms_upgraded += 1
+				break
+	if rooms_upgraded >= rooms.size():
+		$"Upgrades/InnCapacity/inn_capacity".disabled = true
 		
 		# TODO CREATE A NEW ROOM
 	pass # Replace with function body.

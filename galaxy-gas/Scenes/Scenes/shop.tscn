@@ -52,12 +52,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Tables button" type="Control" parent="Upgrades"]
+[node name="TablesButton" type="Control" parent="Upgrades"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Upgrades/Tables button"]
+[node name="ColorRect" type="ColorRect" parent="Upgrades/TablesButton"]
 layout_mode = 0
 offset_left = 630.0
 offset_top = 154.0
@@ -65,7 +65,7 @@ offset_right = 721.0
 offset_bottom = 211.0
 color = Color(0.513726, 0.788235, 0.498039, 1)
 
-[node name="Tables" type="Button" parent="Upgrades/Tables button"]
+[node name="Tables" type="Button" parent="Upgrades/TablesButton"]
 layout_mode = 0
 offset_left = 630.0
 offset_top = 154.0
@@ -83,7 +83,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
 text = "Tables"
 
-[node name="Label" type="Label" parent="Upgrades/Tables button/Tables"]
+[node name="Label" type="Label" parent="Upgrades/TablesButton/Tables"]
 layout_mode = 0
 offset_left = 300.0
 offset_top = 520.0
@@ -96,13 +96,13 @@ text = "$100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Inn capacity" type="Control" parent="Upgrades"]
+[node name="InnCapacity" type="Control" parent="Upgrades"]
 anchors_preset = 0
 offset_top = 170.0
 offset_right = 40.0
 offset_bottom = 210.0
 
-[node name="ColorRect" type="ColorRect" parent="Upgrades/Inn capacity"]
+[node name="ColorRect" type="ColorRect" parent="Upgrades/InnCapacity"]
 layout_mode = 0
 offset_left = 630.0
 offset_top = 154.0
@@ -110,7 +110,7 @@ offset_right = 721.0
 offset_bottom = 211.0
 color = Color(0.513726, 0.788235, 0.498039, 1)
 
-[node name="inn_capacity" type="Button" parent="Upgrades/Inn capacity"]
+[node name="inn_capacity" type="Button" parent="Upgrades/InnCapacity"]
 layout_mode = 0
 offset_left = 630.0
 offset_top = 154.0
@@ -128,7 +128,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
 text = "+Inn Capacity"
 
-[node name="Label" type="Label" parent="Upgrades/Inn capacity/inn_capacity"]
+[node name="Label" type="Label" parent="Upgrades/InnCapacity/inn_capacity"]
 layout_mode = 0
 offset_left = 364.865
 offset_top = 436.619
@@ -141,5 +141,5 @@ text = "$500"
 
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Upgrades/Tables button/Tables" to="." method="_on_table_button_pressed"]
-[connection signal="pressed" from="Upgrades/Inn capacity/inn_capacity" to="." method="_on_inn_capacity_pressed"]
+[connection signal="pressed" from="Upgrades/TablesButton/Tables" to="." method="_on_table_button_pressed"]
+[connection signal="pressed" from="Upgrades/InnCapacity/inn_capacity" to="." method="_on_inn_capacity_pressed"]
