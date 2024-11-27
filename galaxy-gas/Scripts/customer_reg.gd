@@ -11,10 +11,11 @@ var staying = false
 # Local globals
 var time_in_store = rng.randf_range(10.0, 25.0)
 var money_multiplier = rng.randf_range(1.0, 1.5)
-#var chair
 
 @export var accel = 5
-@export var speed = 300
+@export var speed = 200
+
+@onready var anim_tree = $AnimationTree
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
@@ -26,21 +27,39 @@ func _process(delta: float) -> void:
 	money_amt = Globals.money_amt
 	customers_in_store = Globals.customers_in_store
 
+
 # move characters around to find table to sit at
 func _physics_process(delta: float) -> void:
 	
 	if staying == false:
-		var direction = Vector3()
+		var direction = Vector2()
 		nav.target_position = chair.global_position
 	
 		direction = (nav.get_next_path_position() - global_position).normalized()
 		velocity = velocity.lerp(direction * speed, accel * delta)
 	else:
-		var direction = Vector3()
+		var direction = Vector2()
 		nav.target_position = Vector2(1800, 800)
 		
 		direction = (nav.get_next_path_position() - global_position).normalized()
 		velocity = velocity.lerp(direction * speed, accel * delta)
+		
+	if(velocity.x > 0):
+		$Sprite2D.scale.x = 5
+	elif (velocity.x < 0):
+		$Sprite2D.scale.x = -5
+	if abs(velocity.x) > 0 and abs(velocity.x) > abs(velocity.y):
+		anim_tree['parameters/conditions/walk_up'] = false
+		anim_tree['parameters/conditions/walk_down'] = false
+		anim_tree['parameters/conditions/walk_sideways'] = true
+	elif velocity.y > 100 and abs(velocity.y) > abs(velocity.x):
+		anim_tree['parameters/conditions/walk_sideways'] = false
+		anim_tree['parameters/conditions/walk_up'] = false
+		anim_tree['parameters/conditions/walk_down'] = true
+	elif velocity.y < -100 and abs(velocity.y) > abs(velocity.x):
+		anim_tree['parameters/conditions/walk_sideways'] = false
+		anim_tree['parameters/conditions/walk_down'] = false
+		anim_tree['parameters/conditions/walk_up'] = true
 	
 	move_and_slide()
 
@@ -87,7 +106,6 @@ func find_chair():
 		# UPGRADED TABLES
 		else:
 			if not rand_table.is_full():
-				print ("table not full")
 				for table_chair in rand_table.big_chairs:
 					if table_chair.is_taken == false:
 						chair = table_chair
@@ -96,10 +114,3 @@ func find_chair():
 						break
 			else:
 				continue
-
-				#
-		#else:
-			#if rng.randi_range(0,1) == 0:
-				#chair = rand_table.get_children()[1].get_children()[0].get_children()[rng.randi_range(0,1)]
-			#else:
-				#chair = rand_table.get_children()[1].get_children()[1].get_children()[rng.randi_range(0,1)]
