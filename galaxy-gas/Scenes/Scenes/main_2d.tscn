@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=19 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b420q6uk8jgcf" path="res://Scenes/Game Objects/kitchen.tscn" id="6_rjqyp"]
 [ext_resource type="PackedScene" uid="uid://gbflfnla4obk" path="res://Scenes/Scenes/sounds_player.tscn" id="8_s24q1"]
 [ext_resource type="PackedScene" uid="uid://sca2b0pp36yq" path="res://Scenes/Scenes/room.tscn" id="9_pf681"]
+[ext_resource type="PackedScene" uid="uid://d2ghju81bxx1g" path="res://Scenes/Game Objects/stairs.tscn" id="10_3v67d"]
 
 [sub_resource type="Animation" id="Animation_7jwm4"]
 length = 0.001
@@ -929,6 +930,11 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_sfe32"]
 sources/0 = SubResource("TileSetAtlasSource_kl3u6")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_i8awg"]
+vertices = PackedVector2Array(6.03906, -6.38281, 6.10938, 5.75781, -6.25781, 5.89062, -6.39062, -6.45312)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16.5, -16.5, 16, -16.3333, 16.1667, 15.6667, -16.1667, 16)])
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qtrs4"]
 vertices = PackedVector2Array(559.977, 372.977, -559.977, 371.008, -559.008, -317.031, 559.008, -320.961)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -959,8 +965,6 @@ one_shot = true
 [node name="Kitchen" parent="." instance=ExtResource("6_rjqyp")]
 position = Vector2(4.76837e-07, -360)
 
-[node name="Customers" type="Node2D" parent="."]
-
 [node name="Tables" type="Node2D" parent="."]
 
 [node name="Table1" parent="Tables" instance=ExtResource("5_ythxb")]
@@ -981,18 +985,38 @@ position = Vector2(0, -643)
 [node name="Room1" parent="Rooms" instance=ExtResource("9_pf681")]
 position = Vector2(-432, -912)
 scale = Vector2(6, 6)
+metadata/_edit_group_ = true
+
+[node name="RoomNav1" type="NavigationRegion2D" parent="Rooms/Room1"]
+navigation_polygon = SubResource("NavigationPolygon_i8awg")
 
 [node name="Room2" parent="Rooms" instance=ExtResource("9_pf681")]
 position = Vector2(-144, -912)
 scale = Vector2(6, 6)
+metadata/_edit_group_ = true
+
+[node name="RoomNav2" type="NavigationRegion2D" parent="Rooms/Room2"]
+position = Vector2(0.166666, 0)
+navigation_polygon = SubResource("NavigationPolygon_i8awg")
 
 [node name="Room3" parent="Rooms" instance=ExtResource("9_pf681")]
 position = Vector2(144, -912)
 scale = Vector2(6, 6)
+metadata/_edit_group_ = true
+
+[node name="RoomNav3" type="NavigationRegion2D" parent="Rooms/Room3"]
+navigation_polygon = SubResource("NavigationPolygon_i8awg")
 
 [node name="Room4" parent="Rooms" instance=ExtResource("9_pf681")]
 position = Vector2(432, -912)
 scale = Vector2(6, 6)
+metadata/_edit_group_ = true
+
+[node name="RoomNav4" type="NavigationRegion2D" parent="Rooms/Room4"]
+position = Vector2(0.333336, 0)
+navigation_polygon = SubResource("NavigationPolygon_i8awg")
+
+[node name="Customers" type="Node2D" parent="."]
 
 [node name="SoundsPlayer" parent="." instance=ExtResource("8_s24q1")]
 
@@ -1046,7 +1070,12 @@ offset_top = -5.0
 offset_right = 25.0
 offset_bottom = -5.0
 
+[node name="Stairs" parent="." instance=ExtResource("10_3v67d")]
+position = Vector2(506, -300)
+
 [node name="Pathfinding" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Pathfinding"]
 navigation_polygon = SubResource("NavigationPolygon_qtrs4")
@@ -1054,3 +1083,4 @@ navigation_polygon = SubResource("NavigationPolygon_qtrs4")
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
 [connection signal="pressed" from="Camera2D/UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="pressed" from="Camera2D/UI/ChangeFloors" to="." method="_on_change_floors_pressed"]
+[connection signal="body_entered" from="Stairs" to="." method="_on_stairs_body_entered"]

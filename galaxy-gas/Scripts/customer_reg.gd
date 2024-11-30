@@ -21,7 +21,12 @@ var money_multiplier = rng.randf_range(1.0, 1.5)
 
 @onready var tables = $"../../Tables".get_children()
 
+@onready var rooms = $"../../Rooms".get_children()
+
+@onready var stairs = $"../../Stairs"
+
 var chair
+var room
 
 func _process(delta: float) -> void:
 	money_amt = Globals.money_amt
@@ -39,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(direction * speed, accel * delta)
 	else:
 		var direction = Vector2()
-		nav.target_position = Vector2(1800, 800)
+		nav.target_position = stairs.global_position
 		
 		direction = (nav.get_next_path_position() - global_position).normalized()
 		velocity = velocity.lerp(direction * speed, accel * delta)
@@ -77,6 +82,8 @@ func _on_timer_timeout() -> void:
 	Globals.money_amt += calc_money()
 	if staying:
 		Globals.customers_staying.erase(self)
+		room.num_occupants -= 1
+		room = null
 	else:
 		chair.is_taken = false
 		chair.customer_at_chair = null
@@ -112,5 +119,18 @@ func find_chair():
 						chair.is_taken = true
 						chair.customer_at_chair = self
 						break
+			else:
+				continue
+
+func find_room():
+	var rand_room
+	while not room:
+		rand_room = rooms[rng.randi_range(0, rooms.size() - 1)]
+		for bed_room in rooms:
+			if not bed_room.is_full():
+				bed_room.num_occupants += 1
+				room = bed_room
+				position = room.global_position
+				break
 			else:
 				continue

@@ -71,3 +71,8 @@ func are_tables_upgrading():
 
 func _get_customer():
 	return customers[randi_range(0, customers.size() - 1)]
+
+
+func _on_stairs_body_entered(body):
+	if body.staying:
+		body.find_room()
