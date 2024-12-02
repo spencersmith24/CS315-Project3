@@ -39,6 +39,7 @@ position = Vector2(56, -80)
 position = Vector2(-7.62939e-06, 1.52588e-05)
 
 [node name="botChairs" type="Node2D" parent="Large"]
+position = Vector2(0, 10)
 
 [node name="Chair_Back" parent="Large/botChairs" instance=ExtResource("5_aun3i")]
 position = Vector2(-56, 32)

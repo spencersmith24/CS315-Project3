@@ -13,7 +13,7 @@ func upgrade_table():
 	$Small.process_mode = Node.PROCESS_MODE_DISABLED
 	$Small.visible = false
 	
-	$Large.process_mode = Node.PROCESS_MODE_DISABLED
+	$Large.process_mode = Node.PROCESS_MODE_INHERIT
 	$Large.visible = true
 	is_upgraded = true
 	$"../..".max_customers += 2
@@ -21,15 +21,16 @@ func upgrade_table():
 	if not is_upgraded:
 		for chair in small_chairs:
 			if chair.is_taken:
-				chair.customer_at_chair.find_chair
+				chair.customer_at_chair.find_chair()
 	else:
 		for chair in big_chairs:
 			if chair.is_taken:
-				chair.customer_at_chair.find_chair
+				chair.customer_at_chair.find_chair()
 	
 	await get_tree().create_timer(2).timeout
 	
 	is_upgrading = false
+
 func is_full():
 	if not is_upgraded:
 		for chair in small_chairs:
