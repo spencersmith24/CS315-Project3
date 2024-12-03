@@ -13,16 +13,18 @@ script = ExtResource("1_hndgh")
 [node name="Small" type="Node2D" parent="."]
 
 [node name="Chairs" type="Node2D" parent="Small"]
+physics_interpolation_mode = 2
 
-[node name="Chair_Horizontal" parent="Small/Chairs" instance=ExtResource("1_y1ooq")]
+[node name="Chair_Horizontal_L" parent="Small/Chairs" instance=ExtResource("1_y1ooq")]
 position = Vector2(-80, -8)
 
-[node name="Chair_Horizontal2" parent="Small/Chairs" instance=ExtResource("1_y1ooq")]
+[node name="Chair_Horizontal_R" parent="Small/Chairs" instance=ExtResource("1_y1ooq")]
 position = Vector2(80, -8)
 rotation = -3.14159
 scale = Vector2(6, -6)
 
 [node name="Table_Small" parent="Small" instance=ExtResource("2_qckvy")]
+collision_layer = 14
 
 [node name="Large" type="Node2D" parent="."]
 visible = false
@@ -37,6 +39,7 @@ position = Vector2(56, -80)
 
 [node name="Table_Large" parent="Large" instance=ExtResource("4_sida5")]
 position = Vector2(-7.62939e-06, 1.52588e-05)
+collision_layer = 14
 
 [node name="botChairs" type="Node2D" parent="Large"]
 position = Vector2(0, 10)

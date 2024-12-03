@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=19 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
@@ -930,30 +930,15 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_sfe32"]
 sources/0 = SubResource("TileSetAtlasSource_kl3u6")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_i8awg"]
-vertices = PackedVector2Array(6.03906, -6.38281, 6.10938, 5.75781, -6.25781, 5.89062, -6.39062, -6.45312)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-16.5, -16.5, 16, -16.3333, 16.1667, 15.6667, -16.1667, 16)])
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_po60y"]
 vertices = PackedVector2Array(548.117, 390.844, -556.797, 374.148, -543.188, -322.062, 556.867, -328.93)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-567, 384, -553, -332, 567, -339, 558, 401)])
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_jmqoi"]
-vertices = PackedVector2Array(499.82, 211.977, -505.117, 210.008, -506.859, 77.8125, 497.172, 59.1797)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-517, 68, -515, 220, 510, 222, 507, 49)])
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_dn2mc"]
-vertices = PackedVector2Array(510.5, -25.9609, -499.219, -23.0234, -502.758, -177.133, 502.469, -190.859)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-513, -187, -509, -13, 521, -16, 512, -201)])
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_1gbhk"]
-vertices = PackedVector2Array(-128.102, -301.539, 584.352, -423.852, 563.148, -258.617, 146.789, -240.57, -136.867, 407.703, 160.781, 399.281)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-147, 418, -138, -310, 596, -436, 572, -249, 157, -231, 171, 409)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pfxy4"]
+vertices = PackedVector2Array(164.367, -199.188, 198.367, 366.859, -187.781, 362.117, -173.203, -312.227, 553.5, -329.758, 560.461, -192.18)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-198, 372, -183, -322, 563, -340, 571, -182, 175, -189, 209, 377)])
 
 [node name="Main2D" type="Node2D"]
 script = ExtResource("1_3loeq")
@@ -1002,34 +987,20 @@ position = Vector2(-432, -912)
 scale = Vector2(6, 6)
 metadata/_edit_group_ = true
 
-[node name="RoomNav1" type="NavigationRegion2D" parent="Rooms/Room1"]
-navigation_polygon = SubResource("NavigationPolygon_i8awg")
-
 [node name="Room2" parent="Rooms" instance=ExtResource("9_pf681")]
 position = Vector2(-144, -912)
 scale = Vector2(6, 6)
 metadata/_edit_group_ = true
-
-[node name="RoomNav2" type="NavigationRegion2D" parent="Rooms/Room2"]
-position = Vector2(0.166666, 0)
-navigation_polygon = SubResource("NavigationPolygon_i8awg")
 
 [node name="Room3" parent="Rooms" instance=ExtResource("9_pf681")]
 position = Vector2(144, -912)
 scale = Vector2(6, 6)
 metadata/_edit_group_ = true
 
-[node name="RoomNav3" type="NavigationRegion2D" parent="Rooms/Room3"]
-navigation_polygon = SubResource("NavigationPolygon_i8awg")
-
 [node name="Room4" parent="Rooms" instance=ExtResource("9_pf681")]
 position = Vector2(432, -912)
 scale = Vector2(6, 6)
 metadata/_edit_group_ = true
-
-[node name="RoomNav4" type="NavigationRegion2D" parent="Rooms/Room4"]
-position = Vector2(0.333336, 0)
-navigation_polygon = SubResource("NavigationPolygon_i8awg")
 
 [node name="Stairs" parent="." instance=ExtResource("10_3v67d")]
 position = Vector2(506, -300)
@@ -1093,21 +1064,14 @@ offset_bottom = -5.0
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Pathfinding"]
+[node name="MainRegion" type="NavigationRegion2D" parent="Pathfinding"]
 position = Vector2(0, -1)
 navigation_polygon = SubResource("NavigationPolygon_po60y")
 
-[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="Pathfinding"]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_jmqoi")
-
-[node name="NavigationRegion2D3" type="NavigationRegion2D" parent="Pathfinding"]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_dn2mc")
-
-[node name="NavigationRegion2D4" type="NavigationRegion2D" parent="Pathfinding"]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_1gbhk")
+[node name="StayingRegion" type="NavigationRegion2D" parent="Pathfinding"]
+navigation_polygon = SubResource("NavigationPolygon_pfxy4")
+use_edge_connections = false
+navigation_layers = 2
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
 [connection signal="body_entered" from="Stairs" to="." method="_on_stairs_body_entered"]

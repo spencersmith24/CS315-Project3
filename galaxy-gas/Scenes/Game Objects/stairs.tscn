@@ -7,7 +7,7 @@ size = Vector2(18, 18)
 
 [node name="Stairs" type="Area2D"]
 scale = Vector2(8, 6)
-collision_mask = 7
+collision_mask = 15
 priority = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
