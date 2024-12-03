@@ -931,14 +931,14 @@ texture_region_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_kl3u6")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_po60y"]
-vertices = PackedVector2Array(548.117, 390.844, -556.797, 374.148, -543.188, -322.062, 556.867, -328.93)
+vertices = PackedVector2Array(566, 375, -566, 375, -566, -325, 566, -325)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-567, 384, -553, -332, 567, -339, 558, 401)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-576, 385, -576, -335, 576, -335, 576, 385)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pfxy4"]
-vertices = PackedVector2Array(164.367, -199.188, 198.367, 366.859, -187.781, 362.117, -173.203, -312.227, 553.5, -329.758, 560.461, -192.18)
+vertices = PackedVector2Array(165.57, -202, 189.562, 365.891, -187.789, 362.102, -174.203, -318, 550, -318, 550, -202)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-198, 372, -183, -322, 563, -340, 571, -182, 175, -189, 209, 377)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-198, 372, -184, -328, 560, -328, 560, -192, 176, -192, 200, 376)])
 
 [node name="Main2D" type="Node2D"]
 script = ExtResource("1_3loeq")

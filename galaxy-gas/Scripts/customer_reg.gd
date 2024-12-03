@@ -156,6 +156,7 @@ func sit_in_chair():
 	elif chair.scene_file_path == "res://Scenes/Game Objects/chair_horizontal.tscn":
 		reset_anim()
 		anim_tree['parameters/conditions/idle_sideways'] = true
+		
 		$Sprite2D.scale.x = 5
 		if chair.name == "Chair_Horizontal_L":
 			$Sprite2D.flip_h = false
