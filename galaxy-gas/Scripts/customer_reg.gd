@@ -16,6 +16,7 @@ var money_multiplier = rng.randf_range(1.0, 1.5)
 @export var speed = 200
 
 @onready var anim_tree = $AnimationTree
+@onready var anim_player = $AnimationPlayer
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
@@ -32,19 +33,18 @@ func _process(delta: float) -> void:
 	money_amt = Globals.money_amt
 	customers_in_store = Globals.customers_in_store
 
-
 # move characters around to find table to sit at
 func _physics_process(delta: float) -> void:
 	
 	if staying == false:
 		var direction = Vector2()
-		nav.target_position = chair.global_position
+		nav.set_target_position(chair.global_position)
 	
 		direction = (nav.get_next_path_position() - global_position).normalized()
 		velocity = velocity.lerp(direction * speed, accel * delta)
 	else:
 		var direction = Vector2()
-		nav.target_position = stairs.global_position
+		nav.set_target_position(stairs.global_position)
 		
 		direction = (nav.get_next_path_position() - global_position).normalized()
 		velocity = velocity.lerp(direction * speed, accel * delta)
@@ -71,6 +71,8 @@ func _physics_process(delta: float) -> void:
 func _ready() -> void:
 	if staying == true:
 		time_in_store *= get_parent().get_parent().staying_time_multiplier
+		nav.set_navigation_layer_value(1, false)
+		nav.set_navigation_layer_value(2, true)
 	else:
 		find_chair()
 	$InStoreTimer.wait_time = time_in_store
@@ -78,6 +80,10 @@ func _ready() -> void:
 	
 # get money from customer, erase from customer list, queue free
 func _on_timer_timeout() -> void:
+	leave()
+
+# customer leaves and pays
+func leave():
 	# set global money amount
 	Globals.money_amt += calc_money()
 	if staying:
@@ -134,3 +140,30 @@ func find_room():
 				break
 			else:
 				continue
+
+func sit_in_chair():
+	speed = 0
+	velocity = Vector2(0,0)
+	position = chair.global_position
+	
+	# determine sitting position
+	if chair.scene_file_path == "res://Scenes/Game Objects/chair_back.tscn":
+		reset_anim()
+		anim_tree['parameters/conditions/idle_up'] = true
+	elif chair.scene_file_path == "res://Scenes/Game Objects/chair_front.tscn":
+		reset_anim()
+		anim_tree['parameters/conditions/idle_down'] = true
+	elif chair.scene_file_path == "res://Scenes/Game Objects/chair_horizontal.tscn":
+		reset_anim()
+		anim_tree['parameters/conditions/idle_sideways'] = true
+		$Sprite2D.scale.x = 5
+		if chair.name == "Chair_Horizontal_L":
+			$Sprite2D.flip_h = false
+		elif chair.name == "Chair_Horizontal_R":
+			$Sprite2D.flip_h = true
+			
+
+func reset_anim():
+		anim_tree['parameters/conditions/walk_up'] = false
+		anim_tree['parameters/conditions/walk_down'] = false
+		anim_tree['parameters/conditions/walk_sideways'] = false

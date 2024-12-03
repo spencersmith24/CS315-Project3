@@ -267,7 +267,7 @@ _data = {
 "walk_up": SubResource("Animation_5l8ct")
 }
 
-[node name="customer_reg" type="CharacterBody2D"]
+[node name="customer_reg" type="CharacterBody2D" groups=["Customers"]]
 collision_layer = 8
 script = ExtResource("1_e236c")
 

@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	money_amt = Globals.money_amt
 	MONEY_LABEL.text = str(money_amt)
 	
-	if not are_tables_full() and not are_tables_upgrading():
+	if not are_tables_full():
 		if $CustomerSpawnTimer.is_stopped():
 			$CustomerSpawnTimer.start()
 		
@@ -63,12 +63,6 @@ func are_tables_full():
 			return false
 	return true
 
-func are_tables_upgrading():
-	for table in $Tables.get_children():
-		if table.is_upgrading:
-			return true
-	return false
-
 func _get_customer():
 	return customers[randi_range(0, customers.size() - 1)]
 
@@ -76,3 +70,4 @@ func _get_customer():
 func _on_stairs_body_entered(body):
 	if body.staying:
 		body.find_room()
+		body.nav.set_target_position(body.room.position)
