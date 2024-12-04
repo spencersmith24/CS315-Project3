@@ -10,6 +10,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-24, 24, 24, 24, 24, -24, -24, -24)])
 
 [node name="Room" type="Node2D"]
+scale = Vector2(8, 8)
 script = ExtResource("1_2g6og")
 
 [node name="TopUnupgraded" parent="." instance=ExtResource("1_8b7lc")]

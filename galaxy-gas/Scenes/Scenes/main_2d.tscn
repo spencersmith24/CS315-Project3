@@ -942,7 +942,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-198, 372, -184, -328, 
 
 [node name="Main2D" type="Node2D"]
 script = ExtResource("1_3loeq")
-stay_chance = 70.0
+stay_chance = 40.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -960,6 +960,7 @@ tile_set = ExtResource("2_tm5te")
 tile_set = SubResource("TileSet_sfe32")
 
 [node name="CustomerSpawnTimer" type="Timer" parent="."]
+wait_time = 7.0
 one_shot = true
 
 [node name="Kitchen" parent="." instance=ExtResource("6_rjqyp")]
@@ -980,26 +981,23 @@ position = Vector2(360, 144)
 position = Vector2(360, -96)
 
 [node name="Rooms" type="Node2D" parent="."]
-position = Vector2(0, -643)
+position = Vector2(50, -550)
+metadata/_edit_group_ = true
 
 [node name="Room1" parent="Rooms" instance=ExtResource("9_pf681")]
-position = Vector2(-432, -912)
-scale = Vector2(6, 6)
+position = Vector2(-650, -912)
 metadata/_edit_group_ = true
 
 [node name="Room2" parent="Rooms" instance=ExtResource("9_pf681")]
-position = Vector2(-144, -912)
-scale = Vector2(6, 6)
+position = Vector2(-250, -912)
 metadata/_edit_group_ = true
 
 [node name="Room3" parent="Rooms" instance=ExtResource("9_pf681")]
-position = Vector2(144, -912)
-scale = Vector2(6, 6)
+position = Vector2(150, -912)
 metadata/_edit_group_ = true
 
 [node name="Room4" parent="Rooms" instance=ExtResource("9_pf681")]
-position = Vector2(432, -912)
-scale = Vector2(6, 6)
+position = Vector2(550, -912)
 metadata/_edit_group_ = true
 
 [node name="Stairs" parent="." instance=ExtResource("10_3v67d")]
