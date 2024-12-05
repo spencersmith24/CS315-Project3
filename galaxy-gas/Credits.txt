@@ -1,6 +1,10 @@
 Assets from Sierrassets:
 	- https://sierrassets.itch.io/pixel-art-furniture-pack
 
+Background tiles:
+	- https://stealthix.itch.io/rpg-nature-tileset
+	- https://tilation.itch.io/16x16-small-indoor-tileset
+
 Font:
 	- https://www.fontsquirrel.com/fonts/Munro
 
