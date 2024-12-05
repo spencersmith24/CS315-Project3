@@ -97,7 +97,16 @@ func leave():
 
 # calcs money (calc is short for calculates, it's slang)
 func calc_money() -> int:
-	return int(stay_time * money_multiplier + 0.5)
+	var money = int(stay_time * money_multiplier + 0.5)
+	if stay_time > 25:
+		money = int(pow(stay_time, 1.1) * money_multiplier + 0.5)
+	elif stay_time > 30:
+		money = int(pow(stay_time, 1.2) * money_multiplier + 0.5)
+	elif stay_time > 35:
+		money = int(pow(stay_time, 1.4) * money_multiplier + 0.5)
+	elif stay_time > 55:
+		money = int(pow(stay_time, 1.6) * money_multiplier + 0.5)
+	return money
 
 func find_chair():
 	var rand_table
