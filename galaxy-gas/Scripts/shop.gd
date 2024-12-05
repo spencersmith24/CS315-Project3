@@ -5,6 +5,7 @@ extends Control
 @onready var root_node = $"../../.."
 
 # Upgrade variables
+
 @export var table_upgrade_cost = 100
 @export var table_upgrade_cost_multiplier = 1.8
 
