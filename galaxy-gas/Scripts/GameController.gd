@@ -6,7 +6,9 @@ var money_amt
 # Local globals
 var rng = RandomNumberGenerator.new()
 
-var customers = ["res://Scenes/Game Objects/Characters/customer_lumberjack.tscn","res://Scenes/Game Objects/Characters/customer_oldguy.tscn","res://Scenes/Game Objects/Characters/customer_pinkgirl.tscn"]
+var customers = ["res://Scenes/Game Objects/Characters/customer_lumberjack.tscn",
+				"res://Scenes/Game Objects/Characters/customer_oldguy.tscn",
+				"res://Scenes/Game Objects/Characters/customer_pinkgirl.tscn"]
 
 @export var max_customers: int = 8
 @export var inn_capacity = 4
@@ -50,13 +52,14 @@ func spawn_new_customer():
 	new_customer.global_position = Vector2(0, 500)
 	$Customers.add_child(new_customer)
 
-
+# Change floors
 func _on_change_floors_pressed() -> void:
 	if $Camera2D.position.y == -1250:
 		$AnimationPlayer.play("move_downstairs")
 	else:
 		$AnimationPlayer.play("move_upstairs")
-		
+
+
 func are_tables_full():
 	for table in $Tables.get_children():
 		if not table.is_full():
