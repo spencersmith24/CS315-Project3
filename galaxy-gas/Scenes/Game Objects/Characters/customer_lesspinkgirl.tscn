@@ -1,0 +1,304 @@
+[gd_scene load_steps=44 format=3 uid="uid://dhdxnsm4ere1q"]
+
+[ext_resource type="Script" path="res://Scripts/customer_reg.gd" id="1_knqsi"]
+[ext_resource type="Texture2D" uid="uid://sooomxmii8hs" path="res://Assets/Characters/Characters_V3_Colour.png" id="2_a8gpx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yuiay"]
+radius = 33.0
+height = 84.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gdxwu"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u0t4e"]
+animation = &"idle_sideways"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m5ovo"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m3een"]
+animation = &"walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dvay6"]
+animation = &"walk_sideways"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1jlwd"]
+animation = &"walk_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b86g4"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kcvog"]
+advance_mode = 2
+advance_condition = &"walk_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_olkno"]
+advance_mode = 2
+advance_condition = &"walk_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nllu4"]
+advance_mode = 2
+advance_condition = &"walk_sideways"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xfn2s"]
+advance_mode = 2
+advance_condition = &"idle_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kumg7"]
+advance_mode = 2
+advance_condition = &"idle_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b0y8t"]
+advance_mode = 2
+advance_condition = &"idle_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k3o1n"]
+advance_mode = 2
+advance_condition = &"walk_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d6ndy"]
+advance_mode = 2
+advance_condition = &"idle_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5f3j4"]
+advance_mode = 2
+advance_condition = &"walk_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ja2xj"]
+advance_mode = 2
+advance_condition = &"idle_sideways"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s7th5"]
+advance_mode = 2
+advance_condition = &"walk_sideways"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vr3py"]
+advance_mode = 2
+advance_condition = &"idle_sideways"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_77yan"]
+advance_mode = 2
+advance_condition = &"walk_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ednm"]
+advance_mode = 2
+advance_condition = &"idle_sideways"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_awowt"]
+advance_mode = 2
+advance_condition = &"walk_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hqr54"]
+advance_mode = 2
+advance_condition = &"idle_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sydfq"]
+advance_mode = 2
+advance_condition = &"walk_sideways"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_atcn7"]
+advance_mode = 2
+advance_condition = &"idle_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5jp2v"]
+advance_mode = 2
+advance_condition = &"walk_sideways"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5c7qb"]
+advance_mode = 2
+advance_condition = &"walk_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gxrng"]
+advance_mode = 2
+advance_condition = &"walk_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hsing"]
+advance_mode = 2
+advance_condition = &"walk_sideways"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_soxdr"]
+advance_mode = 2
+advance_condition = &"walk_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yij04"]
+advance_mode = 2
+advance_condition = &"walk_up"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_37pq1"]
+states/End/position = Vector2(1125, 117)
+states/Start/position = Vector2(182, 100)
+states/idle_down/node = SubResource("AnimationNodeAnimation_gdxwu")
+states/idle_down/position = Vector2(390, 100)
+states/idle_sideways/node = SubResource("AnimationNodeAnimation_u0t4e")
+states/idle_sideways/position = Vector2(712, 238)
+states/idle_up/node = SubResource("AnimationNodeAnimation_m5ovo")
+states/idle_up/position = Vector2(699, -29)
+states/walk_down/node = SubResource("AnimationNodeAnimation_m3een")
+states/walk_down/position = Vector2(506, 238)
+states/walk_sideways/node = SubResource("AnimationNodeAnimation_dvay6")
+states/walk_sideways/position = Vector2(841, 100)
+states/walk_up/node = SubResource("AnimationNodeAnimation_1jlwd")
+states/walk_up/position = Vector2(506, -29)
+transitions = ["Start", "idle_down", SubResource("AnimationNodeStateMachineTransition_b86g4"), "idle_down", "walk_up", SubResource("AnimationNodeStateMachineTransition_kcvog"), "idle_down", "walk_down", SubResource("AnimationNodeStateMachineTransition_olkno"), "idle_down", "walk_sideways", SubResource("AnimationNodeStateMachineTransition_nllu4"), "walk_up", "idle_down", SubResource("AnimationNodeStateMachineTransition_xfn2s"), "walk_down", "idle_down", SubResource("AnimationNodeStateMachineTransition_kumg7"), "walk_sideways", "idle_down", SubResource("AnimationNodeStateMachineTransition_b0y8t"), "idle_up", "walk_up", SubResource("AnimationNodeStateMachineTransition_k3o1n"), "walk_up", "idle_up", SubResource("AnimationNodeStateMachineTransition_d6ndy"), "idle_sideways", "walk_up", SubResource("AnimationNodeStateMachineTransition_5f3j4"), "walk_up", "idle_sideways", SubResource("AnimationNodeStateMachineTransition_ja2xj"), "idle_sideways", "walk_sideways", SubResource("AnimationNodeStateMachineTransition_s7th5"), "walk_sideways", "idle_sideways", SubResource("AnimationNodeStateMachineTransition_vr3py"), "idle_sideways", "walk_down", SubResource("AnimationNodeStateMachineTransition_77yan"), "walk_down", "idle_sideways", SubResource("AnimationNodeStateMachineTransition_5ednm"), "idle_up", "walk_down", SubResource("AnimationNodeStateMachineTransition_awowt"), "walk_down", "idle_up", SubResource("AnimationNodeStateMachineTransition_hqr54"), "idle_up", "walk_sideways", SubResource("AnimationNodeStateMachineTransition_sydfq"), "walk_sideways", "idle_up", SubResource("AnimationNodeStateMachineTransition_atcn7"), "walk_up", "walk_sideways", SubResource("AnimationNodeStateMachineTransition_5jp2v"), "walk_sideways", "walk_up", SubResource("AnimationNodeStateMachineTransition_5c7qb"), "walk_sideways", "walk_down", SubResource("AnimationNodeStateMachineTransition_gxrng"), "walk_down", "walk_sideways", SubResource("AnimationNodeStateMachineTransition_hsing"), "walk_up", "walk_down", SubResource("AnimationNodeStateMachineTransition_soxdr"), "walk_down", "walk_up", SubResource("AnimationNodeStateMachineTransition_yij04")]
+graph_offset = Vector2(-67, -50.405)
+
+[sub_resource type="Animation" id="Animation_joq4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [160]
+}
+
+[sub_resource type="Animation" id="Animation_04usi"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [160]
+}
+
+[sub_resource type="Animation" id="Animation_u6rr8"]
+resource_name = "idle_sideways"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [162]
+}
+
+[sub_resource type="Animation" id="Animation_hwqsw"]
+resource_name = "idle_up"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [161]
+}
+
+[sub_resource type="Animation" id="Animation_yejyh"]
+resource_name = "walk_down"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [164, 165]
+}
+
+[sub_resource type="Animation" id="Animation_0f6ns"]
+resource_name = "walk_sideways"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [168, 169]
+}
+
+[sub_resource type="Animation" id="Animation_5l8ct"]
+resource_name = "walk_up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [166, 167]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b1qu7"]
+_data = {
+"RESET": SubResource("Animation_joq4f"),
+"idle_down": SubResource("Animation_04usi"),
+"idle_sideways": SubResource("Animation_u6rr8"),
+"idle_up": SubResource("Animation_hwqsw"),
+"walk_down": SubResource("Animation_yejyh"),
+"walk_sideways": SubResource("Animation_0f6ns"),
+"walk_up": SubResource("Animation_5l8ct")
+}
+
+[node name="customer_reg" type="CharacterBody2D" groups=["Customers"]]
+collision_layer = 8
+script = ExtResource("1_knqsi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_a8gpx")
+hframes = 10
+vframes = 20
+frame = 160
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_yuiay")
+
+[node name="InStoreTimer" type="Timer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_37pq1")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/idle_down = false
+parameters/conditions/idle_sideways = false
+parameters/conditions/idle_up = false
+parameters/conditions/walk_down = false
+parameters/conditions/walk_sideways = false
+parameters/conditions/walk_up = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b1qu7")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="timeout" from="InStoreTimer" to="." method="_on_timer_timeout"]

@@ -6,9 +6,17 @@ var money_amt
 # Local globals
 var rng = RandomNumberGenerator.new()
 
-var customers = ["res://Scenes/Game Objects/Characters/customer_lumberjack.tscn",
+var customers = [
+				"res://Scenes/Game Objects/Characters/customer_lumberjack.tscn",
 				"res://Scenes/Game Objects/Characters/customer_oldguy.tscn",
-				"res://Scenes/Game Objects/Characters/customer_pinkgirl.tscn"]
+				"res://Scenes/Game Objects/Characters/customer_pinkgirl.tscn",
+				"res://Scenes/Game Objects/Characters/customer_boy.tscn",
+				"res://Scenes/Game Objects/Characters/customer_lesspinkgirl.tscn",
+				"res://Scenes/Game Objects/Characters/customer_olderguy.tscn",
+				"res://Scenes/Game Objects/Characters/customer_skeleton.tscn",
+				"res://Scenes/Game Objects/Characters/customer_viking.tscn",
+				"res://Scenes/Game Objects/Characters/customer_woman.tscn"
+				]
 
 @onready var MONEY_LABEL := $Camera2D/UI/Money
 @onready var GAME_SHOP := $Camera2D/UI/Shop
@@ -20,7 +28,7 @@ var customers = ["res://Scenes/Game Objects/Characters/customer_lumberjack.tscn"
 @export var inn_time_multiplier: float = 2
 
 @export var marketing_level = 1
-@export var max_marketing_level = 10
+@export var max_marketing_level = 20
 @export var spawn_rate_multiplier: float = 0.9
 @onready var spawn_rate = $CustomerSpawnTimer.wait_time
 
