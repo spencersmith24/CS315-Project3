@@ -16,7 +16,7 @@ extends Control
 @export var marketing_upgrade_cost_multiplier = 1.5
 
 @export var ambience_upgrade_cost = 100
-@export var ambience_upgrade_cost_multiplier = 1.5
+@export var ambience_upgrade_cost_multiplier = 3
 
 var tables_upgraded = 0
 var rooms_upgraded = 0
