@@ -139,11 +139,6 @@ func find_room():
 			else:
 				continue
 
-func sit_in_chair():
-	speed = 0
-	velocity = Vector2(0,0)
-	position = chair.global_position
-	
 	# determine sitting position
 	if chair.scene_file_path == "res://Scenes/Game Objects/chair_back.tscn":
 		reset_anim()
@@ -160,7 +155,11 @@ func sit_in_chair():
 			$Sprite2D.flip_h = false
 		elif chair.name == "Chair_Horizontal_R":
 			$Sprite2D.flip_h = true
-			
+
+func sit_in_chair():
+	speed = 0
+	velocity = Vector2(0,0)
+	position = chair.global_position
 
 func reset_anim():
 		anim_tree['parameters/conditions/walk_up'] = false
