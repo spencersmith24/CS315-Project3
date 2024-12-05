@@ -37,6 +37,7 @@ var customers = [
 @export var stay_time_multiplier: float = 1.25
 var stay_time = rng.randf_range(10.0, 25.0)
 
+var next_customer_needs_to_stay = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,7 +50,13 @@ func _process(delta: float) -> void:
 	
 	$CustomerSpawnTimer.wait_time = spawn_rate
 	
-	if not are_tables_full():
+	if has_available_table():
+		next_customer_needs_to_stay = false
+		if $CustomerSpawnTimer.is_stopped():
+			$CustomerSpawnTimer.start()
+	elif not has_available_table():
+		next_customer_needs_to_stay = true
+	elif has_available_room():
 		if $CustomerSpawnTimer.is_stopped():
 			$CustomerSpawnTimer.start()
 		
@@ -65,7 +72,7 @@ func spawn_new_customer():
 	var new_customer = load(customers[randi_range(0, customers.size() - 1)]).instantiate()
 	if Globals.customers_staying.size() < inn_capacity:
 		var random_value = randf() * 100
-		if random_value < stay_chance:
+		if random_value < stay_chance or next_customer_needs_to_stay:
 			Globals.customers_staying.append(new_customer)
 			new_customer.staying = true
 			pass
@@ -83,11 +90,17 @@ func _on_change_floors_pressed() -> void:
 		$AnimationPlayer.play("move_upstairs")
 
 
-func are_tables_full():
+func has_available_table():
 	for table in $Tables.get_children():
 		if not table.is_full():
-			return false
-	return true
+			return true
+	return false
+
+func has_available_room():
+	for room in $Rooms.get_children():
+		if not room.size == room.num_occupants:
+			return true
+	return false
 
 func _get_customer():
 	return customers[randi_range(0, customers.size() - 1)]
