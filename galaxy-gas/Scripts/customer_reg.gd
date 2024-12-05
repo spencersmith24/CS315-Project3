@@ -2,14 +2,12 @@ extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
 
-# Global globals
 var customers_in_store
 var money_amt
 
 var staying = false
 
-# Local globals
-var time_in_store = rng.randf_range(10.0, 25.0)
+@export var stay_time = null
 var money_multiplier = rng.randf_range(1.0, 1.5)
 
 @export var accel = 5
@@ -70,12 +68,12 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	if staying == true:
-		time_in_store *= get_parent().get_parent().staying_time_multiplier
+		stay_time *= get_parent().get_parent().inn_time_multiplier
 		nav.set_navigation_layer_value(1, false)
 		nav.set_navigation_layer_value(2, true)
 	else:
 		find_chair()
-	$InStoreTimer.wait_time = time_in_store
+	$InStoreTimer.wait_time = stay_time
 	$InStoreTimer.start()
 	
 # get money from customer, erase from customer list, queue free
@@ -99,7 +97,7 @@ func leave():
 
 # calcs money (calc is short for calculates, it's slang)
 func calc_money() -> int:
-	return int(time_in_store * money_multiplier + 0.5)
+	return int(stay_time * money_multiplier + 0.5)
 
 func find_chair():
 	var rand_table

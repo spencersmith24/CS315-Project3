@@ -10,18 +10,25 @@ var customers = ["res://Scenes/Game Objects/Characters/customer_lumberjack.tscn"
 				"res://Scenes/Game Objects/Characters/customer_oldguy.tscn",
 				"res://Scenes/Game Objects/Characters/customer_pinkgirl.tscn"]
 
+@onready var MONEY_LABEL := $Camera2D/UI/Money
+@onready var GAME_SHOP := $Camera2D/UI/Shop
+
+# Upgrades
 @export var max_customers: int = 8
 @export var inn_capacity = 4
 @export var stay_chance: float = 2.5
-@export var staying_time_multiplier: float = 2
+@export var inn_time_multiplier: float = 2
 
 @export var marketing_level = 1
 @export var max_marketing_level = 10
-@export var spawn_rate_multiplier = 0.9
+@export var spawn_rate_multiplier: float = 0.9
 @onready var spawn_rate = $CustomerSpawnTimer.wait_time
 
-@onready var MONEY_LABEL := $Camera2D/UI/Money
-@onready var GAME_SHOP := $Camera2D/UI/Shop
+@export var ambience_level = 1
+@export var max_ambience_level = 5
+@export var stay_time_multiplier: float = 1.25
+var stay_time = rng.randf_range(10.0, 25.0)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,6 +64,7 @@ func spawn_new_customer():
 	else:
 		Globals.customers_in_store.append(new_customer)
 	new_customer.global_position = Vector2(0, 500)
+	new_customer.stay_time = stay_time
 	$Customers.add_child(new_customer)
 
 # Change floors
@@ -85,3 +93,7 @@ func _on_stairs_body_entered(body):
 func upgrade_marketing():
 	marketing_level += 1
 	spawn_rate *= spawn_rate_multiplier
+
+func upgrade_ambience():
+	ambience_level += 1
+	stay_time *= stay_time_multiplier

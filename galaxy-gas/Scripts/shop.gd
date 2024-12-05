@@ -25,9 +25,22 @@ var rooms_upgraded = 0
 func _ready() -> void:
 	visible = false
 	process_mode = PROCESS_MODE_DISABLED
+	
+	# tables/chairs
+	$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(table_upgrade_cost)
 	$Stats/Chairs.text = "Chairs: " + str(root_node.max_customers)
+	
+	# inn
+	$"Upgrades/RoomsButton/RoomsButton/Price".text = "$" + str(inn_capacity_upgrade_cost)
 	$Stats/InnSpace.text = "Inn Space: " + str(root_node.inn_capacity)
-	pass
+
+	# marketing
+	$Upgrades/MarketingButton/MarketingButton/Price.text = "$" + str(marketing_upgrade_cost)
+	$Stats/Marketing.text = "Marketing: " + str(root_node.marketing_level)
+	
+	# ambience
+	$Upgrades/AmbienceButton/AmbienceButton/Price.text = "$" + str(ambience_upgrade_cost)
+	$Stats/Ambience.text = "Ambience: " + str(root_node.ambience_level)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -94,13 +107,17 @@ func _on_marketing_button_pressed():
 		if root_node.marketing_level < root_node.max_marketing_level:
 			root_node.upgrade_marketing()
 			$Stats/Marketing.text = "Marketing: " + str(root_node.marketing_level)
-
 		else:
 			$Upgrades/MarketingButton/MarketingButton.disabled = true
-	pass # Replace with function body.
-
-
 
 func _on_ambience_button_pressed():
-	pass # Replace with function body.
-	print("Ambience")
+	if Globals.money_amt >= ambience_upgrade_cost:
+		Globals.money_amt -= ambience_upgrade_cost
+		ambience_upgrade_cost *= ambience_upgrade_cost_multiplier
+		ambience_upgrade_cost = int(ambience_upgrade_cost + .5)
+		$Upgrades/AmbienceButton/AmbienceButton/Price.text = "$" + str(ambience_upgrade_cost)
+		if root_node.ambience_level < root_node.max_ambience_level:
+			root_node.upgrade_ambience()
+			$Stats/Ambience.text = "Ambience: " + str(root_node.ambience_level)
+		else:
+			$Upgrades/AmbienceButton/AmbienceButton.disabled = true
