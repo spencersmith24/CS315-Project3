@@ -67,7 +67,7 @@ offset_right = 721.0
 offset_bottom = 211.0
 color = Color(0.513726, 0.788235, 0.498039, 1)
 
-[node name="Tables" type="Button" parent="Upgrades/TablesButton"]
+[node name="TablesButton" type="Button" parent="Upgrades/TablesButton"]
 layout_mode = 0
 offset_left = 616.0
 offset_top = 148.0
@@ -86,7 +86,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
 text = "
 "
 
-[node name="Item" type="Label" parent="Upgrades/TablesButton/Tables"]
+[node name="Item" type="Label" parent="Upgrades/TablesButton/TablesButton"]
 layout_mode = 0
 offset_left = 13.5133
 offset_top = 154.93
@@ -99,7 +99,7 @@ text = "Tables"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price" type="Label" parent="Upgrades/TablesButton/Tables"]
+[node name="Price" type="Label" parent="Upgrades/TablesButton/TablesButton"]
 layout_mode = 0
 offset_left = 13.5133
 offset_top = 901.409
@@ -127,7 +127,7 @@ offset_right = 721.0
 offset_bottom = 211.0
 color = Color(0.513726, 0.788235, 0.498039, 1)
 
-[node name="Rooms" type="Button" parent="Upgrades/RoomsButton"]
+[node name="RoomsButton" type="Button" parent="Upgrades/RoomsButton"]
 layout_mode = 0
 offset_left = 617.0
 offset_top = 148.0
@@ -144,7 +144,7 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
 
-[node name="Item" type="Label" parent="Upgrades/RoomsButton/Rooms"]
+[node name="Item" type="Label" parent="Upgrades/RoomsButton/RoomsButton"]
 layout_mode = 0
 offset_top = 183.099
 offset_right = 1270.0
@@ -156,7 +156,7 @@ text = "Rooms"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price" type="Label" parent="Upgrades/RoomsButton/Rooms"]
+[node name="Price" type="Label" parent="Upgrades/RoomsButton/RoomsButton"]
 layout_mode = 0
 offset_top = 915.493
 offset_right = 1270.0
@@ -165,6 +165,118 @@ scale = Vector2(1.22, 1.22)
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 460
 text = "$500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarketingButton" type="Control" parent="Upgrades"]
+anchors_preset = 0
+offset_left = 319.0
+offset_top = 17.0
+offset_right = 359.0
+offset_bottom = 57.0
+
+[node name="ColorRect" type="ColorRect" parent="Upgrades/MarketingButton"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 154.0
+offset_right = 721.0
+offset_bottom = 211.0
+color = Color(0.784314, 0.470588, 0.47451, 1)
+
+[node name="MarketingButton" type="Button" parent="Upgrades/MarketingButton"]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 150.0
+offset_right = 2157.0
+offset_bottom = 1770.0
+scale = Vector2(0.074, 0.071)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 225
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwcwu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
+
+[node name="Item" type="Label" parent="Upgrades/MarketingButton/MarketingButton"]
+layout_mode = 0
+offset_top = 183.099
+offset_right = 1270.0
+offset_bottom = 742.099
+scale = Vector2(1.22, 1.22)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 290
+text = "Marketing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="Upgrades/MarketingButton/MarketingButton"]
+layout_mode = 0
+offset_top = 915.493
+offset_right = 1270.0
+offset_bottom = 1474.49
+scale = Vector2(1.22, 1.22)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 460
+text = "$50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmbienceButton" type="Control" parent="Upgrades"]
+anchors_preset = 0
+offset_left = 319.0
+offset_top = 270.0
+offset_right = 359.0
+offset_bottom = 310.0
+
+[node name="ColorRect" type="ColorRect" parent="Upgrades/AmbienceButton"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 154.0
+offset_right = 721.0
+offset_bottom = 211.0
+color = Color(0.784314, 0.470588, 0.47451, 1)
+
+[node name="AmbienceButton" type="Button" parent="Upgrades/AmbienceButton"]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 150.0
+offset_right = 2157.0
+offset_bottom = 1770.0
+scale = Vector2(0.074, 0.071)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 225
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwcwu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
+
+[node name="Item" type="Label" parent="Upgrades/AmbienceButton/AmbienceButton"]
+layout_mode = 0
+offset_top = 183.099
+offset_right = 1270.0
+offset_bottom = 742.099
+scale = Vector2(1.22, 1.22)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 290
+text = "Ambience"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="Upgrades/AmbienceButton/AmbienceButton"]
+layout_mode = 0
+offset_top = 915.493
+offset_right = 1270.0
+offset_bottom = 1474.49
+scale = Vector2(1.22, 1.22)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 460
+text = "$50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -192,7 +304,7 @@ theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
 text = "Chairs: 8"
 
-[node name="BedSpace" type="Label" parent="Stats"]
+[node name="InnSpace" type="Label" parent="Stats"]
 layout_mode = 0
 offset_left = 624.0
 offset_top = 913.0
@@ -201,9 +313,33 @@ offset_bottom = 1472.0
 scale = Vector2(0.1, 0.1)
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
-text = "Bed Space: 4"
+text = "Inn Space: 4"
+
+[node name="Marketing" type="Label" parent="Stats"]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 853.0
+offset_right = 3361.0
+offset_bottom = 1412.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 500
+text = "Marketing: 1"
+
+[node name="Ambience" type="Label" parent="Stats"]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 913.0
+offset_right = 3361.0
+offset_bottom = 1472.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 500
+text = "Ambience: 1"
 
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Upgrades/TablesButton/Tables" to="." method="_on_table_button_pressed"]
-[connection signal="pressed" from="Upgrades/RoomsButton/Rooms" to="." method="_on_inn_capacity_pressed"]
+[connection signal="pressed" from="Upgrades/TablesButton/TablesButton" to="." method="_on_tables_button_pressed"]
+[connection signal="pressed" from="Upgrades/RoomsButton/RoomsButton" to="." method="_on_rooms_button_pressed"]
+[connection signal="pressed" from="Upgrades/MarketingButton/MarketingButton" to="." method="_on_marketing_button_pressed"]
+[connection signal="pressed" from="Upgrades/AmbienceButton/AmbienceButton" to="." method="_on_ambience_button_pressed"]

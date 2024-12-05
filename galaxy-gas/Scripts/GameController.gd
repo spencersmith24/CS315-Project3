@@ -15,6 +15,11 @@ var customers = ["res://Scenes/Game Objects/Characters/customer_lumberjack.tscn"
 @export var stay_chance: float = 2.5
 @export var staying_time_multiplier: float = 2
 
+@export var marketing_level = 1
+@export var max_marketing_level = 10
+@export var spawn_rate_multiplier = 0.9
+@onready var spawn_rate = $CustomerSpawnTimer.wait_time
+
 @onready var MONEY_LABEL := $Camera2D/UI/Money
 @onready var GAME_SHOP := $Camera2D/UI/Shop
 
@@ -26,6 +31,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	money_amt = Globals.money_amt
 	MONEY_LABEL.text = str(money_amt)
+	
+	$CustomerSpawnTimer.wait_time = spawn_rate
 	
 	if not are_tables_full():
 		if $CustomerSpawnTimer.is_stopped():
@@ -74,3 +81,7 @@ func _on_stairs_body_entered(body):
 	if body.staying:
 		body.find_room()
 		body.nav.set_target_position(body.room.position)
+
+func upgrade_marketing():
+	marketing_level += 1
+	spawn_rate *= spawn_rate_multiplier

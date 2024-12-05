@@ -1001,7 +1001,7 @@ position = Vector2(550, -912)
 metadata/_edit_group_ = true
 
 [node name="Stairs" parent="." instance=ExtResource("10_3v67d")]
-position = Vector2(506, -300)
+position = Vector2(518, -294)
 
 [node name="Customers" type="Node2D" parent="."]
 
