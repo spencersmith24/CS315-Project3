@@ -27,12 +27,12 @@ var customers = [
 @export var stay_chance: float = 2.5
 @export var inn_time_multiplier: float = 2
 
-@export var marketing_level = 1
+@export var marketing_level = 0
 @export var max_marketing_level = 20
 @export var spawn_rate_multiplier: float = 0.9
 @onready var spawn_rate = $CustomerSpawnTimer.wait_time
 
-@export var ambience_level = 1
+@export var ambience_level = 0
 @export var max_ambience_level = 5
 @export var stay_time_multiplier: float = 1.25
 var stay_time = rng.randf_range(10.0, 25.0)

@@ -44,10 +44,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if root_node.ambience_level >= root_node.max_ambience_level:
+		$Upgrades/AmbienceButton/AmbienceButton.disabled = true
+	
+	if root_node.marketing_level >= root_node.max_marketing_level:
+		$Upgrades/MarketingButton/MarketingButton.disabled = true
 
 func _on_exit_shop_btn_pressed() -> void:
-	#get_tree().change_scene_to_file("res://Scenes/main.tscn")
 	toggle_shop()
 
 func toggle_shop():
@@ -104,11 +107,8 @@ func _on_marketing_button_pressed():
 		marketing_upgrade_cost *= marketing_upgrade_cost_multiplier
 		marketing_upgrade_cost = int(marketing_upgrade_cost + .5)
 		$Upgrades/MarketingButton/MarketingButton/Price.text = "$" + str(marketing_upgrade_cost)
-		if root_node.marketing_level < root_node.max_marketing_level:
-			root_node.upgrade_marketing()
-			$Stats/Marketing.text = "Marketing: " + str(root_node.marketing_level)
-		else:
-			$Upgrades/MarketingButton/MarketingButton.disabled = true
+		root_node.upgrade_marketing()
+		$Stats/Marketing.text = "Marketing: " + str(root_node.marketing_level)
 
 func _on_ambience_button_pressed():
 	if Globals.money_amt >= ambience_upgrade_cost:
@@ -116,8 +116,5 @@ func _on_ambience_button_pressed():
 		ambience_upgrade_cost *= ambience_upgrade_cost_multiplier
 		ambience_upgrade_cost = int(ambience_upgrade_cost + .5)
 		$Upgrades/AmbienceButton/AmbienceButton/Price.text = "$" + str(ambience_upgrade_cost)
-		if root_node.ambience_level < root_node.max_ambience_level:
-			root_node.upgrade_ambience()
-			$Stats/Ambience.text = "Ambience: " + str(root_node.ambience_level)
-		else:
-			$Upgrades/AmbienceButton/AmbienceButton.disabled = true
+		root_node.upgrade_ambience()
+		$Stats/Ambience.text = "Ambience: " + str(root_node.ambience_level)
