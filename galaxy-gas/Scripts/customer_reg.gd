@@ -112,38 +112,39 @@ func find_chair():
 	var rand_table
 	while not chair:
 		rand_table = tables[rng.randi_range(0, tables.size() - 1)]
-		# UN-UPGRADED TABLED
-		if not rand_table.is_upgraded:
-			if not rand_table.is_full():
-				for table_chair in rand_table.small_chairs:
-					if table_chair.is_taken == false:
-						chair = table_chair
-						chair.is_taken = true
-						chair.customer_at_chair = self
-						break
+		
+		if rand_table.is_bought:
+			# UN-UPGRADED TABLE
+			if not rand_table.is_upgraded:
+				if not rand_table.is_full():
+					for table_chair in rand_table.small_chairs:
+						if table_chair.is_taken == false:
+							chair = table_chair
+							chair.is_taken = true
+							chair.customer_at_chair = self
+							break
+				else:
+					continue
+			# UPGRADED TABLES
 			else:
-				continue
-		# UPGRADED TABLES
+				if not rand_table.is_full():
+					for table_chair in rand_table.big_chairs:
+						if table_chair.is_taken == false:
+							chair = table_chair
+							chair.is_taken = true
+							chair.customer_at_chair = self
+							break
+				else:
+					continue
 		else:
-			if not rand_table.is_full():
-				for table_chair in rand_table.big_chairs:
-					if table_chair.is_taken == false:
-						chair = table_chair
-						chair.is_taken = true
-						chair.customer_at_chair = self
-						break
-			else:
-				continue
+			continue
 
 func find_room():
-	var rand_room
 	while not room:
-		rand_room = rooms[rng.randi_range(0, rooms.size() - 1)]
 		for bed_room in rooms:
 			if not bed_room.is_full():
 				bed_room.num_occupants += 1
 				room = bed_room
-				position = room.global_position
 				break
 			else:
 				continue

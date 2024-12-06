@@ -1,11 +1,18 @@
 extends Node2D
 
 var is_upgraded = false
+var is_bought = false
 
 @onready var small_chairs = $Small/Chairs.get_children()
 @onready var big_chairs = $Large/topChairs.get_children() + ($Large/botChairs.get_children())
 
 #var is_upgrading = false
+
+func buy_table():
+	self.process_mode = Node.PROCESS_MODE_INHERIT
+	visible = true
+	is_bought = true
+	$"../..".max_customers += 2
 
 func upgrade_table():
 

@@ -6,8 +6,10 @@ extends Control
 
 # Upgrade variables
 
-@export var table_upgrade_cost = 100
-@export var table_upgrade_cost_multiplier = 1.8
+@export var table_upgrade_cost = 1000
+@export var new_table_cost = 100
+@export var table_upgrade_cost_multiplier = 1.4
+@export var new_table_cost_multiplier = 2
 
 @export var inn_capacity_upgrade_cost = 500
 @export var inn_capacity_upgrade_cost_multiplier = 2.0
@@ -18,6 +20,8 @@ extends Control
 @export var ambience_upgrade_cost = 100
 @export var ambience_upgrade_cost_multiplier = 3
 
+var tables_bought = 1
+
 var tables_upgraded = 0
 var rooms_upgraded = 0
 
@@ -27,7 +31,7 @@ func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
 	
 	# tables/chairs
-	$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(table_upgrade_cost)
+	$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(new_table_cost)
 	$Stats/Chairs.text = "Chairs: " + str(root_node.max_customers)
 	
 	# inn
@@ -67,7 +71,20 @@ func toggle_shop():
 		process_mode = PROCESS_MODE_INHERIT
 
 func _on_tables_button_pressed():
-	if Globals.money_amt >= table_upgrade_cost:
+	if Globals.money_amt >= new_table_cost:
+		for table in tables:
+			if table.is_bought == false:
+				table.buy_table()
+				Globals.money_amt -= new_table_cost
+				new_table_cost *= new_table_cost_multiplier
+				new_table_cost = int(new_table_cost + .5)
+				tables_bought += 1
+				$Stats/Chairs.text = "Chairs: " + str(root_node.max_customers)
+				$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(new_table_cost)
+				if tables_bought == 6:
+					$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(table_upgrade_cost)
+				return
+	
 		Globals.money_amt -= table_upgrade_cost
 		table_upgrade_cost *= table_upgrade_cost_multiplier
 		table_upgrade_cost = int(table_upgrade_cost + .5)

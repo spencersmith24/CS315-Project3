@@ -22,7 +22,7 @@ var customers = [
 @onready var GAME_SHOP := $Camera2D/UI/Shop
 
 # Upgrades
-@export var max_customers: int = 12
+@export var max_customers: int = 2
 @export var inn_capacity = 4
 @export var stay_chance: float = 2.5
 @export var inn_time_multiplier: float = 2
@@ -41,6 +41,7 @@ var next_customer_needs_to_stay = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Tables/Table1.is_bought = true
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,11 +55,11 @@ func _process(delta: float) -> void:
 		next_customer_needs_to_stay = false
 		if $CustomerSpawnTimer.is_stopped():
 			$CustomerSpawnTimer.start()
-	elif not has_available_table():
-		next_customer_needs_to_stay = true
-	elif has_available_room():
-		if $CustomerSpawnTimer.is_stopped():
-			$CustomerSpawnTimer.start()
+	else:
+		if has_available_room():
+			next_customer_needs_to_stay = true
+			if $CustomerSpawnTimer.is_stopped():
+				$CustomerSpawnTimer.start()
 		
 # toggle shop
 func _on_shop_btn_pressed() -> void:
@@ -75,12 +76,15 @@ func spawn_new_customer():
 		if random_value < stay_chance or next_customer_needs_to_stay:
 			Globals.customers_staying.append(new_customer)
 			new_customer.staying = true
+
 			pass
 	else:
 		Globals.customers_in_store.append(new_customer)
 	new_customer.global_position = Vector2(0, 500)
 	new_customer.stay_time = stay_time
 	$Customers.add_child(new_customer)
+	if new_customer.staying == true:
+		new_customer.find_room()
 
 # Change floors
 func _on_change_floors_pressed() -> void:
@@ -92,13 +96,14 @@ func _on_change_floors_pressed() -> void:
 
 func has_available_table():
 	for table in $Tables.get_children():
-		if not table.is_full():
-			return true
+		if table.is_bought:
+			if not table.is_full():
+				return true
 	return false
 
 func has_available_room():
 	for room in $Rooms.get_children():
-		if not room.size == room.num_occupants:
+		if room.size > room.num_occupants:
 			return true
 	return false
 
@@ -108,7 +113,7 @@ func _get_customer():
 
 func _on_stairs_body_entered(body):
 	if body.staying:
-		body.find_room()
+		body.position = body.room.global_position
 		body.nav.set_target_position(body.room.position)
 
 func upgrade_marketing():
