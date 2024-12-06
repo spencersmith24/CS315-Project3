@@ -1,8 +1,221 @@
-[gd_scene load_steps=8 format=4 uid="uid://c41s46guswm67"]
+[gd_scene load_steps=11 format=4 uid="uid://c41s46guswm67"]
 
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="1_k6qg3"]
+[ext_resource type="Texture2D" uid="uid://uvrvypdic7tt" path="res://Assets/Background/4 BigSet.png" id="2_mqgx0"]
 [ext_resource type="Texture2D" uid="uid://byt7wkoq0nvq7" path="res://Assets/2DMap/sierrassets furniture pack/furniture/furniture pack coloured outline.png" id="2_t6o66"]
 [ext_resource type="Texture2D" uid="uid://o4tqhd2onwtx" path="res://Assets/Images/computer desktop.png" id="3_sptcb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ywnm7"]
+texture = ExtResource("2_mqgx0")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+5:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+0:24/0 = 0
+1:24/0 = 0
+2:24/0 = 0
+3:24/0 = 0
+4:24/0 = 0
+5:24/0 = 0
+6:24/0 = 0
+7:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+5:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_554fr"]
+sources/0 = SubResource("TileSetAtlasSource_ywnm7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6b848"]
 size = Vector2(18.6992, 17.5)
@@ -20,10 +233,28 @@ size = Vector2(11.5, 2.83333)
 scale = Vector2(6, 6)
 
 [node name="Room" type="TileMapLayer" parent="."]
+visible = false
 tile_map_data = PackedByteArray("AAD9//z/AAADAAsAAAACAPz/AAAHAAsAAAD+//z/AAAFAAsAAAD///z/AAAFAAsAAAAAAPz/AAAFAAsAAAABAPz/AAAFAAsAAAD9//3/AAAEAAwAAAACAP3/AAAGAAwAAAD+//3/AAAFAA0AAAD///3/AAAFAA0AAAAAAP3/AAAFAA0AAAABAP3/AAAFAA0AAAD9/wIAAAADAA8AAAACAAIAAAAHAA8AAAD+/wIAAAAFAA8AAAACAP7/AAAHAA0AAAACAP//AAAHAA0AAAACAAAAAAAHAA0AAAACAAEAAAAHAA0AAAD9/wEAAAADAA0AAAD9/wAAAAADAA0AAAD9////AAADAA0AAAD9//7/AAADAA0AAAD//wIAAAAEAA8AAAABAAIAAAAGAA8AAAD/////AAADAAIAAAAAAP//AAADAAIAAAAAAAAAAAADAAIAAAD//wAAAAADAAIAAAD+/wAAAAAIAAIAAAD+////AAAIAAIAAAD///7/AAAJAAIAAAAAAP7/AAAJAAIAAAD+//7/AAAKAAIAAAABAP7/AAALAAIAAAABAP//AAALAAIAAAABAAAAAAALAAIAAAABAAEAAAALAAIAAAAAAAEAAAALAAIAAAD//wEAAAALAAIAAAD+/wEAAAAIAAIAAAAAAAIAAAADAAIAAAA=")
 tile_set = ExtResource("1_k6qg3")
 
+[node name="Room_tiles" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+////AAAAABMAAAD+/wAAAAAAABMAAAD+/wEAAAAAABMAAAD+/wIAAAAAABQAAAABAAIAAAABABQAAAD//wIAAAABABQAAAD///7/AAABABIAAAAAAP7/AAABABIAAAABAP7/AAABABIAAAD+//7/AAAAABIAAAACAAIAAAABABQAAAACAP7/AAABABQAAAADAP7/AAACABIAAAADAAIAAAACABQAAAADAAAAAAACABMAAAADAP//AAACABMAAAADAAEAAAACABMAAAD/////AAAAAAwAAAD//wAAAAAAAA0AAAAAAP//AAABAAwAAAAAAAAAAAABAA0AAAABAP//AAABAAwAAAACAP//AAACAAwAAAACAAAAAAACAA0AAAACAAEAAAACAA4AAAABAAAAAAABAA0AAAD//wEAAAAAAA4AAAABAAEAAAABAA4AAAAAAAEAAAABAA0AAAAAAAIAAAADABEAAAA=")
+tile_set = SubResource("TileSet_554fr")
+
+[node name="Room_tiles2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD/////AAAAABcAAAAAAAIAAAAEABYAAAACAP//AAACABcAAAAAAP//AAADABcAAAABAP//AAADABcAAAACAAEAAAAGABgAAAD//wEAAAAFABgAAAAAAAMAAAAHABEAAAA=")
+tile_set = SubResource("TileSet_554fr")
+
+[node name="radio" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(40.0752, 4.47795)
+scale = Vector2(0.719764, 0.688915)
+texture = ExtResource("2_mqgx0")
+region_enabled = true
+region_rect = Rect2(0, 384, 16, 13)
+
 [node name="rug" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0.0134152, 0.126552)
 rotation = 1.5708
 scale = Vector2(1.01265, 2.28665)
@@ -32,6 +263,7 @@ region_enabled = true
 region_rect = Rect2(272, 119, 32, 14)
 
 [node name="tv" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(10.6667, -23.1667)
 scale = Vector2(0.357142, 0.357142)
 texture = ExtResource("2_t6o66")
@@ -46,6 +278,7 @@ scale = Vector2(0.0437501, 0.0337038)
 texture = ExtResource("3_sptcb")
 
 [node name="bed" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(0.833333, -0.5)
 scale = Vector2(0.82, 1)
 metadata/_edit_group_ = true
@@ -62,6 +295,7 @@ position = Vector2(-11.3821, -11.75)
 shape = SubResource("RectangleShape2D_6b848")
 
 [node name="night_stand" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(5.5, -2)
 metadata/_edit_group_ = true
 
@@ -84,6 +318,7 @@ position = Vector2(-3.5, -16.9167)
 shape = SubResource("RectangleShape2D_75qku")
 
 [node name="Desk" type="Node2D" parent="."]
+visible = false
 position = Vector2(10.3333, 1)
 
 [node name="chair" type="Sprite2D" parent="Desk"]
@@ -109,6 +344,7 @@ position = Vector2(8.41667, -15.6667)
 shape = SubResource("RectangleShape2D_ua7gp")
 
 [node name="Couch" type="Area2D" parent="."]
+visible = false
 position = Vector2(-0.833333, 0)
 metadata/_edit_group_ = true
 
