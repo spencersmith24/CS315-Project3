@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=30 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://sca2b0pp36yq" path="res://Scenes/Scenes/room.tscn" id="9_pf681"]
 [ext_resource type="PackedScene" uid="uid://d2ghju81bxx1g" path="res://Scenes/Game Objects/stairs.tscn" id="10_3v67d"]
 [ext_resource type="PackedScene" uid="uid://dsp6yo6l0whd5" path="res://Scenes/Game Objects/arcade_machine.tscn" id="13_ng13y"]
+[ext_resource type="Texture2D" uid="uid://byt7wkoq0nvq7" path="res://Assets/2DMap/sierrassets furniture pack/furniture/furniture pack coloured outline.png" id="14_uxbaj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5wjv"]
 texture = ExtResource("3_2m3q7")
@@ -1523,8 +1524,71 @@ tile_set = SubResource("TileSet_sfe32")
 wait_time = 7.0
 one_shot = true
 
-[node name="Kitchen" parent="." instance=ExtResource("6_rjqyp")]
-position = Vector2(4.76837e-07, -360)
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Upgrade1" type="Node2D" parent="Decorations"]
+visible = false
+
+[node name="Painting1" type="Sprite2D" parent="Decorations/Upgrade1"]
+position = Vector2(0, -454.5)
+scale = Vector2(5, 4.5625)
+texture = ExtResource("14_uxbaj")
+region_enabled = true
+region_rect = Rect2(561, 204, 32, 16)
+
+[node name="Upgrade2" type="Node2D" parent="Decorations"]
+visible = false
+
+[node name="Painting2" type="Sprite2D" parent="Decorations/Upgrade2"]
+position = Vector2(-497, -443)
+scale = Vector2(3, 3)
+texture = ExtResource("14_uxbaj")
+region_enabled = true
+region_rect = Rect2(374, 256, 32, 32)
+
+[node name="Upgrade3" type="Node2D" parent="Decorations"]
+visible = false
+
+[node name="Painting3" type="Sprite2D" parent="Decorations/Upgrade3"]
+position = Vector2(532, -441)
+scale = Vector2(4, 4)
+texture = ExtResource("14_uxbaj")
+region_enabled = true
+region_rect = Rect2(510, 256, 16, 24)
+
+[node name="Painting4" type="Sprite2D" parent="Decorations/Upgrade3"]
+position = Vector2(434, -457)
+scale = Vector2(4, 4)
+texture = ExtResource("14_uxbaj")
+region_enabled = true
+region_rect = Rect2(408, 272, 32, 16)
+
+[node name="Upgrade4" type="Node2D" parent="Decorations"]
+visible = false
+
+[node name="Bench" type="Sprite2D" parent="Decorations/Upgrade4"]
+position = Vector2(-473, -280)
+scale = Vector2(6, 6)
+texture = ExtResource("14_uxbaj")
+region_enabled = true
+region_rect = Rect2(358, 109, 14, 9)
+
+[node name="Piano" type="Sprite2D" parent="Decorations/Upgrade4"]
+position = Vector2(-473, -355)
+scale = Vector2(6, 6)
+texture = ExtResource("14_uxbaj")
+region_enabled = true
+region_rect = Rect2(323, 21, 32, 25)
+
+[node name="Upgrade5" type="Node2D" parent="Decorations"]
+visible = false
+
+[node name="Painting5" type="Sprite2D" parent="Decorations/Upgrade5"]
+position = Vector2(262, -427)
+scale = Vector2(4, 4)
+texture = ExtResource("14_uxbaj")
+region_enabled = true
+region_rect = Rect2(476, 256, 32, 32)
 
 [node name="Tables" type="Node2D" parent="."]
 
@@ -1585,6 +1649,9 @@ navigation_polygon = SubResource("NavigationPolygon_po60y")
 navigation_polygon = SubResource("NavigationPolygon_pfxy4")
 use_edge_connections = false
 navigation_layers = 2
+
+[node name="Kitchen" parent="." instance=ExtResource("6_rjqyp")]
+position = Vector2(4.76837e-07, -360)
 
 [node name="ArcadeMachine" parent="." instance=ExtResource("13_ng13y")]
 position = Vector2(-316, -380)

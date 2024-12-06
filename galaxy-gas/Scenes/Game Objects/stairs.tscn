@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://byt7wkoq0nvq7" path="res://Assets/2DMap/sierrassets furniture pack/furniture/furniture pack coloured outline.png" id="1_tkbkh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdgp0"]
-size = Vector2(18, 18)
+size = Vector2(12, 18)
 
 [node name="Stairs" type="Area2D"]
 scale = Vector2(8, 6)
@@ -17,4 +17,5 @@ region_enabled = true
 region_rect = Rect2(578, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_xdgp0")
