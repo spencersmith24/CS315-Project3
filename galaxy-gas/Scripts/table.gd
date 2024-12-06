@@ -15,6 +15,7 @@ func buy_table():
 	visible = true
 	is_bought = true
 	$"../..".max_customers += 2
+	check_ambience()
 
 func upgrade_table():
 	for chair in small_chairs:
@@ -29,6 +30,7 @@ func upgrade_table():
 	
 	is_upgraded = true
 	root.max_customers += 2
+	check_ambience()
 	
 	await get_tree().create_timer(2).timeout
 
