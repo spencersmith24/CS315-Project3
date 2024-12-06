@@ -123,3 +123,16 @@ func upgrade_marketing():
 func upgrade_ambience():
 	ambience_level += 1
 	stay_time *= stay_time_multiplier
+	check_ambience()
+
+func check_ambience():
+	if ambience_level > 0:
+		$Decorations/Upgrade1.visible = true
+	if ambience_level > 1:
+		$Decorations/Upgrade2.visible = true
+	if ambience_level > 2:
+		$Decorations/Upgrade3.visible = true
+	if ambience_level > 3:
+		$Decorations/Upgrade4.visible = true
+	if ambience_level > 4:
+		$Decorations/Upgrade5.visible = true

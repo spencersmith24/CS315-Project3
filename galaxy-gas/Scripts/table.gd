@@ -5,8 +5,10 @@ var is_bought = false
 
 @onready var small_chairs = $Small/Chairs.get_children()
 @onready var big_chairs = $Large/topChairs.get_children() + ($Large/botChairs.get_children())
+@onready var root = $"../.."
 
-#var is_upgrading = false
+func _process(delta: float) -> void:
+	check_ambience()
 
 func buy_table():
 	self.process_mode = Node.PROCESS_MODE_INHERIT
@@ -15,7 +17,6 @@ func buy_table():
 	$"../..".max_customers += 2
 
 func upgrade_table():
-
 	for chair in small_chairs:
 		if chair.is_taken:
 			chair.customer_at_chair.leave()
@@ -27,7 +28,7 @@ func upgrade_table():
 	$Large.visible = true
 	
 	is_upgraded = true
-	$"../..".max_customers += 2
+	root.max_customers += 2
 	
 	await get_tree().create_timer(2).timeout
 
@@ -42,3 +43,10 @@ func is_full():
 			if not chair.is_taken:
 				return false
 		return true
+
+func check_ambience():
+	if root.ambience_level == 1:
+		$Decorations/Plant1.visible = true
+	elif root.ambience_level == 3:
+		$Decorations/Plant1.visible = false
+		$Decorations/Plant2.visible = true
