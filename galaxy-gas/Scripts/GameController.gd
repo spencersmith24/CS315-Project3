@@ -22,7 +22,7 @@ var customers = [
 @onready var GAME_SHOP := $Camera2D/UI/Shop
 
 # Upgrades
-@export var max_customers: int = 8
+@export var max_customers: int = 12
 @export var inn_capacity = 4
 @export var stay_chance: float = 2.5
 @export var inn_time_multiplier: float = 2
@@ -46,7 +46,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	money_amt = Globals.money_amt
-	MONEY_LABEL.text = str(money_amt)
+	MONEY_LABEL.text = "$" + str(money_amt)
 	
 	$CustomerSpawnTimer.wait_time = spawn_rate
 	

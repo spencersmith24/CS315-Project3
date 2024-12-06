@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=29 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://gbflfnla4obk" path="res://Scenes/Scenes/sounds_player.tscn" id="8_s24q1"]
 [ext_resource type="PackedScene" uid="uid://sca2b0pp36yq" path="res://Scenes/Scenes/room.tscn" id="9_pf681"]
 [ext_resource type="PackedScene" uid="uid://d2ghju81bxx1g" path="res://Scenes/Game Objects/stairs.tscn" id="10_3v67d"]
+[ext_resource type="PackedScene" uid="uid://dsp6yo6l0whd5" path="res://Scenes/Game Objects/arcade_machine.tscn" id="13_ng13y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5wjv"]
 texture = ExtResource("3_2m3q7")
@@ -1390,9 +1391,95 @@ vertices = PackedVector2Array(165.57, -202, 189.562, 365.891, -187.789, 362.102,
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-198, 372, -184, -328, 560, -328, 560, -192, 176, -192, 200, 376)])
 
+[sub_resource type="Animation" id="Animation_oib2g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-316, -380)]
+}
+
+[sub_resource type="Animation" id="Animation_ltv7j"]
+resource_name = "jiggle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-316, -380), Vector2(-321, -380), Vector2(-311, -380), Vector2(-313.5, -380), Vector2(-318.5, -380), Vector2(-316, -380)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oesf4"]
+_data = {
+"RESET": SubResource("Animation_oib2g"),
+"jiggle": SubResource("Animation_ltv7j")
+}
+
 [node name="Main2D" type="Node2D"]
 script = ExtResource("1_3loeq")
 stay_chance = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+
+[node name="UI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 1
+metadata/_edit_lock_ = true
+
+[node name="ShopBtn" type="Button" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 929.0
+offset_right = 2208.0
+offset_bottom = 1619.0
+scale = Vector2(0.17, 0.17)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_rguq6")
+theme_override_font_sizes/font_size = 500
+text = "SHOP"
+
+[node name="Money" type="Label" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 1425.0
+offset_top = -16.0
+offset_right = 1920.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("4_rguq6")
+theme_override_font_sizes/font_size = 136
+text = "00000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ChangeFloors" type="Button" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 1702.0
+offset_top = 857.0
+offset_right = 1815.0
+offset_bottom = 888.0
+text = "change floors"
+
+[node name="Shop" parent="Camera2D/UI" instance=ExtResource("5_nsurp")]
+visible = false
+layout_mode = 1
 
 [node name="Background" type="Node2D" parent="."]
 scale = Vector2(3, 3)
@@ -1486,57 +1573,6 @@ position = Vector2(518, -294)
 
 [node name="SoundsPlayer" parent="." instance=ExtResource("8_s24q1")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="UI" type="Control" parent="Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
-metadata/_edit_lock_ = true
-
-[node name="ShopBtn" type="Button" parent="Camera2D/UI"]
-layout_mode = 0
-offset_left = 848.0
-offset_top = 929.0
-offset_right = 2208.0
-offset_bottom = 1619.0
-scale = Vector2(0.17, 0.17)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_rguq6")
-theme_override_font_sizes/font_size = 500
-text = "SHOP"
-
-[node name="Money" type="Label" parent="Camera2D/UI"]
-layout_mode = 0
-offset_left = 1425.0
-offset_top = -16.0
-offset_right = 1920.0
-offset_bottom = 170.0
-theme_override_fonts/font = ExtResource("4_rguq6")
-theme_override_font_sizes/font_size = 136
-text = "00000"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="ChangeFloors" type="Button" parent="Camera2D/UI"]
-layout_mode = 0
-offset_left = 1702.0
-offset_top = 857.0
-offset_right = 1815.0
-offset_bottom = 888.0
-text = "change floors"
-
-[node name="Shop" parent="Camera2D/UI" instance=ExtResource("5_nsurp")]
-visible = false
-layout_mode = 1
-offset_left = 25.0
-offset_top = -5.0
-offset_right = 25.0
-offset_bottom = -5.0
-
 [node name="Pathfinding" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
@@ -1550,7 +1586,15 @@ navigation_polygon = SubResource("NavigationPolygon_pfxy4")
 use_edge_connections = false
 navigation_layers = 2
 
-[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
-[connection signal="body_entered" from="Stairs" to="." method="_on_stairs_body_entered"]
+[node name="ArcadeMachine" parent="." instance=ExtResource("13_ng13y")]
+position = Vector2(-316, -380)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ArcadeMachine"]
+libraries = {
+"": SubResource("AnimationLibrary_oesf4")
+}
+
 [connection signal="pressed" from="Camera2D/UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="pressed" from="Camera2D/UI/ChangeFloors" to="." method="_on_change_floors_pressed"]
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
+[connection signal="body_entered" from="Stairs" to="." method="_on_stairs_body_entered"]
