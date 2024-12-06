@@ -343,5 +343,5 @@ text = "Leave"
 [connection signal="pressed" from="Upgrades/RoomsButton/RoomsButton" to="." method="_on_rooms_button_pressed"]
 [connection signal="pressed" from="Upgrades/MarketingButton/MarketingButton" to="." method="_on_marketing_button_pressed"]
 [connection signal="pressed" from="Upgrades/AmbienceButton/AmbienceButton" to="." method="_on_ambience_button_pressed"]
-[connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]

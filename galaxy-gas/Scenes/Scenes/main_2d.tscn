@@ -1442,16 +1442,22 @@ position = Vector2(4.76837e-07, -360)
 [node name="Tables" type="Node2D" parent="."]
 
 [node name="Table1" parent="Tables" instance=ExtResource("5_ythxb")]
-position = Vector2(-360, -96)
+position = Vector2(-360, -152)
 
 [node name="Table2" parent="Tables" instance=ExtResource("5_ythxb")]
-position = Vector2(-360, 144)
+position = Vector2(-360, 55)
 
 [node name="Table3" parent="Tables" instance=ExtResource("5_ythxb")]
-position = Vector2(360, 144)
+position = Vector2(-360, 269)
 
 [node name="Table4" parent="Tables" instance=ExtResource("5_ythxb")]
-position = Vector2(360, -96)
+position = Vector2(360, -152)
+
+[node name="Table5" parent="Tables" instance=ExtResource("5_ythxb")]
+position = Vector2(360, 55)
+
+[node name="Table6" parent="Tables" instance=ExtResource("5_ythxb")]
+position = Vector2(360, 269)
 
 [node name="Rooms" type="Node2D" parent="."]
 position = Vector2(50, -550)
