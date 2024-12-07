@@ -47,7 +47,7 @@ func _ready() -> void:
 	$Stats/Ambience.text = "Ambience: " + str(root_node.ambience_level)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_exit_shop_btn_pressed() -> void:

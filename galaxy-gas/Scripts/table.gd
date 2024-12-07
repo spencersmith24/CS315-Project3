@@ -7,7 +7,7 @@ var is_bought = false
 @onready var big_chairs = $Large/topChairs.get_children() + ($Large/botChairs.get_children())
 @onready var root = $"../.."
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	check_ambience()
 
 func buy_table():
