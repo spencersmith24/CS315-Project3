@@ -27,7 +27,7 @@ var money_multiplier = rng.randf_range(1.0, 1.5)
 var chair
 var room
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	money_amt = Globals.money_amt
 	customers_in_store = Globals.customers_in_store
 
@@ -126,10 +126,12 @@ func find_chair():
 					break
 
 func find_room():
-	for bed_room in rooms:
-		if not bed_room.is_full():
-			bed_room.num_occupants += 1
-			room = bed_room
+	while not room:
+		for bed_room in rooms:
+			if not bed_room.is_full():
+				bed_room.num_occupants += 1
+				room = bed_room
+				break
 
 func sit_in_chair():
 	stand_still()
