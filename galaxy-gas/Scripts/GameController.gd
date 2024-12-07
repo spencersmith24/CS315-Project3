@@ -71,34 +71,34 @@ func _on_customer_spawn_timer_timeout() -> void:
 	
 func spawn_new_customer():
 	var new_customer = load(customers[randi_range(0, customers.size() - 1)]).instantiate()
-	if Globals.customers_staying.size() < inn_capacity:
+	
+	# Check if there's room for a new customer
+	var target_list = Globals.customers_staying if Globals.customers_staying.size() < inn_capacity else Globals.customers_in_store
+	if target_list == Globals.customers_staying:
 		var random_value = randf() * 100
 		if random_value < stay_chance or next_customer_needs_to_stay:
-			Globals.customers_staying.append(new_customer)
 			new_customer.staying = true
-
-			pass
-	else:
-		Globals.customers_in_store.append(new_customer)
+	
+	# Add the new customer to the right list
+	target_list.append(new_customer)
+	
 	new_customer.global_position = Vector2(0, 500)
 	new_customer.stay_time = stay_time
 	$Customers.add_child(new_customer)
-	if new_customer.staying == true:
+	
+	if new_customer.staying:
 		new_customer.find_room()
+
 
 # Change floors
 func _on_change_floors_pressed() -> void:
-	if $Camera2D.position.y == -1250:
-		$AnimationPlayer.play("move_downstairs")
-	else:
-		$AnimationPlayer.play("move_upstairs")
-
+	var animation = "move_downstairs" if $Camera2D.position.y == -1250 else "move_upstairs"
+	$AnimationPlayer.play(animation)
 
 func has_available_table():
 	for table in $Tables.get_children():
-		if table.is_bought:
-			if not table.is_full():
-				return true
+		if table.is_bought and not table.is_full():
+			return true
 	return false
 
 func has_available_room():
