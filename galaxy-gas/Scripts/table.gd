@@ -21,10 +21,9 @@ func upgrade_table():
 	for chair in small_chairs:
 		if chair.is_taken:
 			chair.customer_at_chair.leave()
-			
+	
 	$Small.process_mode = Node.PROCESS_MODE_DISABLED
 	$Small.visible = false
-	
 	$Large.process_mode = Node.PROCESS_MODE_INHERIT
 	$Large.visible = true
 	
@@ -35,16 +34,14 @@ func upgrade_table():
 	await get_tree().create_timer(2).timeout
 
 func is_full():
-	if not is_upgraded:
-		for chair in small_chairs:
-			if not chair.is_taken:
-				return false
-		return true
-	else:
-		for chair in big_chairs:
-			if not chair.is_taken:
-				return false
-		return true
+	var chairs = small_chairs if not is_upgraded else big_chairs
+	
+	for chair in chairs:
+		if not chair.is_taken:
+			return false
+	
+	return true
+
 
 func check_ambience():
 	if root.ambience_level > 0:
