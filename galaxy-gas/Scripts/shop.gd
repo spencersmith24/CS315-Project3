@@ -20,6 +20,7 @@ extends Control
 @export var ambience_upgrade_cost = 100
 @export var ambience_upgrade_cost_multiplier = 3
 
+var has_all_tables = false
 var tables_bought = 1
 
 var tables_upgraded = 0
@@ -71,7 +72,7 @@ func toggle_shop():
 		process_mode = PROCESS_MODE_INHERIT
 
 func _on_tables_button_pressed():
-	if Globals.money_amt >= new_table_cost:
+	if Globals.money_amt >= new_table_cost and not has_all_tables:
 		for table in tables:
 			if table.is_bought == false:
 				table.buy_table()
@@ -83,8 +84,9 @@ func _on_tables_button_pressed():
 				$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(new_table_cost)
 				if tables_bought == 6:
 					$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(table_upgrade_cost)
+					has_all_tables = true
 				return
-	
+	else:
 		Globals.money_amt -= table_upgrade_cost
 		table_upgrade_cost *= table_upgrade_cost_multiplier
 		table_upgrade_cost = int(table_upgrade_cost + .5)

@@ -47,8 +47,8 @@ func is_full():
 		return true
 
 func check_ambience():
-	if root.ambience_level == 1:
+	if root.ambience_level > 0:
 		$Decorations/Plant1.visible = true
-	elif root.ambience_level == 3:
+	elif root.ambience_level > 2:
 		$Decorations/Plant1.visible = false
 		$Decorations/Plant2.visible = true
