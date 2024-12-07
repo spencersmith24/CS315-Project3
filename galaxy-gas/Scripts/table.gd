@@ -15,7 +15,6 @@ func buy_table():
 	visible = true
 	is_bought = true
 	$"../..".max_customers += 2
-	check_ambience()
 
 func upgrade_table():
 	for chair in small_chairs:
@@ -29,7 +28,6 @@ func upgrade_table():
 	
 	is_upgraded = true
 	root.max_customers += 2
-	check_ambience()
 	
 	await get_tree().create_timer(2).timeout
 
@@ -44,8 +42,8 @@ func is_full():
 
 
 func check_ambience():
-	if root.ambience_level > 0:
-		$Decorations/Plant1.visible = true
-	elif root.ambience_level > 2:
+	if root.ambience_level > 2:
 		$Decorations/Plant1.visible = false
 		$Decorations/Plant2.visible = true
+	if root.ambience_level > 0:
+		$Decorations/Plant1.visible = true
