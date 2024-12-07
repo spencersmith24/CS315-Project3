@@ -33,24 +33,16 @@ func _process(delta: float) -> void:
 
 # move characters around to find table to sit at
 func _physics_process(delta: float) -> void:
+	var direction = Vector2()
+	var target_position = chair.global_position if not staying else stairs.global_position
+	nav.set_target_position(target_position)
 	
-	if staying == false:
-		var direction = Vector2()
-		nav.set_target_position(chair.global_position)
+	direction = (nav.get_next_path_position() - global_position).normalized()
+	velocity = velocity.lerp(direction * speed, accel * delta)
 	
-		direction = (nav.get_next_path_position() - global_position).normalized()
-		velocity = velocity.lerp(direction * speed, accel * delta)
-	else:
-		var direction = Vector2()
-		nav.set_target_position(stairs.global_position)
-		
-		direction = (nav.get_next_path_position() - global_position).normalized()
-		velocity = velocity.lerp(direction * speed, accel * delta)
-		
-	if(velocity.x > 0):
-		$Sprite2D.scale.x = 5
-	elif (velocity.x < 0):
-		$Sprite2D.scale.x = -5
+	# flip sprite
+	$Sprite2D.scale.x = 5 if velocity.x > 0 else -5 if velocity.x < 0 else $Sprite2D.scale.x
+	
 	if abs(velocity.x) > 0 and abs(velocity.x) > abs(velocity.y):
 		anim_tree['parameters/conditions/walk_up'] = false
 		anim_tree['parameters/conditions/walk_down'] = false
@@ -67,23 +59,29 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _ready() -> void:
-	if staying == true:
+	if staying:
 		stay_time *= get_parent().get_parent().inn_time_multiplier
 		nav.set_navigation_layer_value(1, false)
 		nav.set_navigation_layer_value(2, true)
 	else:
 		find_chair()
+	
 	$InStoreTimer.wait_time = stay_time
 	$InStoreTimer.start()
 	
-# get money from customer, erase from customer list, queue free
+
+func stand_still():
+	speed = 0
+	velocity = Vector2(0,0)
+
 func _on_timer_timeout() -> void:
 	leave()
 
-# customer leaves and pays
+# get money from customer, erase from customer list, queue free
 func leave():
 	# set global money amount
 	Globals.money_amt += calc_money()
+	
 	if staying:
 		Globals.customers_staying.erase(self)
 		room.num_occupants -= 1
@@ -98,60 +96,43 @@ func leave():
 # calcs money (calc is short for calculates, it's slang)
 func calc_money() -> int:
 	var money = int(stay_time * money_multiplier + 0.5)
-	if stay_time > 25:
-		money = int(pow(stay_time, 1.1) * money_multiplier + 0.5)
-	elif stay_time > 30:
-		money = int(pow(stay_time, 1.2) * money_multiplier + 0.5)
+	
+	if stay_time > 55:
+		money = int(pow(stay_time, 1.6) * money_multiplier + 0.5)
 	elif stay_time > 35:
 		money = int(pow(stay_time, 1.4) * money_multiplier + 0.5)
-	elif stay_time > 55:
-		money = int(pow(stay_time, 1.6) * money_multiplier + 0.5)
+	elif stay_time > 30:
+		money = int(pow(stay_time, 1.2) * money_multiplier + 0.5)
+	elif stay_time > 25:
+		money = int(pow(stay_time, 1.1) * money_multiplier + 0.5)
+		
 	return money
+
 
 func find_chair():
 	var rand_table
 	while not chair:
 		rand_table = tables[rng.randi_range(0, tables.size() - 1)]
 		
-		if rand_table.is_bought:
-			# UN-UPGRADED TABLE
-			if not rand_table.is_upgraded:
-				if not rand_table.is_full():
-					for table_chair in rand_table.small_chairs:
-						if table_chair.is_taken == false:
-							chair = table_chair
-							chair.is_taken = true
-							chair.customer_at_chair = self
-							break
-				else:
-					continue
-			# UPGRADED TABLES
-			else:
-				if not rand_table.is_full():
-					for table_chair in rand_table.big_chairs:
-						if table_chair.is_taken == false:
-							chair = table_chair
-							chair.is_taken = true
-							chair.customer_at_chair = self
-							break
-				else:
-					continue
-		else:
-			continue
+		if rand_table.is_bought and not rand_table.is_full():
+			# decide which chairs are available
+			var chairs = rand_table.small_chairs if not rand_table.is_upgraded else rand_table.big_chairs
+			# find the chair
+			for table_chair in chairs:
+				if table_chair.is_taken == false:
+					chair = table_chair
+					chair.is_taken = true
+					chair.customer_at_chair = self
+					break
 
 func find_room():
-	while not room:
-		for bed_room in rooms:
-			if not bed_room.is_full():
-				bed_room.num_occupants += 1
-				room = bed_room
-				break
-			else:
-				continue
+	for bed_room in rooms:
+		if not bed_room.is_full():
+			bed_room.num_occupants += 1
+			room = bed_room
 
 func sit_in_chair():
-	speed = 0
-	velocity = Vector2(0,0)
+	stand_still()
 	position = chair.global_position
 	
 	# determine sitting position
