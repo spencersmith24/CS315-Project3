@@ -62,9 +62,11 @@ func toggle_shop():
 	# Set visibility
 	if visible:
 		visible = false
+		$"../ShopBtn".visible = true
 	else:
 		visible = true
-	
+		$"../ShopBtn".visible = false
+
 	# Set process mode
 	if process_mode == PROCESS_MODE_INHERIT:
 		process_mode = PROCESS_MODE_DISABLED
