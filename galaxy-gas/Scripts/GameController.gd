@@ -42,7 +42,6 @@ var next_customer_needs_to_stay = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Tables/Table1.is_bought = true
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -55,11 +54,10 @@ func _process(_delta: float) -> void:
 		next_customer_needs_to_stay = false
 		if $CustomerSpawnTimer.is_stopped():
 			$CustomerSpawnTimer.start()
-	else:
-		if has_available_room():
-			next_customer_needs_to_stay = true
-			if $CustomerSpawnTimer.is_stopped():
-				$CustomerSpawnTimer.start()
+	elif has_available_room():
+		next_customer_needs_to_stay = true
+		if $CustomerSpawnTimer.is_stopped():
+			$CustomerSpawnTimer.start()
 		
 # toggle shop
 func _on_shop_btn_pressed() -> void:
@@ -72,15 +70,14 @@ func _on_customer_spawn_timer_timeout() -> void:
 func spawn_new_customer():
 	var new_customer = load(customers[randi_range(0, customers.size() - 1)]).instantiate()
 	
-	# Check if there's room for a new customer
-	var target_list = Globals.customers_staying if Globals.customers_staying.size() < inn_capacity else Globals.customers_in_store
-	if target_list == Globals.customers_staying:
+	if Globals.customers_staying.size() < inn_capacity:
 		var random_value = randf() * 100
 		if random_value < stay_chance or next_customer_needs_to_stay:
+			Globals.customers_staying.append(new_customer)
 			new_customer.staying = true
-	
-	# Add the new customer to the right list
-	target_list.append(new_customer)
+			#pass
+	else:
+		Globals.customers_in_store.append(new_customer)
 	
 	new_customer.global_position = Vector2(0, 500)
 	new_customer.stay_time = stay_time
@@ -89,11 +86,11 @@ func spawn_new_customer():
 	if new_customer.staying:
 		new_customer.find_room()
 
-
 # Change floors
 func _on_change_floors_pressed() -> void:
 	var animation = "move_downstairs" if $Camera2D.position.y == -1250 else "move_upstairs"
 	$AnimationPlayer.play(animation)
+
 
 func has_available_table():
 	for table in $Tables.get_children():
@@ -109,7 +106,6 @@ func has_available_room():
 
 func _get_customer():
 	return customers[randi_range(0, customers.size() - 1)]
-
 
 func _on_stairs_body_entered(body):
 	if body.staying:
