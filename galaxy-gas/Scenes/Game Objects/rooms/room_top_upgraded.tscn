@@ -242,7 +242,7 @@ tile_map_data = PackedByteArray("AAD+////AAAAABMAAAD+/wAAAAAAABMAAAD+/wEAAAAAABM
 tile_set = SubResource("TileSet_554fr")
 
 [node name="Room_tiles2" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD/////AAAAABcAAAAAAAIAAAAEABYAAAACAP//AAACABcAAAAAAP//AAADABcAAAABAP//AAADABcAAAACAAEAAAAGABgAAAD//wEAAAAFABgAAAAAAAMAAAAHABEAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAAAABcAAAAAAAIAAAAEABYAAAACAP//AAACABcAAAAAAP//AAADABcAAAABAP//AAADABcAAAACAAEAAAAGABgAAAD//wEAAAAFABgAAAA=")
 tile_set = SubResource("TileSet_554fr")
 
 [node name="radio" type="Sprite2D" parent="."]
