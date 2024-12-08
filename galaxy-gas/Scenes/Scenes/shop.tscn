@@ -24,6 +24,7 @@ script = ExtResource("1_l6i5o")
 
 [node name="Map" type="Node2D" parent="."]
 scale = Vector2(5.27559, 5.27559)
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Map"]
 offset_left = -15.9224
@@ -359,17 +360,21 @@ offset_top = -3.0
 offset_right = 1668.0
 offset_bottom = 626.0
 scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
 text = "Chairs: 8"
 
 [node name="InnSpace" type="Label" parent="Stats"]
 layout_mode = 0
-offset_left = 267.0
+offset_left = 286.0
 offset_top = -3.0
-offset_right = 2611.0
+offset_right = 2630.0
 offset_bottom = 627.0
 scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
 text = "Inn Space: 4"
@@ -381,6 +386,8 @@ offset_top = -3.0
 offset_right = 2479.0
 offset_bottom = 627.0
 scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
 text = "Arcade: 1"
@@ -392,17 +399,21 @@ offset_top = 57.0
 offset_right = 2498.0
 offset_bottom = 636.0
 scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
-text = "Marketing: 1"
+text = "Marketing: 20"
 
 [node name="Ambience" type="Label" parent="Stats"]
 layout_mode = 0
-offset_left = 267.0
+offset_left = 286.0
 offset_top = 57.0
-offset_right = 2757.0
+offset_right = 2776.0
 offset_bottom = 727.0
 scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
 text = "Ambience: 1"
@@ -414,6 +425,8 @@ offset_top = 57.0
 offset_right = 2479.0
 offset_bottom = 727.0
 scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
 text = "Service: 1"

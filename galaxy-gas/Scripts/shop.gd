@@ -56,6 +56,10 @@ func _ready() -> void:
 	# ambience
 	$Upgrades/AmbienceButton/AmbienceButton/Price.text = "$" + str(ambience_upgrade_cost)
 	$Stats/Ambience.text = "Ambience: " + str(root_node.ambience_level)
+	
+	# service
+	$Upgrades/ServiceButton/ServiceButton/Price.text = "$" + str(service_upgrade_cost)
+	$Stats/Service.text = "Service: " + str(root_node.service_level)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -112,6 +116,7 @@ func _on_tables_button_pressed():
 		
 	if tables_upgraded >= tables.size():
 		$"Upgrades/TablesButton/TablesButton".disabled = true
+		$"Upgrades/TablesButton/TablesButton/Price".text = "MAX"
 
 	# upgrades rooms to hold two people instead of one
 func _on_rooms_button_pressed():
@@ -132,6 +137,7 @@ func _on_rooms_button_pressed():
 	
 	if rooms_upgraded >= rooms.size():
 		$"Upgrades/RoomsButton/RoomsButton".disabled = true
+		$"Upgrades/RoomsButton/RoomsButton/Price".text = "MAX"
 
 	# increases money earned per click of arcade
 func _on_arcade_button_pressed() -> void:
@@ -147,6 +153,7 @@ func _on_arcade_button_pressed() -> void:
 	
 	if root_node.arcade_level >= root_node.max_arcade_level:
 		$Upgrades/ArcadeButton/ArcadeButton.disabled = true
+		$Upgrades/ArcadeButton/ArcadeButton/Price.text = "MAX"
 
 # characteristics
 
@@ -164,6 +171,7 @@ func _on_marketing_button_pressed():
 	
 	if root_node.marketing_level >= root_node.max_marketing_level:
 		$Upgrades/MarketingButton/MarketingButton.disabled = true
+		$Upgrades/MarketingButton/MarketingButton/Price.text = "MAX"
 
 	# makes customers stay longer
 func _on_ambience_button_pressed():
@@ -179,6 +187,7 @@ func _on_ambience_button_pressed():
 	
 	if root_node.ambience_level >= root_node.max_ambience_level:
 		$Upgrades/AmbienceButton/AmbienceButton.disabled = true
+		$Upgrades/AmbienceButton/AmbienceButton/Price.text = "MAX"
 
 	# add multiplier to money earned from customer
 func _on_service_button_pressed() -> void:
@@ -194,6 +203,6 @@ func _on_service_button_pressed() -> void:
 	
 	if root_node.service_level >= root_node.max_service_level:
 		$Upgrades/ServiceButton/ServiceButton.disabled = true
-
+		$Upgrades/ServiceButton/ServiceButton/Price.text = "MAX"
 
 # employees
