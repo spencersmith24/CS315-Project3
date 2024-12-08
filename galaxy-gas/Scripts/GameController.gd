@@ -27,6 +27,11 @@ var customers = [
 @export var stay_chance: float = 2.5
 @export var inn_time_multiplier: float = 2
 
+@onready var arcade_machine := $ArcadeMachine/ArcadeMachine
+@export var arcade_level = 0
+@export var max_arcade_level = 3
+@export var arcade_click_value = 1
+
 @export var marketing_level = 0
 @export var max_marketing_level = 20
 @export var spawn_rate_multiplier: float = 0.9
@@ -111,6 +116,16 @@ func _on_stairs_body_entered(body):
 	if body.staying:
 		body.position = body.room.global_position
 		body.nav.set_target_position(body.room.position)
+
+# upgrades
+
+func upgrade_arcade():
+	arcade_level += 1
+	if arcade_level < max_arcade_level:
+		arcade_machine.click_value += 1
+	
+	if arcade_level == max_arcade_level:
+		arcade_machine.automate()
 
 func upgrade_marketing():
 	marketing_level += 1

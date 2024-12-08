@@ -13,6 +13,9 @@ extends Control
 @export var inn_capacity_upgrade_cost = 500
 @export var inn_capacity_upgrade_cost_multiplier = 2.0
 
+@export var arcade_upgrade_cost = 200
+@export var arcade_upgrade_cost_increase = 100
+
 @export var marketing_upgrade_cost = 50
 @export var marketing_upgrade_cost_multiplier = 1.5
 
@@ -37,7 +40,12 @@ func _ready() -> void:
 	# inn
 	$"Upgrades/RoomsButton/RoomsButton/Price".text = "$" + str(inn_capacity_upgrade_cost)
 	$Stats/InnSpace.text = "Inn Space: " + str(root_node.inn_capacity)
-
+	
+	# arcade
+	$Upgrades/ArcadeButton/ArcadeButton/Price.text = "$" + str(arcade_upgrade_cost)
+	$Stats/Arcade.text = "Arcade: " + str(root_node.ambience_level)
+	
+	
 	# marketing
 	$Upgrades/MarketingButton/MarketingButton/Price.text = "$" + str(marketing_upgrade_cost)
 	$Stats/Marketing.text = "Marketing: " + str(root_node.marketing_level)
@@ -63,6 +71,8 @@ func toggle_shop():
 
 
 # UPGRADE BUTTONS
+
+# building
 func _on_tables_button_pressed():
 	if Globals.money_amt < new_table_cost and not has_all_tables:
 		return
@@ -119,7 +129,21 @@ func _on_rooms_button_pressed():
 	if rooms_upgraded >= rooms.size():
 		$"Upgrades/RoomsButton/RoomsButton".disabled = true
 
+func _on_arcade_button_pressed() -> void:
+	if Globals.money_amt < arcade_upgrade_cost:
+		return
+	
+	Globals.money_amt -= arcade_upgrade_cost
+	arcade_upgrade_cost += arcade_upgrade_cost_increase
+	
+	$Upgrades/ArcadeButton/ArcadeButton/Price.text = "$" + str(arcade_upgrade_cost)
+	root_node.upgrade_arcade()
+	$Stats/Arcade.text = "Arcade: " + str(root_node.ambience_level)
+	
+	if root_node.arcade_level >= root_node.max_arcade_level:
+		$Upgrades/ArcadeButton/ArcadeButton.disabled = true
 
+# characteristics
 
 func _on_marketing_button_pressed():
 	if Globals.money_amt < marketing_upgrade_cost:
@@ -148,3 +172,6 @@ func _on_ambience_button_pressed():
 	
 	if root_node.ambience_level >= root_node.max_ambience_level:
 		$Upgrades/AmbienceButton/AmbienceButton.disabled = true
+
+
+# employees

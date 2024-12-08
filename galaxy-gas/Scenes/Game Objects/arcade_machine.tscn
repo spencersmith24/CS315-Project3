@@ -18,4 +18,8 @@ region_rect = Rect2(51, 188, 16, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d3fuo")
 
+[node name="AutoTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="AutoTimer" to="." method="_on_auto_timer_timeout"]

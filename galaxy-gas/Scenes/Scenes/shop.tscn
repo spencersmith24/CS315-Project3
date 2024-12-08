@@ -148,6 +148,52 @@ text = "$500"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ArcadeButton" type="Control" parent="Upgrades"]
+anchors_preset = 0
+offset_left = 27.0
+offset_top = 533.0
+offset_right = 142.0
+offset_bottom = 648.0
+
+[node name="ArcadeButton" type="Button" parent="Upgrades/ArcadeButton"]
+layout_mode = 0
+offset_right = 1541.0
+offset_bottom = 1620.0
+scale = Vector2(0.074, 0.071)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 225
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwcwu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
+
+[node name="Item" type="Label" parent="Upgrades/ArcadeButton/ArcadeButton"]
+layout_mode = 0
+offset_top = 183.099
+offset_right = 1270.0
+offset_bottom = 742.099
+scale = Vector2(1.22, 1.22)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 460
+text = "Arcade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="Upgrades/ArcadeButton/ArcadeButton"]
+layout_mode = 0
+offset_top = 915.493
+offset_right = 1270.0
+offset_bottom = 1474.49
+scale = Vector2(1.22, 1.22)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 460
+text = "$200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MarketingButton" type="Control" parent="Upgrades"]
 anchors_preset = 0
 offset_left = 323.0
@@ -273,21 +319,32 @@ text = "Chairs: 8"
 
 [node name="InnSpace" type="Label" parent="Stats"]
 layout_mode = 0
-offset_left = 8.00006
-offset_top = 57.0001
-offset_right = 2352.0
-offset_bottom = 687.0
+offset_left = 267.0
+offset_top = -3.0
+offset_right = 2611.0
+offset_bottom = 627.0
 scale = Vector2(0.1, 0.1)
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
 text = "Inn Space: 4"
 
+[node name="Arcade" type="Label" parent="Stats"]
+layout_mode = 0
+offset_left = 559.0
+offset_top = -3.0
+offset_right = 2903.0
+offset_bottom = 627.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 500
+text = "Arcade: 1"
+
 [node name="Marketing" type="Label" parent="Stats"]
 layout_mode = 0
-offset_left = 255.0
-offset_top = -5.0
-offset_right = 2745.0
-offset_bottom = 574.0
+offset_left = 8.0
+offset_top = 57.0
+offset_right = 2498.0
+offset_bottom = 636.0
 scale = Vector2(0.1, 0.1)
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 500
@@ -295,9 +352,9 @@ text = "Marketing: 1"
 
 [node name="Ambience" type="Label" parent="Stats"]
 layout_mode = 0
-offset_left = 255.0
-offset_top = 57.0001
-offset_right = 2745.0
+offset_left = 267.0
+offset_top = 57.0
+offset_right = 2757.0
 offset_bottom = 727.0
 scale = Vector2(0.1, 0.1)
 theme_override_fonts/font = ExtResource("4_3ntsc")
@@ -324,6 +381,7 @@ text = "Leave"
 
 [connection signal="pressed" from="Upgrades/TablesButton/TablesButton" to="." method="_on_tables_button_pressed"]
 [connection signal="pressed" from="Upgrades/RoomsButton/RoomsButton" to="." method="_on_rooms_button_pressed"]
+[connection signal="pressed" from="Upgrades/ArcadeButton/ArcadeButton" to="." method="_on_arcade_button_pressed"]
 [connection signal="pressed" from="Upgrades/MarketingButton/MarketingButton" to="." method="_on_marketing_button_pressed"]
 [connection signal="pressed" from="Upgrades/AmbienceButton/AmbienceButton" to="." method="_on_ambience_button_pressed"]
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
