@@ -10,3 +10,6 @@ Font:
 
 Character sprites:
 	- https://the-pixel-nook.itch.io/retro-rpg-character-pack
+
+Coin:
+	- https://gabriel-ceppas.itch.io/coin
