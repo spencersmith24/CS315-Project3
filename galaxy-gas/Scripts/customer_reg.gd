@@ -80,7 +80,7 @@ func _on_timer_timeout() -> void:
 # get money from customer, erase from customer list, queue free
 func leave():
 	# set global money amount
-	Globals.money_amt += calc_money()
+	get_parent().get_parent().get_node("CoinSpawner").spawn_coin(self, calc_money())
 	
 	if staying:
 		Globals.customers_staying.erase(self)
