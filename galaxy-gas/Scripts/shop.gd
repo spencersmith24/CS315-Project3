@@ -22,6 +22,9 @@ extends Control
 @export var ambience_upgrade_cost = 100
 @export var ambience_upgrade_cost_multiplier = 3
 
+@export var service_upgrade_cost = 250
+@export var service_upgrade_cost_multiplier = 1.5
+
 var has_all_tables = false
 var tables_bought = 1
 
@@ -73,6 +76,7 @@ func toggle_shop():
 # UPGRADE BUTTONS
 
 # building
+	# upgrades number of tables, then number of chairs per table
 func _on_tables_button_pressed():
 	if Globals.money_amt < new_table_cost and not has_all_tables:
 		return
@@ -109,7 +113,7 @@ func _on_tables_button_pressed():
 	if tables_upgraded >= tables.size():
 		$"Upgrades/TablesButton/TablesButton".disabled = true
 
-
+	# upgrades rooms to hold two people instead of one
 func _on_rooms_button_pressed():
 	if Globals.money_amt < inn_capacity_upgrade_cost:
 		return
@@ -129,6 +133,7 @@ func _on_rooms_button_pressed():
 	if rooms_upgraded >= rooms.size():
 		$"Upgrades/RoomsButton/RoomsButton".disabled = true
 
+	# increases money earned per click of arcade
 func _on_arcade_button_pressed() -> void:
 	if Globals.money_amt < arcade_upgrade_cost:
 		return
@@ -138,13 +143,14 @@ func _on_arcade_button_pressed() -> void:
 	
 	$Upgrades/ArcadeButton/ArcadeButton/Price.text = "$" + str(arcade_upgrade_cost)
 	root_node.upgrade_arcade()
-	$Stats/Arcade.text = "Arcade: " + str(root_node.ambience_level)
+	$Stats/Arcade.text = "Arcade: " + str(root_node.arcade_level)
 	
 	if root_node.arcade_level >= root_node.max_arcade_level:
 		$Upgrades/ArcadeButton/ArcadeButton.disabled = true
 
 # characteristics
 
+	# increase customer spawn rate
 func _on_marketing_button_pressed():
 	if Globals.money_amt < marketing_upgrade_cost:
 		return
@@ -159,6 +165,7 @@ func _on_marketing_button_pressed():
 	if root_node.marketing_level >= root_node.max_marketing_level:
 		$Upgrades/MarketingButton/MarketingButton.disabled = true
 
+	# makes customers stay longer
 func _on_ambience_button_pressed():
 	if Globals.money_amt < ambience_upgrade_cost:
 		return
@@ -172,6 +179,21 @@ func _on_ambience_button_pressed():
 	
 	if root_node.ambience_level >= root_node.max_ambience_level:
 		$Upgrades/AmbienceButton/AmbienceButton.disabled = true
+
+	# add multiplier to money earned from customer
+func _on_service_button_pressed() -> void:
+	if Globals.money_amt < service_upgrade_cost:
+		return
+	
+	Globals.money_amt -= service_upgrade_cost
+	service_upgrade_cost = int(service_upgrade_cost * service_upgrade_cost_multiplier + .5)
+	
+	$Upgrades/ServiceButton/ServiceButton/Price.text = "$" + str(service_upgrade_cost)
+	root_node.upgrade_service()
+	$Stats/Service.text = "Service: " + str(root_node.service_level)
+	
+	if root_node.service_level >= root_node.max_service_level:
+		$Upgrades/ServiceButton/ServiceButton.disabled = true
 
 
 # employees

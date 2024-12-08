@@ -42,6 +42,9 @@ var customers = [
 @export var stay_time_multiplier: float = 1.25
 var stay_time = rng.randf_range(10.0, 25.0)
 
+@export var service_level = 1
+@export var max_service_level = 3
+
 var next_customer_needs_to_stay = false
 
 # Called when the node enters the scene tree for the first time.
@@ -135,6 +138,9 @@ func upgrade_ambience():
 	ambience_level += 1
 	stay_time *= stay_time_multiplier
 	check_ambience()
+
+func upgrade_service():
+	service_level += 1
 
 func check_ambience():
 	if ambience_level > 0:

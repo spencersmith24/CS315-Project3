@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var root_node = get_parent().get_parent()
+
 var rng = RandomNumberGenerator.new()
 
 var customers_in_store
@@ -106,7 +108,7 @@ func calc_money() -> int:
 	elif stay_time > 25:
 		money = int(pow(stay_time, 1.1) * money_multiplier + 0.5)
 		
-	return money
+	return money * root_node.service_level
 
 
 func find_chair():
