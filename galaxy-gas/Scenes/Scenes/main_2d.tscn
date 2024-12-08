@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=33 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://d2ghju81bxx1g" path="res://Scenes/Game Objects/stairs.tscn" id="10_3v67d"]
 [ext_resource type="PackedScene" uid="uid://dsp6yo6l0whd5" path="res://Scenes/Game Objects/arcade_machine.tscn" id="13_ng13y"]
 [ext_resource type="Texture2D" uid="uid://byt7wkoq0nvq7" path="res://Assets/2DMap/sierrassets furniture pack/furniture/furniture pack coloured outline.png" id="14_uxbaj"]
+[ext_resource type="Script" path="res://Scripts/coin_spawner.gd" id="15_1lv2p"]
+[ext_resource type="PackedScene" uid="uid://bmtwsmy0gjedo" path="res://Scenes/Game Objects/coin.tscn" id="16_tumnt"]
+[ext_resource type="PackedScene" uid="uid://bplncijkjxyie" path="res://Scenes/Game Objects/amount_label.tscn" id="17_08rps"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5wjv"]
 texture = ExtResource("3_2m3q7")
@@ -1666,10 +1669,18 @@ navigation_layers = 2
 [node name="Kitchen" parent="." instance=ExtResource("6_rjqyp")]
 position = Vector2(4.76837e-07, -360)
 
-[node name="ArcadeMachine" parent="." instance=ExtResource("13_ng13y")]
-position = Vector2(-316, -380)
+[node name="CoinSpawner" type="Node2D" parent="."]
+script = ExtResource("15_1lv2p")
+coin = ExtResource("16_tumnt")
+value_label = ExtResource("17_08rps")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ArcadeMachine"]
+[node name="ArcadeMachine" type="Node2D" parent="."]
+
+[node name="ArcadeMachine" parent="ArcadeMachine" instance=ExtResource("13_ng13y")]
+position = Vector2(-316, -380)
+label = ExtResource("17_08rps")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ArcadeMachine/ArcadeMachine"]
 libraries = {
 "": SubResource("AnimationLibrary_oesf4")
 }
