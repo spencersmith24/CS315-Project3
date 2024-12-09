@@ -10,13 +10,13 @@ extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
-var coins = []
+#var coins = []
 var searching = true
 var current_coin
 var rng = RandomNumberGenerator.new()
 
 func _process(_delta: float) -> void:
-	if not coins.is_empty():
+	if not Globals.coins.is_empty():
 		find_coin()
 
 # move characters around to find table to sit at
@@ -66,6 +66,6 @@ func reset_anim():
 
 func find_coin():
 	while searching:
-		for coin in coins:
+		for coin in Globals.coins:
 			searching = false
 			current_coin = coin

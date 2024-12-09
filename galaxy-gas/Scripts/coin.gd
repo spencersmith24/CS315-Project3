@@ -21,7 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func pick_up_coin():
 	# delete coin from waiter's list  
-	root_node.get_node("waiter").coins.erase(self)
+	Globals.coins.erase(self)
 
 	Globals.money_amt += worth	
 	get_parent().get_parent().show_label(amount_label)

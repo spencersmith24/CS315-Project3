@@ -12,7 +12,7 @@ func spawn_coin(customer, amount):
 	$Coins.add_child(new_coin)
 	
 	# send the coin list data to the waiter
-	$"../waiter".coins = $Coins.get_children()
+	Globals.coins = $Coins.get_children()
 	
 func show_label(label):
 	
