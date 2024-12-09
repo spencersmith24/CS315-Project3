@@ -139,6 +139,7 @@ func _on_rooms_button_pressed():
 	
 	Globals.money_amt -= inn_capacity_upgrade_cost
 	inn_capacity_upgrade_cost = int(inn_capacity_upgrade_cost * inn_capacity_upgrade_cost_multiplier + 0.5)
+	root_node.stay_chance *= 2
 	$"Upgrades/RoomsButton/RoomsButton/Price".text = "$" + str(inn_capacity_upgrade_cost)
 	
 	for room in rooms:

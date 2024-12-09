@@ -22,7 +22,7 @@ extends Node2D
 @export var ambience_level = 0
 @export var max_ambience_level = 5
 @export var stay_time_multiplier: float = 1.25
-var stay_time = rng.randf_range(10.0, 25.0)
+@onready var stay_time = rng.randf_range(10.0, 25.0)
 
 @export var service_level = 1
 @export var max_service_level = 3
