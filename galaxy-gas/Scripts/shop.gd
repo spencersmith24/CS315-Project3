@@ -7,7 +7,7 @@ extends Control
 # Upgrade variables
 @export var table_upgrade_cost = 2000
 @export var new_table_cost = 100
-@export var table_upgrade_cost_multiplier = 1.4
+@export var table_upgrade_cost_multiplier = 1.5
 @export var new_table_cost_multiplier = 2
 
 @export var inn_capacity_upgrade_cost = 500
@@ -19,7 +19,7 @@ extends Control
 @export var marketing_upgrade_cost = 50
 @export var marketing_upgrade_cost_multiplier = 1.5
 
-@export var ambience_upgrade_cost = 100
+@export var ambience_upgrade_cost = 150
 @export var ambience_upgrade_cost_multiplier = 3
 
 @export var service_upgrade_cost = 2500

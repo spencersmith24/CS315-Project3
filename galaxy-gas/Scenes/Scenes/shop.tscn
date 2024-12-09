@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://c8yg5cypdx77b"]
+[gd_scene load_steps=9 format=4 uid="uid://c8yg5cypdx77b"]
 
 [ext_resource type="Script" path="res://Scripts/shop.gd" id="1_l6i5o"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_oatsr"]
+[ext_resource type="PackedScene" uid="uid://bolrjdts822ao" path="res://Scenes/Game Objects/info_area.tscn" id="4_0rcgp"]
 [ext_resource type="FontFile" uid="uid://25duhsetl5g2" path="res://Assets/Fonts/munro.ttf" id="4_3ntsc"]
+[ext_resource type="PackedScene" uid="uid://dp53yu0ta6b7u" path="res://Scenes/Game Objects/info_box.tscn" id="5_eqms1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tadtk"]
 bg_color = Color(0.647059, 1, 0.631373, 1)
@@ -20,11 +22,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_l6i5o")
 
 [node name="Map" type="Node2D" parent="."]
 scale = Vector2(5.27559, 5.27559)
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Map"]
 offset_left = -15.9224
@@ -32,6 +36,7 @@ offset_top = -24.0731
 offset_right = -14.4224
 offset_bottom = -23.0731
 scale = Vector2(266.571, 266.951)
+mouse_filter = 1
 color = Color(0, 0, 0, 0.415686)
 
 [node name="TileMap" type="TileMapLayer" parent="Map"]
@@ -52,6 +57,7 @@ offset_right = 380.0
 offset_bottom = -297.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 
 [node name="TablesButton" type="Control" parent="Upgrades"]
 anchors_preset = 0
@@ -59,6 +65,7 @@ offset_left = 27.0
 offset_top = 27.0
 offset_right = 142.0
 offset_bottom = 142.0
+mouse_filter = 1
 
 [node name="TablesButton" type="Button" parent="Upgrades/TablesButton"]
 layout_mode = 0
@@ -484,6 +491,7 @@ offset_right = 381.0
 offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="Stats"]
 layout_mode = 0
@@ -593,6 +601,7 @@ offset_left = 496.0
 offset_top = 19.0
 offset_right = 1425.0
 offset_bottom = 102.0
+mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="Categories"]
 layout_mode = 0
@@ -646,6 +655,127 @@ theme_override_font_sizes/font_size = 300
 text = "Employees"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InfoAreas" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TablesInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(551, 191)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/TablesInfo")
+
+[node name="RoomsInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(551, 439)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/RoomsInfo")
+
+[node name="ArcadeInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(551, 710)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/ArcadeInfo")
+
+[node name="MarketingInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(845, 191)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/MarketingInfo")
+
+[node name="AmbienceInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(845, 439)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/AmbienceInfo")
+
+[node name="ServiceInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(845, 710)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/ServiceInfo")
+
+[node name="WaiterInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(1139, 191)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/WaiterInfo")
+
+[node name="BellboyInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(1139, 439)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/BellboyInfo")
+
+[node name="GamerInfo" parent="InfoAreas" node_paths=PackedStringArray("info_box") instance=ExtResource("4_0rcgp")]
+position = Vector2(1139, 710)
+scale = Vector2(0.055, 0.055)
+info_box = NodePath("../../InfoBoxes/GamerInfo")
+
+[node name="InfoBoxes" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TablesInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "More tables means more chairs, and more chairs means more customers!
+
+Buy more tables, then more chairs."
+
+[node name="RoomsInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "Upgraded rooms entice more people to stay!
+
+Higher chance that customers will stay and allows room to hold two people. "
+
+[node name="ArcadeInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "Higher quality arcade machine generates more money per play!
+
+Increase amount gained per click."
+
+[node name="MarketingInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "Plaster the world with advertisements!
+
+Increases the rate at which customers visit."
+
+[node name="AmbienceInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "Makes the place cozier!
+
+Increases customer stay time."
+
+[node name="ServiceInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "Better service means more money earned!
+
+Applies a multiplier to revenue."
+
+[node name="WaiterInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "Hire a waiter to automatically collect money from the first floor."
+
+[node name="BellboyInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "Hire a bellboy to automatically collect money from the second floor."
+
+[node name="GamerInfo" parent="InfoBoxes" instance=ExtResource("5_eqms1")]
+layout_mode = 1
+offset_right = -55.0
+offset_bottom = 792.0
+label_text = "This guy loves arcade games."
 
 [connection signal="pressed" from="Upgrades/TablesButton/TablesButton" to="." method="_on_tables_button_pressed"]
 [connection signal="pressed" from="Upgrades/RoomsButton/RoomsButton" to="." method="_on_rooms_button_pressed"]

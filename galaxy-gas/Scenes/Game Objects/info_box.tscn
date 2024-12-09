@@ -1,0 +1,138 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp53yu0ta6b7u"]
+
+[ext_resource type="Script" path="res://Scripts/info_box.gd" id="1_f5nsv"]
+[ext_resource type="FontFile" uid="uid://25duhsetl5g2" path="res://Assets/Fonts/munro.ttf" id="2_kade0"]
+[ext_resource type="Texture2D" uid="uid://bgmrtey5a8ocv" path="res://Assets/2DMap/sierrassets furniture pack/furniture/chalkboard.png" id="3_81yt1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6xff"]
+font = ExtResource("2_kade0")
+font_size = 50
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.607843)
+
+[sub_resource type="Animation" id="Animation_ojyki"]
+resource_name = "slide_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-475, 0), Vector2(22, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_btgex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-475, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wbvmy"]
+resource_name = "slide_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(22, 0), Vector2(-475, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ua4xc"]
+_data = {
+"RESET": SubResource("Animation_btgex"),
+"slide_in": SubResource("Animation_ojyki"),
+"slide_out": SubResource("Animation_wbvmy")
+}
+
+[node name="InfoBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -475.0
+offset_right = -1935.0
+offset_bottom = -248.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5nsv")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 460.0
+offset_bottom = 832.0
+texture = ExtResource("3_81yt1")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 24.0
+offset_right = 441.0
+offset_bottom = 804.0
+theme_override_fonts/font = ExtResource("2_kade0")
+theme_override_font_sizes/font_size = 50
+text = "This item does a thing"
+label_settings = SubResource("LabelSettings_s6xff")
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ua4xc")
+}

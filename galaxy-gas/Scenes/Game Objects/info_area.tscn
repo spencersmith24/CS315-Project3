@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bolrjdts822ao"]
+
+[ext_resource type="Script" path="res://Scripts/info_area.gd" id="1_52n3j"]
+[ext_resource type="Texture2D" uid="uid://b78sw3rvnlfrf" path="res://Assets/circle.png" id="1_g735j"]
+[ext_resource type="FontFile" uid="uid://25duhsetl5g2" path="res://Assets/Fonts/munro.ttf" id="2_udndy"]
+[ext_resource type="Texture2D" uid="uid://8c2dkwusqpid" path="res://Assets/white_circle.png" id="3_hyxwb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywgyq"]
+radius = 406.341
+
+[node name="InfoArea" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+priority = 1
+script = ExtResource("1_52n3j")
+
+[node name="Circle" type="Sprite2D" parent="."]
+scale = Vector2(0.976437, 0.976437)
+texture = ExtResource("1_g735j")
+
+[node name="Circle2" type="Sprite2D" parent="."]
+scale = Vector2(0.752871, 0.752871)
+texture = ExtResource("1_g735j")
+
+[node name="WhiteCircle" type="Sprite2D" parent="."]
+scale = Vector2(2.581, 2.581)
+texture = ExtResource("3_hyxwb")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -98.0
+offset_top = -300.0
+offset_right = 215.0
+offset_bottom = 595.0
+scale = Vector2(0.938294, 0.77829)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("2_udndy")
+theme_override_font_sizes/font_size = 705
+text = "?"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ywgyq")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
