@@ -7,6 +7,7 @@ extends Node2D
 
 var amount_label
 var upstairs = false
+var multiplier = 1
 
 func make_label(amount):
 	amount_label = label.instantiate()
@@ -16,19 +17,23 @@ func make_label(amount):
 func _on_mouse_entered() -> void:
 	pick_up_coin()
 
+# waiter/bellboy picks up money and takes a 25% cut
 func _on_body_entered(body: Node2D) -> void:
 	if body.scene_file_path == "res://Scenes/Game Objects/Characters/waiter.tscn" or body.scene_file_path == "res://Scenes/Game Objects/Characters/bellboy.tscn":
+		multiplier = 0.75
 		pick_up_coin()
 		body.searching = true
 
 func pick_up_coin():
+	make_label(int(worth * multiplier + 0.5))
+	
 	# delete coin from list  
 	if Globals.upstairs_coins.has(self):
 		Globals.upstairs_coins.erase(self)
 	else:
 		Globals.downstairs_coins.erase(self)
 	
-	Globals.money_amt += worth	
+	Globals.money_amt += int(worth * multiplier + 0.5)
 	get_parent().get_parent().show_label(amount_label)
 	
 	queue_free()

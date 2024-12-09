@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://byt7wkoq0nvq7" path="res://Assets/2DMap/sierrassets furniture pack/furniture/furniture pack coloured outline.png" id="14_uxbaj"]
 [ext_resource type="Script" path="res://Scripts/coin_spawner.gd" id="15_1lv2p"]
 [ext_resource type="PackedScene" uid="uid://bb36nghso22en" path="res://Scenes/Game Objects/coin.tscn" id="16_tumnt"]
-[ext_resource type="PackedScene" uid="uid://bplncijkjxyie" path="res://Scenes/Game Objects/amount_label.tscn" id="17_08rps"]
+[ext_resource type="PackedScene" uid="uid://bum1x4udetiqh" path="res://Scenes/Game Objects/amount_label.tscn" id="17_08rps"]
 [ext_resource type="PackedScene" uid="uid://be8idbua7slhb" path="res://Scenes/Game Objects/Characters/waiter.tscn" id="18_0ykwv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5wjv"]

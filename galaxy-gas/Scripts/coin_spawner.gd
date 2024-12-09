@@ -7,7 +7,7 @@ func spawn_coin(customer, amount):
 	var new_coin = coin.instantiate()
 	new_coin.worth = amount
 	new_coin.position = customer.global_position
-	new_coin.make_label(amount)
+	#new_coin.make_label(int(amount * new_coin.multiplier + 0.5))
 	if customer.staying:
 		new_coin.upstairs = true
 		Globals.upstairs_coins.append(new_coin)
