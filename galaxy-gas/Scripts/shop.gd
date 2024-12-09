@@ -25,7 +25,9 @@ extends Control
 @export var service_upgrade_cost = 250
 @export var service_upgrade_cost_multiplier = 1.5
 
-@export var waiter_upgrade_cost = 2500
+@export var waiter_upgrade_cost = 3000
+
+@export var bellboy_upgrade_cost = 2500
 
 var has_all_tables = false
 var tables_bought = 1
@@ -62,6 +64,14 @@ func _ready() -> void:
 	# service
 	$Upgrades/ServiceButton/ServiceButton/Price.text = "$" + str(service_upgrade_cost)
 	$Stats/Service.text = "Service: " + str(root_node.service_level)
+	
+	# waiter
+	$Upgrades/WaiterButton/WaiterButton/Price.text = "$" + str(waiter_upgrade_cost)
+	
+	# bellboy
+	$Upgrades/BellboyButton/BellboyButton/Price.text = "$" + str(bellboy_upgrade_cost)
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -219,3 +229,14 @@ func _on_waiter_button_pressed() -> void:
 	root_node.upgrade_waiter()
 	$Upgrades/WaiterButton/WaiterButton.disabled = true
 	$Upgrades/WaiterButton/WaiterButton/Price.text = "MAX"
+
+
+func _on_bellboy_button_pressed() -> void:
+	if Globals.money_amt < bellboy_upgrade_cost:
+		return
+	
+	Globals.money_amt -= bellboy_upgrade_cost
+	
+	root_node.upgrade_bellboy()
+	$Upgrades/BellboyButton/BellboyButton.disabled = true
+	$Upgrades/BellboyButton/BellboyButton/Price.text = "MAX"

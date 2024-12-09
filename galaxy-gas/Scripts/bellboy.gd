@@ -9,14 +9,13 @@ extends CharacterBody2D
 @onready var anim_player = $AnimationPlayer
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
+@onready var starting_pos = global_position
 
-#var coins = []
 var searching = true
 var current_coin
-var rng = RandomNumberGenerator.new()
 
 func _process(_delta: float) -> void:
-	if not Globals.downstairs_coins.is_empty():
+	if not Globals.upstairs_coins.is_empty():
 		find_coin()
 
 # move characters around to find table to sit at
@@ -28,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		print(current_coin)
 		target_position = current_coin.global_position
 	else:
-		target_position = $"../Kitchen".global_position
+		target_position = starting_pos
 		searching = true
 	nav.set_target_position(target_position)
 	
@@ -67,6 +66,6 @@ func reset_anim():
 
 func find_coin():
 	while searching:
-		for coin in Globals.downstairs_coins:
+		for coin in Globals.upstairs_coins:
 			searching = false
 			current_coin = coin

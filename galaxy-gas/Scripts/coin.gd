@@ -17,8 +17,9 @@ func _on_mouse_entered() -> void:
 	pick_up_coin()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.scene_file_path == "res://Scenes/Game Objects/Characters/waiter.tscn":
+	if body.scene_file_path == "res://Scenes/Game Objects/Characters/waiter.tscn" or body.scene_file_path == "res://Scenes/Game Objects/Characters/bellboy.tscn":
 		pick_up_coin()
+		body.searching = true
 
 func pick_up_coin():
 	# delete coin from list  
@@ -30,6 +31,4 @@ func pick_up_coin():
 	Globals.money_amt += worth	
 	get_parent().get_parent().show_label(amount_label)
 	
-	# send him searching
-	root_node.get_node("waiter").searching = true
 	queue_free()

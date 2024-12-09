@@ -46,6 +46,7 @@ var stay_time = rng.randf_range(10.0, 25.0)
 @export var max_service_level = 3
 
 @export var has_waiter = false
+@export var has_bellboy = false
 
 var next_customer_needs_to_stay = false
 
@@ -149,6 +150,12 @@ func upgrade_waiter():
 	
 	$waiter.process_mode = Node.PROCESS_MODE_INHERIT
 	$waiter.visible = true
+
+func upgrade_bellboy():
+	has_bellboy = true
+	
+	$Bellboy.process_mode = Node.PROCESS_MODE_INHERIT
+	$Bellboy.visible = true
 
 func check_ambience():
 	if ambience_level > 0:
