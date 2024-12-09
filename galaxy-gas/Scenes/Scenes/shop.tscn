@@ -425,6 +425,52 @@ text = "$2500"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GamerButton" type="Control" parent="Upgrades"]
+anchors_preset = 0
+offset_left = 619.0
+offset_top = 533.0
+offset_right = 734.0
+offset_bottom = 648.0
+
+[node name="GamerButton" type="Button" parent="Upgrades/GamerButton"]
+layout_mode = 0
+offset_right = 1541.0
+offset_bottom = 1620.0
+scale = Vector2(0.074, 0.071)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 225
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwcwu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tadtk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7scy1")
+
+[node name="Item" type="Label" parent="Upgrades/GamerButton/GamerButton"]
+layout_mode = 0
+offset_top = 183.099
+offset_right = 1270.0
+offset_bottom = 742.099
+scale = Vector2(1.22, 1.22)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 425
+text = "Gamer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="Upgrades/GamerButton/GamerButton"]
+layout_mode = 0
+offset_top = 915.493
+offset_right = 1270.0
+offset_bottom = 1474.49
+scale = Vector2(1.22, 1.22)
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 460
+text = "$2500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Stats" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -549,5 +595,6 @@ text = "Leave"
 [connection signal="pressed" from="Upgrades/ServiceButton/ServiceButton" to="." method="_on_service_button_pressed"]
 [connection signal="pressed" from="Upgrades/WaiterButton/WaiterButton" to="." method="_on_waiter_button_pressed"]
 [connection signal="pressed" from="Upgrades/BellboyButton/BellboyButton" to="." method="_on_bellboy_button_pressed"]
+[connection signal="pressed" from="Upgrades/GamerButton/GamerButton" to="." method="_on_gamer_button_pressed"]
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_exit_shop_btn_pressed"]
 [connection signal="pressed" from="ExitShopBtn" to="." method="_on_button_pressed"]

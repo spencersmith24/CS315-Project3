@@ -1,15 +1,14 @@
 extends CharacterBody2D
 
 @onready var root_node = get_parent()
+@onready var anim_tree = $AnimationTree
+@onready var anim_player = $AnimationPlayer
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
+@onready var starting_pos = global_position
 
 @export var accel = 5
 @export var speed = 200
 
-@onready var anim_tree = $AnimationTree
-@onready var anim_player = $AnimationPlayer
-
-@onready var nav: NavigationAgent2D = $NavigationAgent2D
-@onready var starting_pos = global_position
 
 var searching = true
 var current_coin

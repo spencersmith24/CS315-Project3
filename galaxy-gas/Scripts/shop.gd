@@ -29,6 +29,8 @@ extends Control
 
 @export var bellboy_upgrade_cost = 2500
 
+@export var gamer_upgrade_cost = 2000
+
 var has_all_tables = false
 var tables_bought = 1
 
@@ -240,3 +242,14 @@ func _on_bellboy_button_pressed() -> void:
 	root_node.upgrade_bellboy()
 	$Upgrades/BellboyButton/BellboyButton.disabled = true
 	$Upgrades/BellboyButton/BellboyButton/Price.text = "MAX"
+
+
+func _on_gamer_button_pressed() -> void:
+	if Globals.money_amt < gamer_upgrade_cost:
+		return
+	
+	Globals.money_amt -= gamer_upgrade_cost
+	
+	root_node.upgrade_gamer()
+	$Upgrades/GamerButton/GamerButton.disabled = true
+	$Upgrades/GamerButton/GamerButton/Price.text = "MAX"
