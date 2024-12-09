@@ -221,7 +221,7 @@ func _on_service_button_pressed() -> void:
 
 # employees
 
-	# automatically pick up money left by customers
+	# automatically pick up money left by customers downstairs
 func _on_waiter_button_pressed() -> void:
 	if Globals.money_amt < waiter_upgrade_cost:
 		return
@@ -232,7 +232,7 @@ func _on_waiter_button_pressed() -> void:
 	$Upgrades/WaiterButton/WaiterButton.disabled = true
 	$Upgrades/WaiterButton/WaiterButton/Price.text = "MAX"
 
-
+	# automatically pick up money left by customers downstairs
 func _on_bellboy_button_pressed() -> void:
 	if Globals.money_amt < bellboy_upgrade_cost:
 		return
@@ -243,7 +243,7 @@ func _on_bellboy_button_pressed() -> void:
 	$Upgrades/BellboyButton/BellboyButton.disabled = true
 	$Upgrades/BellboyButton/BellboyButton/Price.text = "MAX"
 
-
+	# automatically play the arcade machine
 func _on_gamer_button_pressed() -> void:
 	if Globals.money_amt < gamer_upgrade_cost:
 		return

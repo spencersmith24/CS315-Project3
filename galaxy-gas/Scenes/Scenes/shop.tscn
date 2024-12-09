@@ -375,7 +375,7 @@ offset_bottom = 1474.49
 scale = Vector2(1.22, 1.22)
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 460
-text = "$2500"
+text = "$3000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -467,7 +467,7 @@ offset_bottom = 1474.49
 scale = Vector2(1.22, 1.22)
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 460
-text = "$2500"
+text = "$2000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -586,6 +586,58 @@ scale = Vector2(0.369591, 0.369591)
 theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 251
 text = "Leave"
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 496.0
+offset_top = 19.0
+offset_right = 1425.0
+offset_bottom = 102.0
+
+[node name="Facilities" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = -2.0
+offset_right = 1039.0
+offset_bottom = 334.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 300
+text = "Facilities"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Boosts" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 357.0
+offset_top = -2.0
+offset_right = 1148.0
+offset_bottom = 334.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 300
+text = "Boosts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Employees" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 596.0
+offset_top = -2.0
+offset_right = 1856.0
+offset_bottom = 334.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("4_3ntsc")
+theme_override_font_sizes/font_size = 300
+text = "Employees"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Upgrades/TablesButton/TablesButton" to="." method="_on_tables_button_pressed"]
 [connection signal="pressed" from="Upgrades/RoomsButton/RoomsButton" to="." method="_on_rooms_button_pressed"]
