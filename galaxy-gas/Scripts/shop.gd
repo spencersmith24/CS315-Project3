@@ -14,16 +14,16 @@ extends Control
 @export var inn_capacity_upgrade_cost_multiplier = 2.0
 
 @export var arcade_upgrade_cost = 200
-@export var arcade_upgrade_cost_increase = 100
+@export var arcade_upgrade_cost_increase = 200
 
 @export var marketing_upgrade_cost = 50
-@export var marketing_upgrade_cost_multiplier = 1.5
+@export var marketing_upgrade_cost_multiplier = 1.25
 
 @export var ambience_upgrade_cost = 100
 @export var ambience_upgrade_cost_multiplier = 3
 
-@export var service_upgrade_cost = 250
-@export var service_upgrade_cost_multiplier = 1.5
+@export var service_upgrade_cost = 1000
+@export var service_upgrade_cost_multiplier = 2
 
 @export var waiter_upgrade_cost = 3000
 
