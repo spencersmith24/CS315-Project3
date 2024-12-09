@@ -9,11 +9,14 @@ func spawn_coin(customer, amount):
 	new_coin.position = customer.global_position
 	new_coin.make_label(amount)
 	
-	add_child(new_coin)
+	$Coins.add_child(new_coin)
+	
+	# send the coin list data to the waiter
+	$"../waiter".coins = $Coins.get_children()
 	
 func show_label(label):
 	
-	add_child(label)
+	$Labels.add_child(label)
 	
 	await get_tree().create_timer(6).timeout
 	label.queue_free()

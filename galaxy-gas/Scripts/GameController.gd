@@ -45,6 +45,8 @@ var stay_time = rng.randf_range(10.0, 25.0)
 @export var service_level = 1
 @export var max_service_level = 3
 
+@export var has_waiter = false
+
 var next_customer_needs_to_stay = false
 
 # Called when the node enters the scene tree for the first time.
@@ -141,6 +143,12 @@ func upgrade_ambience():
 
 func upgrade_service():
 	service_level += 1
+
+func upgrade_waiter():
+	has_waiter = true
+	
+	$waiter.process_mode = Node.PROCESS_MODE_INHERIT
+	$waiter.visible = true
 
 func check_ambience():
 	if ambience_level > 0:

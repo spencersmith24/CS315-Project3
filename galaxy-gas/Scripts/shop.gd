@@ -25,6 +25,8 @@ extends Control
 @export var service_upgrade_cost = 250
 @export var service_upgrade_cost_multiplier = 1.5
 
+@export var waiter_upgrade_cost = 2500
+
 var has_all_tables = false
 var tables_bought = 1
 
@@ -206,3 +208,14 @@ func _on_service_button_pressed() -> void:
 		$Upgrades/ServiceButton/ServiceButton/Price.text = "MAX"
 
 # employees
+
+	# automatically pick up money left by customers
+func _on_waiter_button_pressed() -> void:
+	if Globals.money_amt < waiter_upgrade_cost:
+		return
+	
+	Globals.money_amt -= waiter_upgrade_cost
+	
+	root_node.upgrade_waiter()
+	$Upgrades/WaiterButton/WaiterButton.disabled = true
+	$Upgrades/WaiterButton/WaiterButton/Price.text = "MAX"

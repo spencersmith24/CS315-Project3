@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmtwsmy0gjedo"]
+[gd_scene load_steps=8 format=3 uid="uid://bb36nghso22en"]
 
 [ext_resource type="Script" path="res://Scripts/coin.gd" id="1_ny5w0"]
 [ext_resource type="Texture2D" uid="uid://brxmm8ci63xab" path="res://Assets/coin.png" id="2_ooayp"]
-[ext_resource type="PackedScene" uid="uid://bplncijkjxyie" path="res://Scenes/Game Objects/amount_label.tscn" id="2_v8h4e"]
+[ext_resource type="PackedScene" path="res://Scenes/Game Objects/amount_label.tscn" id="2_v8h4e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nnwbq"]
 radius = 8.06226
@@ -47,6 +47,7 @@ _data = {
 
 [node name="coin" type="Area2D"]
 scale = Vector2(5, 5)
+collision_mask = 257
 script = ExtResource("1_ny5w0")
 label = ExtResource("2_v8h4e")
 metadata/_edit_group_ = true
@@ -65,4 +66,5 @@ libraries = {
 }
 autoplay = "spin_coin"
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
