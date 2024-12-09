@@ -6,6 +6,7 @@ extends Node2D
 @onready var root_node = get_parent().get_parent().get_parent()
 
 var amount_label
+var upstairs = false
 
 func make_label(amount):
 	amount_label = label.instantiate()
@@ -20,9 +21,12 @@ func _on_body_entered(body: Node2D) -> void:
 		pick_up_coin()
 
 func pick_up_coin():
-	# delete coin from waiter's list  
-	Globals.coins.erase(self)
-
+	# delete coin from list  
+	if Globals.upstairs_coins.has(self):
+		Globals.upstairs_coins.erase(self)
+	else:
+		Globals.downstairs_coins.erase(self)
+	
 	Globals.money_amt += worth	
 	get_parent().get_parent().show_label(amount_label)
 	

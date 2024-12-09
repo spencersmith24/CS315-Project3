@@ -8,11 +8,16 @@ func spawn_coin(customer, amount):
 	new_coin.worth = amount
 	new_coin.position = customer.global_position
 	new_coin.make_label(amount)
+	if customer.staying:
+		new_coin.upstairs = true
+		Globals.upstairs_coins.append(new_coin)
+	else:
+		Globals.downstairs_coins.append(new_coin)
 	
 	$Coins.add_child(new_coin)
 	
-	# send the coin list data to the waiter
-	Globals.coins = $Coins.get_children()
+	## send the coin list data to the waiter
+	#Globals.coins = $Coins.get_children()
 	
 func show_label(label):
 	
