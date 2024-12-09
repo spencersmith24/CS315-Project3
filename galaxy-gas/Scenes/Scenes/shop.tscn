@@ -587,14 +587,22 @@ theme_override_fonts/font = ExtResource("4_3ntsc")
 theme_override_font_sizes/font_size = 251
 text = "Leave"
 
-[node name="Control" type="Control" parent="."]
+[node name="Categories" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 496.0
 offset_top = 19.0
 offset_right = 1425.0
 offset_bottom = 102.0
 
-[node name="Facilities" type="Label" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Categories"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 8.0
+offset_right = 910.0
+offset_bottom = 74.0
+color = Color(0.226707, 0.226707, 0.226707, 0.909804)
+
+[node name="Facilities" type="Label" parent="Categories"]
 layout_mode = 0
 offset_left = 43.0
 offset_top = -2.0
@@ -609,7 +617,7 @@ text = "Facilities"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Boosts" type="Label" parent="Control"]
+[node name="Boosts" type="Label" parent="Categories"]
 layout_mode = 0
 offset_left = 357.0
 offset_top = -2.0
@@ -624,7 +632,7 @@ text = "Boosts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Employees" type="Label" parent="Control"]
+[node name="Employees" type="Label" parent="Categories"]
 layout_mode = 0
 offset_left = 596.0
 offset_top = -2.0
