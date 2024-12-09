@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 	var target_position
 	
 	if current_coin and not current_coin == null :
-		print(current_coin)
 		target_position = current_coin.global_position
 	else:
 		target_position = $"../Kitchen".global_position
