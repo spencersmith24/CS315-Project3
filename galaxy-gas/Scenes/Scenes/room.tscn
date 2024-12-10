@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dtmibyyfj4hhb" path="res://Scenes/Game Objects/rooms/room_top_unupgraded.tscn" id="1_8b7lc"]
 [ext_resource type="PackedScene" uid="uid://c41s46guswm67" path="res://Scenes/Game Objects/rooms/room_top_upgraded.tscn" id="2_8yt7p"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_6am1u"]
-vertices = PackedVector2Array(14, 14, -14, 14, -14, -14, 14, -14)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-24, 24, 24, 24, 24, -24, -24, -24)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_e3t1u"]
+vertices = PackedVector2Array(31.5, 30.5, -0.125, 30.75, 0, 17.875, 31.5, 0.625, -14.875, 1.375, -14.875, 17.875)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-0.125, 30.75, 0, 17.875, -14.875, 17.875, -14.875, 1.375, 31.5, 0.625, 31.5, 30.5)])
+agent_radius = 0.0
 
 [node name="Room" type="Node2D"]
 scale = Vector2(8, 8)
@@ -20,6 +21,6 @@ scale = Vector2(1, 1)
 visible = false
 scale = Vector2(1, 1)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_6am1u")
+[node name="room_region" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_e3t1u")
 navigation_layers = 2

@@ -28,6 +28,10 @@ var money_multiplier = rng.randf_range(1.0, 1.5)
 
 var chair
 var room
+var pos_in_room
+
+var in_room = false
+var target_position
 
 func _process(_delta: float) -> void:
 	money_amt = Globals.money_amt
@@ -36,7 +40,9 @@ func _process(_delta: float) -> void:
 # move characters around to find table to sit at
 func _physics_process(delta: float) -> void:
 	var direction = Vector2()
-	var target_position = chair.global_position if not staying else stairs.global_position
+	if not in_room:
+		target_position = chair.global_position if not staying else stairs.global_position
+	
 	nav.set_target_position(target_position)
 	
 	direction = (nav.get_next_path_position() - global_position).normalized()
@@ -45,18 +51,23 @@ func _physics_process(delta: float) -> void:
 	# flip sprite
 	$Sprite2D.scale.x = 5 if velocity.x > 0 else -5 if velocity.x < 0 else $Sprite2D.scale.x
 	
-	if abs(velocity.x) > 0 and abs(velocity.x) > abs(velocity.y):
-		anim_tree['parameters/conditions/walk_up'] = false
-		anim_tree['parameters/conditions/walk_down'] = false
-		anim_tree['parameters/conditions/walk_sideways'] = true
-	elif velocity.y > 100 and abs(velocity.y) > abs(velocity.x):
-		anim_tree['parameters/conditions/walk_sideways'] = false
-		anim_tree['parameters/conditions/walk_up'] = false
-		anim_tree['parameters/conditions/walk_down'] = true
-	elif velocity.y < -100 and abs(velocity.y) > abs(velocity.x):
-		anim_tree['parameters/conditions/walk_sideways'] = false
-		anim_tree['parameters/conditions/walk_down'] = false
-		anim_tree['parameters/conditions/walk_up'] = true
+	if not in_room:
+		if abs(velocity.x) > 0 and abs(velocity.x) > abs(velocity.y):
+			anim_tree['parameters/conditions/walk_up'] = false
+			anim_tree['parameters/conditions/walk_down'] = false
+			anim_tree['parameters/conditions/walk_sideways'] = true
+		elif velocity.y > 100 and abs(velocity.y) > abs(velocity.x):
+			anim_tree['parameters/conditions/walk_sideways'] = false
+			anim_tree['parameters/conditions/walk_up'] = false
+			anim_tree['parameters/conditions/walk_down'] = true
+		elif velocity.y < -100 and abs(velocity.y) > abs(velocity.x):
+			anim_tree['parameters/conditions/walk_sideways'] = false
+			anim_tree['parameters/conditions/walk_down'] = false
+			anim_tree['parameters/conditions/walk_up'] = true
+	else:
+		reset_anim()
+		stand_still()
+		anim_tree['parameters/conditions/idle_down'] = true
 	
 	move_and_slide()
 
@@ -70,7 +81,7 @@ func _ready() -> void:
 	
 	$InStoreTimer.wait_time = stay_time
 	$InStoreTimer.start()
-	
+
 
 func stand_still():
 	speed = 0
@@ -133,6 +144,10 @@ func find_room():
 			if not bed_room.is_full():
 				bed_room.num_occupants += 1
 				room = bed_room
+				if room.num_occupants == 1:
+					pos_in_room = 1
+				else:
+					pos_in_room = 2
 				break
 
 func sit_in_chair():

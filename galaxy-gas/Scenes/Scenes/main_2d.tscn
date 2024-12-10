@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=39 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
 [ext_resource type="Texture2D" uid="uid://cq2qaif75t3mc" path="res://Assets/Background/RPG Nature Tileset.png" id="2_xy0qu"]
 [ext_resource type="Texture2D" uid="uid://uvrvypdic7tt" path="res://Assets/Background/4 BigSet.png" id="3_2m3q7"]
 [ext_resource type="Texture2D" uid="uid://br46wy70yx500" path="res://Assets/2DMap/sierrassets furniture pack/furniture/furniture pack grey outline.png" id="4_4gbev"]
+[ext_resource type="PackedScene" uid="uid://2oci1pilw7g4" path="res://Scenes/Scenes/sfx_player.tscn" id="4_doa0s"]
 [ext_resource type="FontFile" uid="uid://25duhsetl5g2" path="res://Assets/Fonts/munro.ttf" id="4_rguq6"]
 [ext_resource type="PackedScene" uid="uid://c8yg5cypdx77b" path="res://Scenes/Scenes/shop.tscn" id="5_nsurp"]
 [ext_resource type="PackedScene" uid="uid://bwqy2881wdu67" path="res://Scenes/Game Objects/table.tscn" id="5_ythxb"]
@@ -20,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://bum1x4udetiqh" path="res://Scenes/Game Objects/amount_label.tscn" id="17_08rps"]
 [ext_resource type="PackedScene" uid="uid://be8idbua7slhb" path="res://Scenes/Game Objects/Characters/waiter.tscn" id="18_0ykwv"]
 [ext_resource type="PackedScene" uid="uid://nrt80k3ulgwd" path="res://Scenes/Game Objects/Characters/sleeze.tscn" id="20_k5hm5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f11na"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 0.784314)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5wjv"]
 texture = ExtResource("3_2m3q7")
@@ -233,7 +237,7 @@ texture = ExtResource("3_2m3q7")
 [sub_resource type="TileSet" id="TileSet_6yflu"]
 sources/0 = SubResource("TileSetAtlasSource_e5wjv")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xa0h0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1hta"]
 texture = ExtResource("2_xy0qu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -401,7 +405,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_f4506"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_xa0h0")
+sources/0 = SubResource("TileSetAtlasSource_c1hta")
 
 [sub_resource type="Animation" id="Animation_7jwm4"]
 length = 0.001
@@ -1454,7 +1458,6 @@ offset_top = -540.0
 offset_right = 960.0
 offset_bottom = 540.0
 mouse_filter = 1
-metadata/_edit_lock_ = true
 
 [node name="ShopBtn" type="Button" parent="Camera2D/UI"]
 layout_mode = 0
@@ -1486,15 +1489,21 @@ vertical_alignment = 1
 
 [node name="ChangeFloors" type="Button" parent="Camera2D/UI"]
 layout_mode = 0
-offset_left = 1702.0
-offset_top = 857.0
-offset_right = 1815.0
-offset_bottom = 888.0
-text = "change floors"
+offset_left = 1635.63
+offset_top = 976.195
+offset_right = 2737.63
+offset_bottom = 1209.2
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("4_rguq6")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxFlat_f11na")
+text = "Change Floors"
 
 [node name="Shop" parent="Camera2D/UI" instance=ExtResource("5_nsurp")]
 visible = false
 layout_mode = 1
+
+[node name="sfx" parent="Camera2D" instance=ExtResource("4_doa0s")]
 
 [node name="Background" type="Node2D" parent="."]
 scale = Vector2(3, 3)
@@ -1718,9 +1727,11 @@ collision_layer = 256
 [node name="Sleeze" parent="." instance=ExtResource("20_k5hm5")]
 process_mode = 4
 visible = false
-position = Vector2(-316, -307)
+position = Vector2(-316, -322.615)
 
+[connection signal="mouse_entered" from="Camera2D/UI/ShopBtn" to="." method="_on_shop_btn_mouse_entered"]
 [connection signal="pressed" from="Camera2D/UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="mouse_entered" from="Camera2D/UI/ChangeFloors" to="." method="_on_change_floors_mouse_entered"]
 [connection signal="pressed" from="Camera2D/UI/ChangeFloors" to="." method="_on_change_floors_pressed"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
 [connection signal="body_entered" from="Stairs" to="." method="_on_stairs_body_entered"]
