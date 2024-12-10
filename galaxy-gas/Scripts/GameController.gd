@@ -172,4 +172,8 @@ func upgrade_bellboy():
 
 func upgrade_gamer():
 	has_gamer = true
+	
+	$Sleeze.process_mode = Node.PROCESS_MODE_INHERIT
+	$Sleeze.visible = true
+	
 	arcade_machine.automate()

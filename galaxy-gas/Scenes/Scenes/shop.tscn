@@ -775,7 +775,7 @@ label_text = "Hire a bellboy to automatically collect money from the second floo
 layout_mode = 1
 offset_right = -55.0
 offset_bottom = 792.0
-label_text = "This guy loves arcade games."
+label_text = "This guy loves games."
 
 [connection signal="pressed" from="Upgrades/TablesButton/TablesButton" to="." method="_on_tables_button_pressed"]
 [connection signal="pressed" from="Upgrades/RoomsButton/RoomsButton" to="." method="_on_rooms_button_pressed"]

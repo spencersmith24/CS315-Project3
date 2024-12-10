@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://dqfb3pyq5b42h"]
+[gd_scene load_steps=37 format=4 uid="uid://dqfb3pyq5b42h"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3loeq"]
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="2_tm5te"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bb36nghso22en" path="res://Scenes/Game Objects/coin.tscn" id="16_tumnt"]
 [ext_resource type="PackedScene" uid="uid://bum1x4udetiqh" path="res://Scenes/Game Objects/amount_label.tscn" id="17_08rps"]
 [ext_resource type="PackedScene" uid="uid://be8idbua7slhb" path="res://Scenes/Game Objects/Characters/waiter.tscn" id="18_0ykwv"]
+[ext_resource type="PackedScene" uid="uid://nrt80k3ulgwd" path="res://Scenes/Game Objects/Characters/sleeze.tscn" id="20_k5hm5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5wjv"]
 texture = ExtResource("3_2m3q7")
@@ -1713,6 +1714,11 @@ process_mode = 4
 visible = false
 position = Vector2(0, -291)
 collision_layer = 256
+
+[node name="Sleeze" parent="." instance=ExtResource("20_k5hm5")]
+process_mode = 4
+visible = false
+position = Vector2(-316, -307)
 
 [connection signal="pressed" from="Camera2D/UI/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="pressed" from="Camera2D/UI/ChangeFloors" to="." method="_on_change_floors_pressed"]
