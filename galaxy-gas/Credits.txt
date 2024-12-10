@@ -13,3 +13,7 @@ Character sprites:
 
 Coin:
 	- https://gabriel-ceppas.itch.io/coin
+
+Sound effects:
+	- https://kenney.nl/assets/interface-sounds
+	- https://kenney.nl/assets/impact-sounds
