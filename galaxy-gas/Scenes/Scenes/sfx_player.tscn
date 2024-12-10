@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://2oci1pilw7g4"]
+
+[ext_resource type="AudioStream" uid="uid://dikkpa4vwirm8" path="res://Assets/Sounds/Sfx/coin_collect.ogg" id="1_w2l4j"]
+[ext_resource type="AudioStream" uid="uid://cpfbe0i4y7kfu" path="res://Assets/Sounds/Sfx/play_arcade.ogg" id="2_nifox"]
+[ext_resource type="AudioStream" uid="uid://b6qf8x3kdptqb" path="res://Assets/Sounds/Sfx/hover_button.ogg" id="3_miloo"]
+[ext_resource type="AudioStream" uid="uid://c60f83d41fwtp" path="res://Assets/Sounds/Sfx/click_button.ogg" id="4_s30fl"]
+[ext_resource type="AudioStream" uid="uid://c86rgrcswiape" path="res://Assets/Sounds/Sfx/error.ogg" id="5_ofm3c"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mx736"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("2_nifox")
+
+[node name="sfx" type="Node2D"]
+
+[node name="coin_collect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_w2l4j")
+max_distance = 1000.0
+
+[node name="play_arcade" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_mx736")
+
+[node name="hover_button" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_miloo")
+volume_db = 4.0
+
+[node name="click_button" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s30fl")
+volume_db = 4.0
+
+[node name="error" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ofm3c")
