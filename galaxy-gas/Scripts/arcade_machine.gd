@@ -9,12 +9,13 @@ func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed("click"):
 			play_arcade()
+			get_parent().get_parent().get_node("Camera2D/sfx/play_arcade").play()
 
 func play_arcade():
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.play("jiggle")
 	
-	Globals.root_node.money_amt += click_value
+	Globals.money_amt += click_value
 	
 	var new_label = label.instantiate()
 	new_label.position = self.global_position

@@ -25,6 +25,8 @@ func _on_body_entered(body: Node2D) -> void:
 		body.searching = true
 
 func pick_up_coin():
+	root_node.get_node("Camera2D/sfx").get_node("coin_collect").play()
+	
 	make_label(int(worth * multiplier + 0.5))
 	
 	# delete coin from list  

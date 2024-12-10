@@ -98,6 +98,8 @@ func spawn_new_customer():
 # Change floors
 func _on_change_floors_pressed() -> void:
 	var animation = "move_downstairs" if $Camera2D.position.y == -1250 else "move_upstairs"
+	get_node("Camera2D/sfx/click_button").play()
+	
 	$AnimationPlayer.play(animation)
 
 # check if there are open tables
@@ -120,12 +122,17 @@ func _get_customer():
 # send customer upstairs if they are staying
 func _on_stairs_body_entered(body):
 	if body.staying:
-		body.position = body.room.global_position
-		body.nav.set_target_position(body.room.position)
+		if body.pos_in_room == 2:
+			body.position = Vector2(body.room.global_position.x + 200, body.room.global_position.y)
+		else:
+			body.position = Vector2(body.room.global_position.x - 30, body.room.global_position.y)
+			
+		body.in_room = true
 
 # toggle shop
 func _on_shop_btn_pressed() -> void:
 	GAME_SHOP.toggle_shop()
+	get_node("Camera2D/sfx/click_button").play()
 
 # -- UPGRADES --
 
@@ -153,8 +160,9 @@ func check_ambience():
 		$Decorations/Upgrade2.visible = true
 	if ambience_level > 2:
 		$Decorations/Upgrade3.visible = true
-	if ambience_level > 3:
+	if ambience_level == 4:
 		$Decorations/Upgrade4.visible = true
+		$SoundsPlayer/bgtransition.play("8bit_to_acoustic")
 	if ambience_level > 4:
 		$Decorations/Upgrade5.visible = true
 
@@ -177,3 +185,13 @@ func upgrade_gamer():
 	$Sleeze.visible = true
 	
 	arcade_machine.automate()
+
+
+func _on_shop_btn_mouse_entered() -> void:
+	get_node("Camera2D/sfx/hover_button").play()
+	pass
+
+
+func _on_change_floors_mouse_entered() -> void:
+	get_node("Camera2D/sfx/hover_button").play()
+	pass # Replace with function body.

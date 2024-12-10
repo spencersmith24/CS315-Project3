@@ -37,8 +37,12 @@ var tables_bought = 1
 var tables_upgraded = 0
 var rooms_upgraded = 0
 
+var sfx_player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	sfx_player = root_node.get_node("Camera2D/sfx")
+	
 	visible = false
 	process_mode = PROCESS_MODE_DISABLED
 	
@@ -81,6 +85,7 @@ func _process(_delta: float) -> void:
 
 func _on_exit_shop_btn_pressed() -> void:
 	toggle_shop()
+	sfx_player.get_node("click_button").play()
 
 func toggle_shop():
 	# Set visibility
@@ -97,6 +102,7 @@ func toggle_shop():
 	# upgrades number of tables, then number of chairs per table
 func _on_tables_button_pressed():
 	if Globals.money_amt < new_table_cost and not has_all_tables:
+		sfx_player.get_node("error").play()
 		return
 	
 	if not has_all_tables:
@@ -109,7 +115,7 @@ func _on_tables_button_pressed():
 				
 				$Stats/Chairs.text = "Chairs: " + str(root_node.max_customers)
 				$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(new_table_cost)
-				
+				sfx_player.get_node("click_button").play()
 				if tables_bought == 6:
 					$"Upgrades/TablesButton/TablesButton/Price".text = "$" + str(table_upgrade_cost)
 					has_all_tables = true
@@ -127,14 +133,15 @@ func _on_tables_button_pressed():
 				break
 		
 		$Stats/Chairs.text = "Chairs: " + str(root_node.max_customers)
-		
+		sfx_player.get_node("click_button").play()
 	if tables_upgraded >= tables.size():
 		$"Upgrades/TablesButton/TablesButton".disabled = true
 		$"Upgrades/TablesButton/TablesButton/Price".text = "MAX"
-
+	
 	# upgrades rooms to hold two people instead of one
 func _on_rooms_button_pressed():
 	if Globals.money_amt < inn_capacity_upgrade_cost:
+		sfx_player.get_node("error").play()
 		return
 	
 	Globals.money_amt -= inn_capacity_upgrade_cost
@@ -153,10 +160,11 @@ func _on_rooms_button_pressed():
 	if rooms_upgraded >= rooms.size():
 		$"Upgrades/RoomsButton/RoomsButton".disabled = true
 		$"Upgrades/RoomsButton/RoomsButton/Price".text = "MAX"
-
+	sfx_player.get_node("click_button").play()
 	# increases money earned per click of arcade
 func _on_arcade_button_pressed() -> void:
 	if Globals.money_amt < arcade_upgrade_cost:
+		sfx_player.get_node("error").play()
 		return
 	
 	Globals.money_amt -= arcade_upgrade_cost
@@ -169,12 +177,13 @@ func _on_arcade_button_pressed() -> void:
 	if root_node.arcade_level >= root_node.max_arcade_level:
 		$Upgrades/ArcadeButton/ArcadeButton.disabled = true
 		$Upgrades/ArcadeButton/ArcadeButton/Price.text = "MAX"
-
+	sfx_player.get_node("click_button").play()
 # characteristics
 
 	# increase customer spawn rate
 func _on_marketing_button_pressed():
 	if Globals.money_amt < marketing_upgrade_cost:
+		sfx_player.get_node("error").play()
 		return
 	
 	Globals.money_amt -= marketing_upgrade_cost
@@ -187,10 +196,11 @@ func _on_marketing_button_pressed():
 	if root_node.marketing_level >= root_node.max_marketing_level:
 		$Upgrades/MarketingButton/MarketingButton.disabled = true
 		$Upgrades/MarketingButton/MarketingButton/Price.text = "MAX"
-
+	sfx_player.get_node("click_button").play()
 	# makes customers stay longer
 func _on_ambience_button_pressed():
 	if Globals.money_amt < ambience_upgrade_cost:
+		sfx_player.get_node("error").play()
 		return
 	
 	Globals.money_amt -= ambience_upgrade_cost
@@ -203,10 +213,11 @@ func _on_ambience_button_pressed():
 	if root_node.ambience_level >= root_node.max_ambience_level:
 		$Upgrades/AmbienceButton/AmbienceButton.disabled = true
 		$Upgrades/AmbienceButton/AmbienceButton/Price.text = "MAX"
-
+	sfx_player.get_node("click_button").play()
 	# add multiplier to money earned from customer
 func _on_service_button_pressed() -> void:
 	if Globals.money_amt < service_upgrade_cost:
+		sfx_player.get_node("error").play()
 		return
 	
 	Globals.money_amt -= service_upgrade_cost
@@ -219,12 +230,13 @@ func _on_service_button_pressed() -> void:
 	if root_node.service_level >= root_node.max_service_level:
 		$Upgrades/ServiceButton/ServiceButton.disabled = true
 		$Upgrades/ServiceButton/ServiceButton/Price.text = "MAX"
-
+	sfx_player.get_node("click_button").play()
 # employees
 
 	# automatically pick up money left by customers downstairs
 func _on_waiter_button_pressed() -> void:
 	if Globals.money_amt < waiter_upgrade_cost:
+		sfx_player.get_node("error").play()
 		return
 	
 	Globals.money_amt -= waiter_upgrade_cost
@@ -232,10 +244,11 @@ func _on_waiter_button_pressed() -> void:
 	root_node.upgrade_waiter()
 	$Upgrades/WaiterButton/WaiterButton.disabled = true
 	$Upgrades/WaiterButton/WaiterButton/Price.text = "MAX"
-
+	sfx_player.get_node("click_button").play()
 	# automatically pick up money left by customers downstairs
 func _on_bellboy_button_pressed() -> void:
 	if Globals.money_amt < bellboy_upgrade_cost:
+		sfx_player.get_node("error").play()
 		return
 	
 	Globals.money_amt -= bellboy_upgrade_cost
@@ -243,10 +256,11 @@ func _on_bellboy_button_pressed() -> void:
 	root_node.upgrade_bellboy()
 	$Upgrades/BellboyButton/BellboyButton.disabled = true
 	$Upgrades/BellboyButton/BellboyButton/Price.text = "MAX"
-
+	sfx_player.get_node("click_button").play()
 	# automatically play the arcade machine
 func _on_gamer_button_pressed() -> void:
 	if Globals.money_amt < gamer_upgrade_cost:
+		sfx_player.get_node("error").play()
 		return
 	
 	Globals.money_amt -= gamer_upgrade_cost
@@ -254,3 +268,55 @@ func _on_gamer_button_pressed() -> void:
 	root_node.upgrade_gamer()
 	$Upgrades/GamerButton/GamerButton.disabled = true
 	$Upgrades/GamerButton/GamerButton/Price.text = "MAX"
+	
+	sfx_player.get_node("click_button").play()
+
+
+func _on_tables_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_rooms_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_arcade_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_marketing_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_ambience_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_service_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_waiter_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_bellboy_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_gamer_button_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
+
+
+func _on_exit_shop_btn_mouse_entered() -> void:
+	sfx_player.get_node("hover_button").play()
+	pass # Replace with function body.
