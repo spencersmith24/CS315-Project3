@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c41s46guswm67"]
+[gd_scene load_steps=11 format=4 uid="uid://c41s46guswm67"]
 
 [ext_resource type="TileSet" uid="uid://sw5dqjat4in2" path="res://Assets/map_tiles.tres" id="1_k6qg3"]
 [ext_resource type="Texture2D" uid="uid://uvrvypdic7tt" path="res://Assets/Background/4 BigSet.png" id="2_mqgx0"]
@@ -229,11 +229,6 @@ size = Vector2(7.5, 12.6667)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgd14"]
 size = Vector2(11.5, 2.83333)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_r0wll"]
-vertices = PackedVector2Array(43.3438, 30, -14, 30, -14, 2, 43.3438, 2)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -8, -24, 40, 53.3333, 40, 53.3333, -8)])
-
 [node name="Room_Top_Unupgraded" type="Node2D"]
 scale = Vector2(6, 6)
 
@@ -378,6 +373,3 @@ region_rect = Rect2(290, 224, 10, 13)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Couch"]
 position = Vector2(10.9167, -10.25)
 shape = SubResource("RectangleShape2D_jgd14")
-
-[node name="RoomRegion" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_r0wll")
